@@ -11,6 +11,7 @@ namespace Baricade.Model
     {
         private Image image;
         private Piece piece;
+        private int id;
         protected bool mayContainBaricade;
 
         protected Image Image
@@ -25,6 +26,12 @@ namespace Baricade.Model
             set { piece = value; }
         }
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        
         public Square()
         {
             mayContainBaricade = true;

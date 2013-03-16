@@ -64,14 +64,42 @@ namespace Baricade.Model
 
         public Loader(String uri)
         {
+            List<Square> squareList = new List<Square>();
             XmlReader r = XmlReader.Create(uri);
             while (r.Read())
             {
                 if (r.NodeType == XmlNodeType.Element)
                 {
-                    if (r.Name == "Bord")
+                    if (r.Name.ToLower() == "board")
                     {
+                        bord = new Board();
+                    }
+                    
+                    else if (r.Name.ToLower() == "square")
+                    {
+                        Square s = new Square();
+                        if (s.readElement(r))
+                        {
+                            squareList.Insert(s.Id, s);
+                        }
+                    }
 
+                    else if (r.Name.ToLower() == "villageSquare")
+                    {
+                        VillageSquare s = new VillageSquare();
+                        if (s.readElement(r))
+                        {
+                            squareList.Insert(s.Id, s);
+                        }
+                    }
+
+                    else if (r.Name.ToLower() == "finish")
+                    {
+                        FinishSquare s = new FinishSquare();
+                        if (s.readElement(r))
+                        {
+                            squareList.Insert(s.Id, s);
+                        }
                     }
                 }
             }

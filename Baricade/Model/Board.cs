@@ -11,10 +11,8 @@ namespace Baricade.Model
         private int _height;
         private int _width;
 
-        public Board(int height, int width)
+        public Board()
         {
-            _height = height;
-            _width = width;
         }
     }
 }

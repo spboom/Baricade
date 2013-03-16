@@ -16,6 +16,7 @@ namespace Baricade.Model
         public Game Load(String uri)
         {
             Loader loader = new Loader(uri);
+
             return null;
         }
     }
