@@ -15,12 +15,21 @@ namespace Baricade.Model
             if (f.IsStartElement())
             {
                 Type t = typeof(T);
-                if (f.NodeType == XmlNodeType.Element && f.Name == t.Name.ToLower())
+                if (f.NodeType == XmlNodeType.Element)
                 {
                     foreach (System.Reflection.PropertyInfo prop in t.GetProperties())
                     {
-                        string value = f.GetAttribute(prop.Name.ToLower());
-                        prop.SetValue(this, value, null);
+                    
+                        String value = f.GetAttribute(prop.Name.ToLower());
+                        try
+                        {
+                            int i = Convert.ToInt16(value);
+                            prop.SetValue(this, i, null);
+                        }
+                        catch (Exception)
+                        {
+                            prop.SetValue(this, value, null);
+                        }
                     }
                     return true;
                 }

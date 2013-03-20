@@ -13,7 +13,7 @@ namespace Baricade.Model
 
         public Game()
         {
-            Loader loader = new Loader();
+            //Loader loader = new Loader();
 
         }
     }

@@ -14,6 +14,12 @@ namespace Baricade.Model
         private Link _left;
         private Link _right;
 
+        internal Square Square
+        {
+            get { return _square; }
+            set { _square = value; }
+        }
+
         internal Link Up
         {
             get { return _up; }
@@ -36,6 +42,11 @@ namespace Baricade.Model
         {
             get { return _right; }
             set { _right = value; }
+        }
+
+        public Link(Square s)
+        {
+            _square = s;
         }
     }
 }

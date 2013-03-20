@@ -13,5 +13,6 @@ namespace Baricade
     /// </summary>
     public partial class App : Application
     {
+        Model.Loader loader = new Model.Loader("C:/Users/Sjors Boom/Dropbox/Baricadespel C# miniproject/bord1.xml");
     }
 }

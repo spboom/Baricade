@@ -12,6 +12,7 @@ namespace Baricade.Model
         private Image image;
         private Piece piece;
         private int id;
+        public int up, left, right, down;
         protected bool mayContainBaricade;
 
         protected Image Image
@@ -30,6 +31,30 @@ namespace Baricade.Model
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public int Up
+        {
+            get { return up; }
+            set { up = value; }
+        }
+
+        public int Left
+        {
+            get { return left; }
+            set { left = value; }
+        }
+
+        public int Right
+        {
+            get { return right; }
+            set { right = value; }
+        }
+
+        public int Down
+        {
+            get { return down; }
+            set { down = value; }
         }
         
         public Square()
