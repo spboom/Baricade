@@ -11,6 +11,8 @@ namespace Baricade.Model
         private int _height;
         private int _width;
 
+        private ForestSquare _forestSquare;
+
         public Board()
         {
         }

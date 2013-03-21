@@ -8,10 +8,11 @@ namespace Baricade.Model
 {
     class ForestSquare : RestSquare
     {
-        public ForestSquare()
-            : base()
-        {
+        public ForestSquare() : base() {}
 
+        public override string Name
+        {
+            get { return "forestSquare"; }
         }
     }
 }

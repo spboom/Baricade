@@ -8,10 +8,11 @@ namespace Baricade.Model
 {
     class PlayerSquare : RestSquare
     {
-        public PlayerSquare()
-            : base()
-        {
+        public PlayerSquare() : base() {}
 
+        public override string Name
+        {
+            get { return "playerSquare"; }
         }
     }
 }

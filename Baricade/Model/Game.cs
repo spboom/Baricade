@@ -10,6 +10,7 @@ namespace Baricade.Model
     {
         private Board board;
         private Circuit<Player> players;
+        private FinishSquare _finishSquare;
 
         public Game()
         {

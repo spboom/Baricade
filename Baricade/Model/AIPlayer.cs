@@ -8,8 +8,7 @@ namespace Baricade.Model
 {
     class AIPlayer : Player
     {
-        public AIPlayer(int player, int pawns)//TODO: Niveau??
-            : base(player, pawns)
+        public AIPlayer(int player, string color, int pawns) : base(player, color, pawns)
         {
 
         }

@@ -7,25 +7,24 @@ using System.Windows.Controls;
 
 namespace Baricade.Model
 {
-    class Square : XmlData<Square>
+    abstract class Square : XmlData<Square>
     {
-        private Image image;
-        private Piece piece;
+        private Piece _piece;
         private int id;
         public int up, left, right, down;
         protected bool mayContainBaricade;
 
-        protected Image Image
-        {
-            get { return image; }
-            set { image = value; }
-        }
-
         public Piece Piece
         {
-            get { return piece; }
-            set { piece = value; }
+            get { return _piece; }
+            
+            set 
+            {
+                _piece = value; 
+            }
         }
+
+        public abstract string Name { get; }
 
         public int Id
         {
@@ -62,5 +61,6 @@ namespace Baricade.Model
             mayContainBaricade = true;
         }
 
+        //public abstract bool isAvailable();
     }
 }
