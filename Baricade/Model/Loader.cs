@@ -10,16 +10,17 @@ namespace Baricade.Model
     class Loader
     {
         private String chosenStyle;
-        private int _numberOfHumanPlayers = -1;
-        private int _numberOFAIPlayers = -1;
+        private int _numberOfHumanPlayers = 0;
+        private int _numberOfAIPlayers = 0;
         private int _numberOfPawns = -1;
         private int _currentPlayer = -1;
         private int _currentDiceThrow = -1;
         private int _height = -1;
         private int _width = -1;
+        private int _numberofPlayers = 0;
 
-        List<Link> linkList = new List<Link>();
-        private Player[] playerList;
+        List<Square> linkList = new List<Square>();
+        private Circuit<Player> playerList = new Circuit<Player>();
         private Board bord;
 
         public int NumberOfHumanPlayers
@@ -28,10 +29,15 @@ namespace Baricade.Model
             set { _numberOfHumanPlayers = value; }
         }
 
+        public Loader()
+        {
+
+        }
+
         public int NumberOFAIPlayers
         {
-            get { return _numberOFAIPlayers; }
-            set { _numberOFAIPlayers = value; }
+            get { return _numberOfAIPlayers; }
+            set { _numberOfAIPlayers = value; }
         }
 
         public int NumberOfPawns
@@ -63,8 +69,9 @@ namespace Baricade.Model
             set { _width = value; }
         }
 
-        public Loader(String uri)
+        public Game Load(String uri)
         {
+            System.Diagnostics.Debug.WriteLine("hello!");
             XmlReader r = XmlReader.Create(uri);
             Board bord = null;
             while (r.Read())
@@ -114,6 +121,28 @@ namespace Baricade.Model
                     }
                 }
 
+                else if (r.Name.ToLower() == "player")
+                {
+                    Player p = new Player(playerList.Count+1, NumberOfPawns);
+                    if (p.readElement(r))
+                    {
+                        _numberofPlayers++;
+                        _numberOfHumanPlayers++;
+                        playerList.Add(p);
+                    }
+                }
+
+                else if (r.Name.ToLower() == "aiplayer")
+                {
+                    AIPlayer p = new AIPlayer(playerList.Count + 1, NumberOfPawns);
+                    if (p.readElement(r))
+                    {
+                        _numberOfAIPlayers++;
+                        _numberOfHumanPlayers++;
+                        playerList.Add(p);
+                    }
+                }
+
                 else if (r.Name.ToLower() == "finish")
                 {
                     FinishSquare s = new FinishSquare();
@@ -132,30 +161,32 @@ namespace Baricade.Model
                 }
             }
             link();
+            playerList.setCurrent(_currentPlayer);
+            return new Game(bord, playerList);
         }
 
         private void link()
         {
             for (int i = 0; i < linkList.Count; i++)
             {
-                if (linkList[i].Square.Up >0)
+                if (linkList[i].Up >0)
                 {
-                    linkList[i].Up = linkList[find(linkList[i].Square.Up)];
+                    linkList[i].links[Direction.Up] = linkList[find(linkList[i].Up)];
                 }
 
-                if (linkList[i].Square.Left > 0)
+                if (linkList[i].Left > 0)
                 {
-                    linkList[i].Left = linkList[find(linkList[i].Square.Left)];
+                    linkList[i].links[Direction.Left] = linkList[find(linkList[i].Left)];
                 }
 
-                if (linkList[i].Square.Down > 0)
+                if (linkList[i].Down > 0)
                 {
-                    linkList[i].Down = linkList[find(linkList[i].Square.Down)];
+                    linkList[i].links[Direction.Down] = linkList[find(linkList[i].Down)];
                 }
 
-                if (linkList[i].Square.Right > 0)
+                if (linkList[i].Right > 0)
                 {
-                    linkList[i].Right = linkList[linkList[i].Square.Right];
+                    linkList[i].links[Direction.Right]= linkList[linkList[i].Square.Right];
                 }
             }
         }
@@ -166,15 +197,15 @@ namespace Baricade.Model
             while (min <= max)
             {
                 center = (max + min) / 2;
-                if (p == linkList[center].Square.Id)
+                if (p == linkList[center].Id)
                 {
                     return center;
                 }
-                else if (p < linkList[center].Square.Id)
+                else if (p < linkList[center].Id)
                 {
                     max = center - 1;
                 }
-                else if (p > linkList[center].Square.Id)
+                else if (p > linkList[center].Id)
                 {
                     min = center + 1;
                 }
@@ -187,7 +218,7 @@ namespace Baricade.Model
             return bord;
         }
 
-        public Player[] getPlayers()
+        public Circuit<Player> getPlayers()
         {
             return playerList;
         }
@@ -196,11 +227,11 @@ namespace Baricade.Model
         {
             if (linkList.Count == 0)
             {
-                linkList.Add(new Link(s));
+                linkList.Add(s);
             }
-            else if (i > linkList[linkList.Count - 1].Square.Id)
+            else if (i > linkList[linkList.Count - 1].Id)
             {
-                linkList.Add(new Link(s));
+                linkList.Add(s);
             }
             else
             {
@@ -208,11 +239,11 @@ namespace Baricade.Model
                 while (min <= max)
                 {
                     center = min + max / 2;
-                    if (i == linkList[center].Square.Id)
+                    if (i == linkList[center].Id)
                     {
                         throw new Exception("ID duplicate! int = " + i);
                     }
-                    else if (i < linkList[center].Square.Id)
+                    else if (i < linkList[center].Id)
                     {
                         max = center - 1;
                     }
@@ -221,7 +252,7 @@ namespace Baricade.Model
                         min = center + 1;
                     }
                 }
-                linkList.Insert(min, new Link(s));
+                linkList.Insert(min, s);
             }
         }
     }

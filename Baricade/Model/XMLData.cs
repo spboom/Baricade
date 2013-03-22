@@ -19,17 +19,18 @@ namespace Baricade.Model
                 {
                     foreach (System.Reflection.PropertyInfo prop in t.GetProperties())
                     {
-                    
+
                         String value = f.GetAttribute(prop.Name.ToLower());
-                        try
+                        int i;
+                        if (int.TryParse(value, out i))
                         {
-                            int i = Convert.ToInt16(value);
                             prop.SetValue(this, i, null);
                         }
-                        catch (Exception)
+                        else
                         {
                             prop.SetValue(this, value, null);
                         }
+
                     }
                     return true;
                 }

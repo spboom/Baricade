@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Baricade.Controller;
+
 
 namespace Baricade
 {
@@ -13,6 +15,6 @@ namespace Baricade
     /// </summary>
     public partial class App : Application
     {
-        Model.Loader loader = new Model.Loader("C:/Users/Sjors Boom/Dropbox/Baricadespel C# miniproject/bord1.xml");
+        GameController controller = new GameController();
     }
 }

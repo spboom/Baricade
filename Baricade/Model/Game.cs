@@ -11,10 +11,10 @@ namespace Baricade.Model
         private Board board;
         private Circuit<Player> players;
 
-        public Game()
+        public Game(Board board, Circuit<Player> players)
         {
-            //Loader loader = new Loader();
-
+            this.board = board;
+            this.players = players;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Player
+    class Player : XmlData<Player>
     {
         private int player;
         private PlayerSquare playerSquare;

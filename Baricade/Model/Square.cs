@@ -13,6 +13,7 @@ namespace Baricade.Model
         private Piece piece;
         private int id;
         public int up, left, right, down;
+        public Square[] links;
         protected bool mayContainBaricade;
 
         protected Image Image
@@ -62,5 +63,31 @@ namespace Baricade.Model
             mayContainBaricade = true;
         }
 
+        public void setDirection(int direction, Square s)
+        {
+            if (direction <= 3 && direction >= 0)
+            {
+                links[direction] = s;
+            }
+        }
+        public List<Square> getNext(Square from, int stepsleft)
+        {
+            List<Square> next = new List<Square>();
+            for (int i = 0; i < links.Length; i++)
+            {
+                if (links[i] != null && !links[i].Equals(from))
+                {
+                    if (stepsleft > 0)
+                    {
+                        next.AddRange(links[i].getNext(this, stepsleft - 1));
+                    }
+                    else
+                    {
+                        next.Add(links[i]);
+                    }
+                }
+            }
+            return next;
+        }
     }
 }

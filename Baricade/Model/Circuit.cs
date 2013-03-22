@@ -8,6 +8,7 @@ namespace Baricade.Model
 {
     class Circuit<T>
     {
+        public int Count { get { return list.Count; } }
         private List<T> list;
         private int pointer;
 
@@ -61,10 +62,23 @@ namespace Baricade.Model
             return list[++Pointer];
         }
 
-        public void add(T t)
+        public void Add(T t)
         {
             list.Add(t);
         }
 
+
+        internal void setCurrent(int position)
+        {
+            if (position < 0)
+            {
+                position = 0;
+            }
+            else if (position >= Count)
+            {
+                position = Count - 1;
+            }
+            pointer = position;
+        }
     }
 }
