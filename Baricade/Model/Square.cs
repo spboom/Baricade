@@ -7,26 +7,25 @@ using System.Windows.Controls;
 
 namespace Baricade.Model
 {
-    class Square : XmlData<Square>
+    abstract class Square : XmlData<Square>
     {
-        private Image image;
-        private Piece piece;
+        private Piece _piece;
         private int id;
         public int up, left, right, down;
         public Square[] links;
         protected bool mayContainBaricade;
 
-        protected Image Image
-        {
-            get { return image; }
-            set { image = value; }
-        }
-
         public Piece Piece
         {
-            get { return piece; }
-            set { piece = value; }
+            get { return _piece; }
+            
+            set 
+            {
+                _piece = value; 
+            }
         }
+
+        public abstract string Name { get; }
 
         public int Id
         {
@@ -63,6 +62,7 @@ namespace Baricade.Model
             mayContainBaricade = true;
         }
 
+<<<<<<< HEAD
         public void setDirection(int direction, Square s)
         {
             if (direction <= 3 && direction >= 0)
@@ -89,5 +89,8 @@ namespace Baricade.Model
             }
             return next;
         }
+=======
+        //public abstract bool isAvailable();
+>>>>>>> 5f549ac154fb830405acbef96503f3a39058844e
     }
 }

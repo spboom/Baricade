@@ -8,9 +8,11 @@ namespace Baricade.Model
 {
     class VillageSquare : Square
     {
-        public VillageSquare()
-        :base()
+        public VillageSquare() :base() {}
+
+        public override string Name
         {
+            get { return "villageSquare"; }
         }
     }
 }

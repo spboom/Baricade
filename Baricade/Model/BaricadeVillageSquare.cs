@@ -8,6 +8,9 @@ namespace Baricade.Model
 {
     class BaricadeVillageSquare : VillageSquare
     {
-        
+        public override string Name
+        {
+            get { return "barricadeVillageSquare"; }
+        }
     }
 }

@@ -6,25 +6,49 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Piece
+    /*
+     * A piece is put on a square and a piece belongs to a player (such as a pawn) 
+     * or belongs to no one at first and exchanges owners throughout the game (such 
+     * as a barricade).  
+     */
+    abstract class Piece
     {
+        private Player player;
         private Square square;
+
+        public Piece(Square square, Player player = null)
+        {
+            this.square = square;
+            this.player = player;
+        }
+
+        /*
+         * The property Name is used to determine the filename of the image at the View. 
+         */
+        public abstract string Name { get; }
 
         internal Square Square
         {
             get { return square; }
-            set { square = value; }
+            protected set { square = value; }
         }
 
-        public Piece(Square s)
+        internal Player Player
         {
-            square = s;
+            get { return player; }
+            protected set { player = value; }
         }
 
-        public void moveTo(Square s)
+        protected void moveTo(Square s)
         {
-            Square = s;
-            Square.Piece = this;
+            this.square = s;
+            s.Piece = this;
         }
+
+        /*
+         * The method gotHit determines the destination of the struck piece, sends it, and puts the
+         * the pawn in the signature inside the square.
+         */ 
+        public abstract bool gotHit(Pawn p);
     }
 }

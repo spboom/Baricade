@@ -8,10 +8,11 @@ namespace Baricade.Model
 {
     class FinishSquare : RestSquare
     {
-        public FinishSquare()
-            : base()
-        {
+        public FinishSquare() : base() {}
 
+        public override string Name
+        {
+            get { return "finishSquare"; }
         }
     }
 }
