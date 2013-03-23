@@ -12,10 +12,11 @@ namespace Baricade.Model
         private Circuit<Player> players;
         private FinishSquare _finishSquare;
 
-        public Game(Board board, Circuit<Player> players)
+        public Game(Board board, Circuit<Player> players, FinishSquare finish)
         {
             this.board = board;
             this.players = players;
+            _finishSquare = finish;
         }
     }
 }

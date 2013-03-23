@@ -21,7 +21,8 @@ namespace Baricade.Controller
         public GameController()
         {
             loader = new Loader();
-            game = loader.Load("C:/Users/Sjors Boom/Dropbox/Baricadespel C# miniproject/bord1.xml");
+            int board = 1;
+            game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
         }
     }
 }

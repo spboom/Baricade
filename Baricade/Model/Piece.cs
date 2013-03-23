@@ -27,13 +27,13 @@ namespace Baricade.Model
          */
         public abstract string Name { get; }
 
-        internal Square Square
+        public Square Square
         {
             get { return square; }
             protected set { square = value; }
         }
 
-        internal Player Player
+        public Player Player
         {
             get { return player; }
             protected set { player = value; }

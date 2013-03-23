@@ -74,6 +74,8 @@ namespace Baricade.Model
             System.Diagnostics.Debug.WriteLine("hello!");
             XmlReader r = XmlReader.Create(uri);
             Board bord = null;
+            FinishSquare f = null;
+            ForestSquare forest = null;
             while (r.Read())
             {
                 if (r.Name.ToLower() == "square")
@@ -148,21 +150,24 @@ namespace Baricade.Model
                     FinishSquare s = new FinishSquare();
                     if (s.readElement(r))
                     {
+                        f = s;
                         insertInto(s.Id, s);
                     }
                 }
-                else if (r.NodeType == XmlNodeType.Element)
+                else if (r.Name.ToLower() == "forestsquare")
                 {
-                    if (r.Name.ToLower() == "board")
+                    ForestSquare s = new ForestSquare();
+                    if (s.readElement(r))
                     {
-                        bord = new Board();
+                        forest = s;
+                        insertInto(s.Id, s);
                     }
-
                 }
             }
+            bord = new Board();
             link();
             playerList.setCurrent(_currentPlayer);
-            return new Game(bord, playerList);
+            return new Game(bord, playerList,f);
         }
 
         private void link()

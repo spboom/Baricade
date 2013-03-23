@@ -14,5 +14,10 @@ namespace Baricade.Model
         {
             get { return "villageSquare"; }
         }
+
+        public override Square getReturnTo()
+        {
+            return board.ForestSquare;
+        }
     }
 }

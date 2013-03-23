@@ -1,0 +1,118 @@
+<board numberOfPawns="5">
+	<finish id="1" down="2"/>
+	<baricadesquare id="2" up="1" left="3" right="37"/>
+	<square id="3" left="4" right="2"/>
+	<square id="4" left="5" right="3"/>
+	<square id="5" left="6" right="4"/>
+	<square id="6" left="7" right="5"/>
+	<square id="7" left="8" right="6"/>
+	<square id="8" left="9" right="7"/>
+	<square id="9" left="10" right="8"/>
+	<square id="10" down="11" right="9"/>
+	<square id="11" down="12" up="10"/>
+	<square id="12" right="13" up="11"/>
+	<square id="13" right="14" left="12"/>
+	<square id="14" left="13" right="15"/>
+	<square id="15" left="14" right="16"/>
+	<square id="16" left="15" right="17"/>
+	<square id="17" left="16" right="18"/>
+	<square id="18" left="17" right="19"/>
+	<square id="19" left="18" right="20"/>
+	<baricadesquare id="20" left="19" right="21" down="38"/>
+	<square id="21" left="20" right="22"/>
+	<square id="22" left="21" right="23"/>
+	<square id="23" left="22" right="24"/>
+	<square id="24" left="23" right="25"/>
+	<square id="25" left="24" right="26"/>
+	<square id="26" left="25" right="27"/>
+	<square id="27" left="26" right="28"/>
+	<square id="28" left="27" up="29"/>
+	<square id="29" down="28" up="30"/>
+	<square id="30" down="29" right="31"/>
+	<square id="31" left="32" right="30"/>
+	<square id="32" left="33" right="31"/>
+	<square id="33" left="34" right="32"/>
+	<square id="34" left="35" right="33"/>
+	<square id="35" left="36" right="34"/>
+	<square id="36" left="37" right="35"/>
+	<square id="37" left="2" right="36"/>
+	<baricadesquare id="38" up="20" down="41"/>
+	<square id="39" down="44" right="40"/>
+	<square id="40" left="39" right="41"/>
+	<baricadesquare id="41" left="40" right="42" up="38"/>
+	<square id="42" left="41" right="42"/>
+	<square id="43" left="42" down="45"/>
+	<square id="44" up="39" down="48"/>
+	<square id="45" up="43" down="52"/>
+	<square id="46" down="55" right="47"/>
+	<square id="47" left="46" right="48"/>
+	<baricadesquare id="48" left="47" right="49" up="44"/>
+	<square id="49" left="48" right="50"/>
+	<square id="50" left="49" right="51"/>
+	<square id="51" left="50" right="52"/>
+	<baricadesquare id="52" left="51" right="53" up="45"/>
+	<square id="53" left="52" right="54"/>
+	<square id="54" left="53" down="56"/>
+	<square id="55" up="46" down="59"/>
+	<square id="56" up="54" down="67"/>
+	<square id="57" down="70" right="58"/>
+	<square id="58" left="57" right="59"/>
+	<square id="59" left="58" up="55" right="60"/>
+	<square id="60" left="59" right="61"/>
+	<square id="61" left="60" down="71" right="62"/>
+	<square id="62" left="61" right="63"/>
+	<square id="63" left="62" right="64"/>
+	<square id="64" left="63" right="65"/>
+	<square id="65" left="64" down="72" right="66"/>
+	<square id="66" left="65" right="67"/>
+	<square id="67" left="66" right="68"/>
+	<square id="68" left="67" right="69"/>
+	<square id="69" left="68" down="73"/>
+	<square id="70" up="57" down="76"/>
+	<square id="71" up="61" down="80"/>
+	<square id="72" up="65" down="84"/>
+	<square id="73" up="69" down="88"/>
+	<baricadesquare id="74" right="75" down="91"/>
+	<square id="75" left="74" right="76"/>
+	<square id="76" left="75" right="77"/>
+	<square id="77" left="76" right="78"/>
+	<baricadesquare id="78" left="77" right="79" down="92"/>
+	<square id="79" left="78" right="80"/>
+	<square id="80" left="79" right="81"/>
+	<square id="81" left="80" right="82"/>
+	<baricadesquare id="82" left="81" right="83" down="93"/>
+	<square id="83" left="82" right="84"/>
+	<square id="84" left="83" right="85"/>
+	<square id="85" left="84" right="86"/>
+	<baricadesquare id="86" left ="85" right="87" down="94"/>
+	<square id="87" left="86" right="88"/>
+	<square id="88" left="87" right="89"/>
+	<square id="89" left="88" right="90"/>
+	<baricadesquare id="90" left="89" down="95"/>
+	<square id="91" up="74" down="96"/>
+	<square id="92" up="78" down="100"/>
+	<square id="93" up="82" down="104"/>
+	<square id="94" up="86" down="108"/>
+	<square id="95" up="90" down="112"/>
+	<square id="96" up="91" right="97" mayContainbaricade="false"/>
+	<square id="97" left="96" right="98" mayContainbaricade="false"/>
+	<square id="98" left="97" right="99" down="113" mayContainbaricade="false"/>
+	<square id="99" left="98" right="100" mayContainbaricade="false"/>
+	<square id="100" left="99" right="101" up="92" mayContainbaricade="false"/>
+	<square id="101" left="100" right="102" mayContainbaricade="false"/>
+	<square id="102" left="101" right="103" down="114" mayContainbaricade="false"/>
+	<square id="103" left="102" right="104" mayContainbaricade="false"/>
+	<square id="104" left="103" right="105" up="93" mayContainbaricade="false"/>
+	<square id="105" left="104" right="106" mayContainbaricade="false"/>
+	<square id="106" left="105" right="107" down="115" mayContainbaricade="false"/>
+	<square id="107" left="106" right="108" mayContainbaricade="false"/>
+	<square id="108" left="107" right="109" up="94" mayContainbaricade="false"/>
+	<square id="109" left="108" right="110" mayContainbaricade="false"/>
+	<square id="110" left="109" right="111" down="116" mayContainbaricade="false"/>
+	<square id="111" left="110" right="112" mayContainbaricade="false"/>
+	<square id="112" left="111" up="95" mayContainbaricade="false"/>
+	<playerSquare id="113" speler="1" up="98"/>
+	<playerSquare id="114" speler="3" up="102"/>
+	<playerSquare id="115" speler="4" up="106"/>
+	<playerSquare id="116" speler="2" up="110"/>
+</board>

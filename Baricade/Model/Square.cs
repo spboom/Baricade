@@ -7,8 +7,9 @@ using System.Windows.Controls;
 
 namespace Baricade.Model
 {
-    abstract class Square : XmlData<Square>
+    class Square : XmlData<Square>
     {
+        protected Board board;
         private Piece _piece;
         private int id;
         public int up, left, right, down;
@@ -25,7 +26,7 @@ namespace Baricade.Model
             }
         }
 
-        public abstract string Name { get; }
+        public virtual string Name { get { return ""; } protected set { } }
 
         public int Id
         {
@@ -60,6 +61,7 @@ namespace Baricade.Model
         public Square()
         {
             mayContainBaricade = true;
+            links = new Square[4];
         }
 
         public void setDirection(int direction, Square s)
@@ -89,5 +91,17 @@ namespace Baricade.Model
             return next;
         }
         //public abstract bool isAvailable();
+
+        public virtual Square getReturnTo()
+        {
+            if (Piece != null)
+            {
+                if (Piece.Player != null)
+                {
+                    return Piece.Player.PlayerSquare;
+                }
+            }
+            return null;
+        }
     }
 }

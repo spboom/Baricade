@@ -29,7 +29,7 @@ namespace Baricade.Model
         {
             this.player = player;
             this.color = color;
-
+            
             playerPawns = new Pawn[pawns];
             
             for(int i=0; i<pawns;i++)

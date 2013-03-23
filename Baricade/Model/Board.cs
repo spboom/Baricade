@@ -11,7 +11,13 @@ namespace Baricade.Model
         private int _height;
         private int _width;
         private String style;
-        private Link Veld;
+        private ForestSquare _forestSquare;
+
+        public ForestSquare ForestSquare
+        {
+            get { return _forestSquare; }
+            private set { _forestSquare = value; }
+        }
 
         public int Height
         {
@@ -24,12 +30,6 @@ namespace Baricade.Model
             get { return _width; }
             set { _width = value; }
         }
-
-        public void setveld(Link l)
-        {
-            Veld = l;
-        }
-        private ForestSquare _forestSquare;
 
         public Board()
         {
