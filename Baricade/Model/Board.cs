@@ -13,7 +13,6 @@ namespace Baricade.Model
         private String style;
         private Link Veld;
 
-<<<<<<< HEAD
         public int Height
         {
             get { return _height; }
@@ -30,10 +29,8 @@ namespace Baricade.Model
         {
             Veld = l;
         }
-=======
         private ForestSquare _forestSquare;
 
->>>>>>> 5f549ac154fb830405acbef96503f3a39058844e
         public Board()
         {
         }

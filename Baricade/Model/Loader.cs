@@ -186,7 +186,7 @@ namespace Baricade.Model
 
                 if (linkList[i].Right > 0)
                 {
-                    linkList[i].links[Direction.Right]= linkList[linkList[i].Square.Right];
+                    linkList[i].links[Direction.Right]= linkList[linkList[i].Right];
                 }
             }
         }

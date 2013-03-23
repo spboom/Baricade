@@ -14,6 +14,17 @@ namespace Baricade.Model
         private Pawn[] playerPawns;
         private Baricade barricade;
 
+        public Player(int player, int pawns)
+        {
+            this.player = player;
+
+            playerPawns = new Pawn[pawns];
+
+            for (int i = 0; i < pawns; i++)
+            {
+                playerPawns[i] = new Pawn(PlayerSquare, this);
+            }
+        }
         public Player(int player, string color, int pawns)
         {
             this.player = player;

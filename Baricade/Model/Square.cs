@@ -62,7 +62,6 @@ namespace Baricade.Model
             mayContainBaricade = true;
         }
 
-<<<<<<< HEAD
         public void setDirection(int direction, Square s)
         {
             if (direction <= 3 && direction >= 0)
@@ -89,8 +88,6 @@ namespace Baricade.Model
             }
             return next;
         }
-=======
         //public abstract bool isAvailable();
->>>>>>> 5f549ac154fb830405acbef96503f3a39058844e
     }
 }
