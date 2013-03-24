@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
@@ -83,6 +84,7 @@ namespace Baricade.Model
                     Square s = new Square();
                     if (s.readElement(r))
                     {
+                        s.View = new VSquare(s);
                         insertInto(s.Id, s);
                     }
                 }

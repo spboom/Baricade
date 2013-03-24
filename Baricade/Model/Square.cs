@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
+using Baricade.ViewModel;
 namespace Baricade.Model
 {
     class Square : XmlData<Square>
     {
+        private VSquare view
         protected Board board;
         private Piece _piece;
         private int id;
@@ -62,6 +63,12 @@ namespace Baricade.Model
         {
             mayContainBaricade = true;
             links = new Square[4];
+        }
+
+        public VSquare View
+        {
+            get { return view; }
+            set { view = value; }
         }
 
         public void setDirection(int direction, Square s)

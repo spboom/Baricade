@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
@@ -15,6 +16,13 @@ namespace Baricade.Model
     {
         private Player player;
         private Square square;
+        private VPiece view;
+
+        internal VPiece View
+        {
+            get { return view; }
+            set { view = value; }
+        }
 
         public Piece(Square square, Player player = null)
         {

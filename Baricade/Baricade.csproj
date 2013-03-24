@@ -57,6 +57,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\VBaricade.cs" />
+    <Compile Include="ViewModel\VBaricadeSquare.cs" />
+    <Compile Include="ViewModel\VBaricadeVillageSquare.cs" />
+    <Compile Include="ViewModel\VBoard.cs" />
+    <Compile Include="ViewModel\VFinishSquare.cs" />
+    <Compile Include="ViewModel\VForestSquare.cs" />
+    <Compile Include="ViewModel\VPawn.cs" />
+    <Compile Include="ViewModel\VPiece.cs" />
+    <Compile Include="ViewModel\VPlayerSquare.cs" />
+    <Compile Include="ViewModel\VRestSquare.cs" />
+    <Compile Include="ViewModel\VSquare.cs" />
+    <Compile Include="ViewModel\VVillageSquare.cs" />
+    <Compile Include="View\Window.xaml.cs">
+      <DependentUpon>Window.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\GameController.cs" />
@@ -111,6 +126,13 @@
     <Resource Include="Data\Level\bord1.xml" />
     <Resource Include="Data\Level\bord2.xml" />
     <Resource Include="Data\Level\bord3.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="View\Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
