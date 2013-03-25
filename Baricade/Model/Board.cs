@@ -10,6 +10,7 @@ namespace Baricade.Model
     {
         private int _height;
         private int _width;
+        private int _numberOfPawns;
         private String style;
         private ForestSquare _forestSquare;
 
@@ -29,6 +30,22 @@ namespace Baricade.Model
         {
             get { return _width; }
             set { _width = value; }
+        }
+
+        public int NumberOfPawns
+        {
+            get { return _numberOfPawns; }
+            set
+            {
+                if (value <= 0)
+                {
+                    _numberOfPawns = value;
+                }
+                else
+                {
+                    _numberOfPawns = 4;
+                }
+            }
         }
 
         public Board()

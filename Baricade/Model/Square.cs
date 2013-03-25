@@ -9,12 +9,13 @@ namespace Baricade.Model
 {
     class Square : XmlData<Square>
     {
-        private VSquare view
+        private VSquare view;
         protected Board board;
         private Piece _piece;
         private int id;
         public int up, left, right, down;
         public Square[] links;
+        public int height = -1;
         protected bool mayContainBaricade;
 
         public Piece Piece

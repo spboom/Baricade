@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Baricade : Piece
+    class BaricadePiece : Piece
     {
-        public Baricade(Square s, Player p = null) : base(s, p) {}
+        public BaricadePiece(Square s, Player p = null) : base(s, p) {}
 
         public override string Name
         {

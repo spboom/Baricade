@@ -1,4 +1,4 @@
-<board numberOfPawns="3">
+<board numberofpawns="3">
 	<finish id="1" down="3"/>
 	<square id="2" down="6" right="3"/>
 	<baricadesquare id="3" left="2" up="1" right="4"/>

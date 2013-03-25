@@ -12,7 +12,7 @@ namespace Baricade.Model
         private string color;
         private PlayerSquare playerSquare;
         private Pawn[] playerPawns;
-        private Baricade barricade;
+        private BaricadePiece barricade;
 
         public Player(int player, int pawns)
         {
@@ -25,6 +25,7 @@ namespace Baricade.Model
                 playerPawns[i] = new Pawn(PlayerSquare, this);
             }
         }
+
         public Player(int player, string color, int pawns)
         {
             this.player = player;
@@ -47,10 +48,10 @@ namespace Baricade.Model
         public PlayerSquare PlayerSquare
         {
             get { return playerSquare; }
-            private set { playerSquare = value; }
+            set { playerSquare = value; }
         }
 
-        public Baricade Baricade
+        public BaricadePiece Baricade
         {
             get { return barricade; }
             set { barricade = value; }

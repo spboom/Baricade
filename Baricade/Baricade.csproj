@@ -76,7 +76,7 @@
   <ItemGroup>
     <Compile Include="Controller\GameController.cs" />
     <Compile Include="Model\AIPlayer.cs" />
-    <Compile Include="Model\Baricade.cs" />
+    <Compile Include="Model\BaricadePiece.cs" />
     <Compile Include="Model\BaricadeSquare.cs" />
     <Compile Include="Model\BaricadeVillageSquare.cs" />
     <Compile Include="Model\Board.cs" />
@@ -123,11 +123,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\Level\bord1.xml" />
-    <Resource Include="Data\Level\bord2.xml" />
-    <Resource Include="Data\Level\bord3.xml" />
+    <None Include="Data\Level\bord1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Level\bord2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Level\bord3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\Saves\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="View\Window.xaml">
       <SubType>Designer</SubType>

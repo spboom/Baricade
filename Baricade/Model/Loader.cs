@@ -20,9 +20,10 @@ namespace Baricade.Model
         private int _width = -1;
         private int _numberofPlayers = 0;
 
-        List<Square> linkList = new List<Square>();
+        private List<PlayerSquare> playerSquares;
+        private List<Square> linkList = new List<Square>();
         private Circuit<Player> playerList = new Circuit<Player>();
-        private Board bord;
+        private Board board;
 
         public int NumberOfHumanPlayers
         {
@@ -72,11 +73,13 @@ namespace Baricade.Model
 
         public Game Load(String uri)
         {
-            System.Diagnostics.Debug.WriteLine("hello!");
+            
             XmlReader r = XmlReader.Create(uri);
-            Board bord = null;
+            board = null;
             FinishSquare f = null;
             ForestSquare forest = null;
+            playerSquares = new List<PlayerSquare>();
+
             while (r.Read())
             {
                 if (r.Name.ToLower() == "square")
@@ -121,6 +124,7 @@ namespace Baricade.Model
                     PlayerSquare s = new PlayerSquare();
                     if(s.readElement(r))
                     {
+                        playerSquares.Add(s);
                         insertInto(s.Id, s);
                     }
                 }
@@ -165,11 +169,63 @@ namespace Baricade.Model
                         insertInto(s.Id, s);
                     }
                 }
+                else if (r.Name.ToLower() == "board")
+                {
+                    Board b = new Board();
+                    if (b.readElement(r))
+                    {
+                        board = b;
+                        _numberOfPawns = board.NumberOfPawns;
+                    }
+                }
             }
-            bord = new Board();
             link();
+            checkPlayers();
             playerList.setCurrent(_currentPlayer);
-            return new Game(bord, playerList,f);
+            setHeight(playerList.peek().PlayerSquare, 0);
+            return new Game(board, playerList,f);
+        }
+
+        private void checkPlayers()
+        {
+            if (playerList.Count != playerSquares.Count)
+            {
+                playerList = new Circuit<Player>();
+                for (int i=0;i<playerSquares.Count;i++)
+                {
+                    Player player = new Player(i + 1, _numberOfPawns);
+                    player.PlayerSquare = playerSquares[i];
+                    playerList.Add(player);
+
+                }
+            }
+        }
+
+        private void setHeight(Square square, int height)//NOTE:: NOT WORKING PROPPERLY!!!
+        {
+            square.height = height;
+            for (int i = 0; i < square.links.Length; i++)
+            {
+                if (square.links[i] != null)
+                {
+                    if (square.links[i].height < 0)
+                    {
+                        switch (i)
+                        {
+                            case 0:     //Direction.Up
+                                setHeight(square.links[i], height + 1);
+                                break;
+                            case 2:     //Direction.Down
+                                setHeight(square.links[i], height - 1);
+                                break;
+                            case 1:     //Direction.Right
+                            case 3:     //Direction.Left
+                                setHeight(square.links[i], height);
+                                break;
+                        }
+                    }
+                }
+            }
         }
 
         private void link()
@@ -222,7 +278,7 @@ namespace Baricade.Model
 
         public Board getBoard()
         {
-            return bord;
+            return board;
         }
 
         public Circuit<Player> getPlayers()

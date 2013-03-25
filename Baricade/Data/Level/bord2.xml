@@ -1,4 +1,4 @@
-<board numberOfPawns="5">
+<board numberofpawns="5">
 	<finish id="1" down="6"/>
 	<villageSquare id="2" down="11" right="3"/>
 	<villageSquare id="3" left="2" right="4"/>

@@ -17,7 +17,7 @@ namespace Baricade.View
     /// <summary>
     /// Interaction logic for Window.xaml
     /// </summary>
-    public partial class Window : Window
+    public partial class Window : System.Windows.Window
     {
         public Window()
         {

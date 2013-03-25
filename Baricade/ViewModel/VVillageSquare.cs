@@ -9,7 +9,7 @@ namespace Baricade.ViewModel
 {
     class VVillageSquare:VSquare
     {
-        public VVillageSquare(RestSquare square)
+        public VVillageSquare(VillageSquare square)
             : base(square)
         {
             open = '{';
