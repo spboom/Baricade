@@ -8,26 +8,32 @@ namespace Baricade.Model
 {
     class Pawn : Piece
     {
-        public Pawn(Square s, Player p) : base(s, p) {}
-
-        public override string Name {
-            get { return Player.Color + "-pawn"; }
-        }
+        public Pawn(Square s, Player p) : base(s, p) { }
 
         /*
-         * The method gotHit replaces the pawn on the square with the one in the signature and
+         * The method isHit replaces the pawn on the square with the one in the signature and
          * places it in the associated player's starting position.
          */
-        public override bool gotHit(Pawn p)
+        public override bool isHit(Pawn p) // Only a pawn can hit a pawn.
         {
-            // What if the current player puts the pawn on one of its own pawns?
-            if(this.Player == p.Player) {
+            // If the current player tries to hit one of his own pawns, then return false.
+            if (this.Player == p.Player)
+            {
                 return false;
             }
 
-            Square temp = this.Square;
-            this.moveTo(Player.PlayerSquare);
-            p.moveTo(temp);
+            // If the pawn is on village square, then send it to the forest square on the board.
+            if (this.Square is VillageSquare)
+            {
+                this.Square.Piece = null;
+                this.Square.Board.ForestSquare.addPawn(this);
+
+            }
+            else // go to player square
+            {
+                this.Square.Piece = null;
+                this.Player.addPawn(this);
+            }
 
             return true;
         }

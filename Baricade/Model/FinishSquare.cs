@@ -8,11 +8,21 @@ namespace Baricade.Model
 {
     class FinishSquare : RestSquare
     {
-        public FinishSquare() : base() {}
+        public FinishSquare() : base() { }
 
-        public override string Name
+        public virtual bool isWalkable()
         {
-            get { return "finishSquare"; }
+            return true;
+        }
+
+        public virtual bool mayContainBarricade()
+        {
+            return false;
+        }
+
+        public virtual bool mayContainPawn()
+        {
+            return true;
         }
     }
 }

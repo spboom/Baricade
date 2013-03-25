@@ -8,17 +8,14 @@ namespace Baricade.Model
 {
     class BaricadePiece : Piece
     {
-        public BaricadePiece(Square s, Player p = null) : base(s, p) {}
-
-        public override string Name
-        {
-            get { return "barricade"; }
-        }
+        public BaricadePiece(Square s, Player p = null) : base(s, p) { }
 
         /*
-         * Put the barricade into the current player's hand. 
+         * Put the barricade into the current player's hand. This barricade must be placed on the board before the end of the turn.
+         * 
+         * TODO: Can a player hit his own barricade?
          */
-        public override bool gotHit(Pawn p)
+        public override bool isHit(Pawn p) // A barricade cannot be placed on a barricade, therefore only a pawn can hit a barricade.
         {
             this.Player = p.Player;
             p.Player.Baricade = this;

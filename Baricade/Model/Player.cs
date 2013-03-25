@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,14 @@ namespace Baricade.Model
         private int player;
         private string color;
         private PlayerSquare playerSquare;
-        private Pawn[] playerPawns;
+        private ArrayList playerPawns;
         private BaricadePiece barricade;
 
         public Player(int player, int pawns)
         {
             this.player = player;
 
-            playerPawns = new Pawn[pawns];
+            playerPawns = new ArrayList();
 
             for (int i = 0; i < pawns; i++)
             {
@@ -30,12 +31,12 @@ namespace Baricade.Model
         {
             this.player = player;
             this.color = color;
-            
-            playerPawns = new Pawn[pawns];
-            
-            for(int i=0; i<pawns;i++)
+
+            playerPawns = new ArrayList();
+
+            for (int i = 0; i < pawns; i++)
             {
-                playerPawns[i] = new Pawn(PlayerSquare, this);
+                addPawn(new Pawn(PlayerSquare, this));
             }
         }
 
@@ -55,6 +56,28 @@ namespace Baricade.Model
         {
             get { return barricade; }
             set { barricade = value; }
+        }
+
+        /*
+         * Add an new or existing pawn to the player and put it on the playerSquare.
+         */
+        public void addPawn(Pawn p)
+        {
+            playerPawns.Add(p);
+            p.Square = PlayerSquare;
+        }
+
+        /*
+         * If a pawn is moved from the playerSquare, then lower the amount.
+         */
+        public void removePawn()
+        {
+            playerPawns.RemoveAt(playerPawns.Count);
+        }
+
+        public int numberOfPawnsAtStart()
+        {
+            return playerPawns.Count;
         }
     }
 }

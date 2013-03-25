@@ -8,9 +8,19 @@ namespace Baricade.Model
 {
     class BaricadeVillageSquare : VillageSquare
     {
-        public override string Name
+        public virtual bool isWalkable()
         {
-            get { return "barricadeVillageSquare"; }
+            return true;
+        }
+
+        public virtual bool mayContainBarricade()
+        {
+            return true;
+        }
+
+        public virtual bool mayContainPawn()
+        {
+            return true;
         }
     }
 }

@@ -30,15 +30,10 @@ namespace Baricade.Model
             this.player = player;
         }
 
-        /*
-         * The property Name is used to determine the filename of the image at the View. 
-         */
-        public abstract string Name { get; }
-
         public Square Square
         {
             get { return square; }
-            protected set { square = value; }
+            set { square = value; }
         }
 
         public Player Player
@@ -47,16 +42,44 @@ namespace Baricade.Model
             protected set { player = value; }
         }
 
-        protected void moveTo(Square s)
+        /*
+         * This method is used to move a piece to a a square after the path to the square is valid.
+         */
+        public bool moveTo(Square s)
         {
-            this.square = s;
-            s.Piece = this;
+            if (this.Square is PlayerSquare)
+            {
+                this.Player.removePawn();
+            }
+
+            if (s.isWalkable())
+            {
+                if ((this is Pawn && s.mayContainPawn()) ^ (this is BaricadePiece && s.mayContainBarricade()))
+                {
+                    if (s.isOccupied())
+                    {
+                        if (s.Piece.isHit(this))
+                        {
+                            this.Square = s;
+                            s.Piece = this;
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        this.Square = s;
+                        s.Piece = this;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         /*
-         * The method gotHit determines the destination of the struck piece, sends it, and puts the
-         * the pawn in the signature inside the square.
-         */ 
-        public abstract bool gotHit(Pawn p);
+         * This method checks if it's legal to strike this pawn and if so sends it to its destination.
+         */
+        protected abstract bool isHit(Piece p);
     }
 }

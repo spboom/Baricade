@@ -8,25 +8,21 @@ namespace Baricade.Model
 {
     class BaricadeSquare : Square
     {
-        public BaricadeSquare() : base() {}
+        public BaricadeSquare() : base() { }
 
-        public override string Name
+        public override bool isWalkable()
         {
-            get { return "barricadeSquare"; }
+            return true;
         }
 
-        /*
-         * This method looks if there is a Barricade on the BarricadeSquare. (This method is derived from an abstract method of Square.) 
-
-        public override bool isAvailable()
+        public override bool mayContainBarricade()
         {
-            if (this.Piece == null)
-            {
-                return true;
-            }
-
-            return false;
+            return true;
         }
-        */
+
+        public override bool mayContainPawn()
+        {
+            return true;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,21 @@ namespace Baricade.Model
 {
     class PlayerSquare : RestSquare
     {
-        public PlayerSquare() : base() {}
+        public PlayerSquare() : base() { }
 
-        public override string Name
+        public virtual bool isWalkable()
         {
-            get { return "playerSquare"; }
+            return false;
+        }
+
+        public virtual bool mayContainBarricade()
+        {
+            return false;
+        }
+
+        public virtual bool mayContainPawn()
+        {
+            return true;
         }
     }
 }

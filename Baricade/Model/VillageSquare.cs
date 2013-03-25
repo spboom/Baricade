@@ -8,11 +8,21 @@ namespace Baricade.Model
 {
     class VillageSquare : Square
     {
-        public VillageSquare() :base() {}
+        public VillageSquare() : base() { }
 
-        public override string Name
+        public virtual bool isWalkable()
         {
-            get { return "villageSquare"; }
+            return true;
+        }
+
+        public virtual bool mayContainBarricade()
+        {
+            return true;
+        }
+
+        public virtual bool mayContainPawn()
+        {
+            return true;
         }
 
         public override Square getReturnTo()

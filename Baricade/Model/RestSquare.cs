@@ -8,26 +8,24 @@ namespace Baricade.Model
 {
     class RestSquare : Square
     {
-        public RestSquare() :base()
-        {
-            mayContainBaricade = false;
-        }
+        public RestSquare() : base() { }
 
-        public override string Name
+        public override bool isWalkable()
         {
-            get { return "restSquare"; }
+            return true;
         }
 
         /*
-         * This method looks if there is a Piece on the RestSquare. (This method is derived from an abstract method of Square.) 
-        public override bool isAvailable()
+         * A barricade cannot be placed on rest square.
+         */
+        public override bool mayContainBarricade()
         {
-            if(this.Piece == null) {
-                return true;
-            }
-
             return false;
         }
-        */
+
+        public override bool mayContainPawn()
+        {
+            return true;
+        }
     }
 }

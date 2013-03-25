@@ -18,13 +18,19 @@ namespace Baricade.Model
         public int height = -1;
         protected bool mayContainBaricade;
 
+        public Board Board
+        {
+            get { return board; }
+            set { board = value; }
+        }
+
         public Piece Piece
         {
             get { return _piece; }
-            
-            set 
+
+            set
             {
-                _piece = value; 
+                _piece = value;
             }
         }
 
@@ -59,7 +65,7 @@ namespace Baricade.Model
             get { return down; }
             set { down = value; }
         }
-        
+
         public Square()
         {
             mayContainBaricade = true;
@@ -98,7 +104,6 @@ namespace Baricade.Model
             }
             return next;
         }
-        //public abstract bool isAvailable();
 
         public virtual Square getReturnTo()
         {
@@ -110,6 +115,40 @@ namespace Baricade.Model
                 }
             }
             return null;
+        }
+
+        /*
+         * Can player move a piece to this square?
+         */
+        public virtual bool isWalkable() // Overridden at subclasses.
+        {
+            return true;
+        }
+
+        public virtual bool mayContainBarricade() // Overridden at subclasses.
+        {
+            return true;
+        }
+
+        public virtual bool mayContainPawn() // Overridden at subclasses.
+        {
+            return true;
+        }
+
+        /*
+         * Can player move a piece across this square?
+         */
+        public bool isTransversable()
+        {
+            return !(Piece is Baricade);
+        }
+
+        /*
+         * Is there a piece on this square?
+         */
+        public bool isOccupied()
+        {
+            return !(Piece == null);
         }
     }
 }

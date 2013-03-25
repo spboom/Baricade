@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,37 @@ namespace Baricade.Model
 {
     class ForestSquare : RestSquare
     {
-        public ForestSquare() : base() {}
+        private ArrayList pawns;
 
-        public override string Name
+        public ForestSquare()
+            : base()
         {
-            get { return "forestSquare"; }
+            pawns = new ArrayList();
+        }
+
+        public void addPawn(Pawn p)
+        {
+            pawns.Add(p);
+        }
+
+        public void removePawn(Pawn p)
+        {
+            pawns.Add(p);
+        }
+
+        public virtual bool isWalkable()
+        {
+            return false;
+        }
+
+        public virtual bool mayContainBarricade()
+        {
+            return false;
+        }
+
+        public virtual bool mayContainPawn()
+        {
+            return true;
         }
     }
 }
