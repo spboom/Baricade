@@ -14,28 +14,32 @@ namespace Baricade.Model
          * The method isHit replaces the pawn on the square with the one in the signature and
          * places it in the associated player's starting position.
          */
-        public override bool isHit(Pawn p) // Only a pawn can hit a pawn.
+        public override bool isHit(Piece p) // Only a pawn can hit a pawn.
         {
-            // If the current player tries to hit one of his own pawns, then return false.
-            if (this.Player == p.Player)
+            if (p is Piece)
             {
-                return false;
-            }
+                // If the current player tries to hit one of his own pawns, then return false.
+                if (this.Player == p.Player)
+                {
+                    return false;
+                }
 
-            // If the pawn is on village square, then send it to the forest square on the board.
-            if (this.Square is VillageSquare)
-            {
-                this.Square.Piece = null;
-                this.Square.Board.ForestSquare.addPawn(this);
+                // If the pawn is on village square, then send it to the forest square on the board.
+                if (this.Square is VillageSquare)
+                {
+                    this.Square.Piece = null;
+                    this.Square.Board.ForestSquare.addPawn(this);
 
-            }
-            else // go to player square
-            {
-                this.Square.Piece = null;
-                this.Player.addPawn(this);
-            }
+                }
+                else // go to player square
+                {
+                    this.Square.Piece = null;
+                    this.Player.addPawn(this);
+                }
 
-            return true;
+                return true;
+            }
+            return false;
         }
     }
 }

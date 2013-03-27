@@ -12,7 +12,7 @@ namespace Baricade.Model
      * or belongs to no one at first and exchanges owners throughout the game (such 
      * as a barricade).  
      */
-    abstract class Piece
+    abstract class Piece : XmlData<Piece>
     {
         private Player player;
         private Square square;
@@ -80,6 +80,6 @@ namespace Baricade.Model
         /*
          * This method checks if it's legal to strike this pawn and if so sends it to its destination.
          */
-        protected abstract bool isHit(Piece p);
+        public abstract bool isHit(Piece p);
     }
 }

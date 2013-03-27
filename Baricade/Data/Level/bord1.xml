@@ -65,7 +65,7 @@
 	<square id="64" left="63" right="65"/>
 	<square id="65" left="64" down="72" right="66"/>
 	<square id="66" left="65" right="67"/>
-	<square id="67" left="66" right="68"/>
+	<square id="67" left="66" right="68" up="56"/>
 	<square id="68" left="67" right="69"/>
 	<square id="69" left="68" down="73"/>
 	<square id="70" up="57" down="76"/>
@@ -74,19 +74,19 @@
 	<square id="73" up="69" down="88"/>
 	<baricadesquare id="74" right="75" down="91"/>
 	<square id="75" left="74" right="76"/>
-	<square id="76" left="75" right="77"/>
+	<square id="76" left="75" right="77" up="70"/>
 	<square id="77" left="76" right="78"/>
 	<baricadesquare id="78" left="77" right="79" down="92"/>
 	<square id="79" left="78" right="80"/>
-	<square id="80" left="79" right="81"/>
+	<square id="80" left="79" right="81" up="71"/>
 	<square id="81" left="80" right="82"/>
 	<baricadesquare id="82" left="81" right="83" down="93"/>
 	<square id="83" left="82" right="84"/>
-	<square id="84" left="83" right="85"/>
+	<square id="84" left="83" right="85" up="72"/>
 	<square id="85" left="84" right="86"/>
 	<baricadesquare id="86" left ="85" right="87" down="94"/>
 	<square id="87" left="86" right="88"/>
-	<square id="88" left="87" right="89"/>
+	<square id="88" left="87" right="89" up="73"/>
 	<square id="89" left="88" right="90"/>
 	<baricadesquare id="90" left="89" down="95"/>
 	<square id="91" up="74" down="96"/>

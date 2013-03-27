@@ -23,6 +23,8 @@ namespace Baricade.Model
         private List<PlayerSquare> playerSquares;
         private List<Square> linkList = new List<Square>();
         private Circuit<Player> playerList = new Circuit<Player>();
+        private List<BaricadePiece> baricades = new List<BaricadePiece>();
+        private List<BaricadeSquare> baricadeSquares = new List<BaricadeSquare>();
         private Board board;
 
         public int NumberOfHumanPlayers
@@ -129,9 +131,19 @@ namespace Baricade.Model
                     }
                 }
 
+                else if (r.Name.ToLower() == "Pawn")
+                {
+
+                }
+
+                    else if (r.Name.ToLower() == "Pawn")
+                {
+
+                    }
+
                 else if (r.Name.ToLower() == "player")
                 {
-                    Player p = new Player(playerList.Count+1, NumberOfPawns);
+                    Player p = new Player(playerList.Count+1, NumberOfPawns, playerSquares[playerList.Count]);
                     if (p.readElement(r))
                     {
                         _numberofPlayers++;
@@ -142,7 +154,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "aiplayer")
                 {
-                    AIPlayer p = new AIPlayer(playerList.Count + 1, NumberOfPawns);
+                    AIPlayer p = new AIPlayer(playerList.Count + 1, NumberOfPawns, playerSquares[playerList.Count]);
                     if (p.readElement(r))
                     {
                         _numberOfAIPlayers++;
@@ -193,7 +205,7 @@ namespace Baricade.Model
                 playerList = new Circuit<Player>();
                 for (int i=0;i<playerSquares.Count;i++)
                 {
-                    Player player = new Player(i + 1, _numberOfPawns);
+                    Player player = new Player(i + 1, _numberOfPawns, playerSquares[playerList.Count]);
                     player.PlayerSquare = playerSquares[i];
                     playerList.Add(player);
 
@@ -201,7 +213,7 @@ namespace Baricade.Model
             }
         }
 
-        private void setHeight(Square square, int height)//NOTE:: NOT WORKING PROPPERLY!!!
+        private void setHeight(Square square, int height)
         {
             square.height = height;
             for (int i = 0; i < square.links.Length; i++)

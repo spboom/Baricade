@@ -140,7 +140,7 @@ namespace Baricade.Model
          */
         public bool isTransversable()
         {
-            return !(Piece is Baricade);
+            return !(Piece is BaricadePiece);
         }
 
         /*

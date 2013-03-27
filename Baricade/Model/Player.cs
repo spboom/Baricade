@@ -12,27 +12,27 @@ namespace Baricade.Model
         private int player;
         private string color;
         private PlayerSquare playerSquare;
-        private ArrayList playerPawns;
+        private List<Pawn> playerPawns;
         private BaricadePiece barricade;
 
-        public Player(int player, int pawns)
+        public Player(int player, int pawns, PlayerSquare square)
         {
             this.player = player;
 
-            playerPawns = new ArrayList();
+            playerPawns = new List<Pawn>();
 
             for (int i = 0; i < pawns; i++)
             {
-                playerPawns[i] = new Pawn(PlayerSquare, this);
+                playerPawns.Add(new Pawn(square, this));
             }
         }
 
-        public Player(int player, string color, int pawns)
+        public Player(int player, string color, int pawns, PlayerSquare square)
         {
             this.player = player;
             this.color = color;
 
-            playerPawns = new ArrayList();
+            playerPawns = new List<Pawn>();
 
             for (int i = 0; i < pawns; i++)
             {

@@ -15,12 +15,16 @@ namespace Baricade.Model
          * 
          * TODO: Can a player hit his own barricade?
          */
-        public override bool isHit(Pawn p) // A barricade cannot be placed on a barricade, therefore only a pawn can hit a barricade.
+        public override bool isHit(Piece p) // A barricade cannot be placed on a barricade, therefore only a pawn can hit a barricade.
         {
-            this.Player = p.Player;
-            p.Player.Baricade = this;
-            this.Square.Piece = null;
-            return true;
+            if (p is Pawn)
+            {
+                this.Player = p.Player;
+                p.Player.Baricade = this;
+                this.Square.Piece = null;
+                return true;
+            }
+            else return false;
         }
     }
 }

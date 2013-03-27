@@ -13,6 +13,13 @@ namespace Baricade.Model
         private int _numberOfPawns;
         private String style;
         private ForestSquare _forestSquare;
+        private List<BaricadePiece> baricades;
+
+        public List<BaricadePiece> Baricades
+        {
+            get { return baricades; }
+            set { baricades = value; }
+        }
 
         public ForestSquare ForestSquare
         {
