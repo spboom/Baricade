@@ -14,6 +14,13 @@ namespace Baricade.Model
         private String style;
         private ForestSquare _forestSquare;
         private List<BaricadePiece> baricades;
+        private List<Square> squares;
+
+        public List<Square> Squares
+        {
+            get { return squares; }
+            set { squares = value; }
+        }
 
         public List<BaricadePiece> Baricades
         {
@@ -57,6 +64,8 @@ namespace Baricade.Model
 
         public Board()
         {
+            baricades = new List<BaricadePiece>();
+            squares = new List<Square>();
         }
     }
 }

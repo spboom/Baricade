@@ -81,6 +81,7 @@ namespace Baricade.Model
             FinishSquare f = null;
             ForestSquare forest = null;
             playerSquares = new List<PlayerSquare>();
+            Square previous = null;
 
             while (r.Read())
             {
@@ -91,6 +92,7 @@ namespace Baricade.Model
                     {
                         s.View = new VSquare(s);
                         insertInto(s.Id, s);
+                        previous = s;
                     }
                 }
 
@@ -100,6 +102,7 @@ namespace Baricade.Model
                     if (s.readElement(r))
                     {
                         insertInto(s.Id, s);
+                        previous = s;
                     }
                 }
 
@@ -109,6 +112,7 @@ namespace Baricade.Model
                     if (s.readElement(r))
                     {
                         insertInto(s.Id, s);
+                        previous = s;
                     }
                 }
 
@@ -118,6 +122,7 @@ namespace Baricade.Model
                     if(s.readElement(r))
                     {
                         insertInto(s.Id, s);
+                        previous = s;
                     }
                 }
 
@@ -128,15 +133,21 @@ namespace Baricade.Model
                     {
                         playerSquares.Add(s);
                         insertInto(s.Id, s);
+                        previous = s;
                     }
                 }
 
-                else if (r.Name.ToLower() == "Pawn")
+                else if (r.Name.ToLower() == "pawn")
                 {
+                    Pawn p = new Pawn();
+                    if (p.readElement(r))
+                    {
+                        playerList[p.PlayerId]
+                    }
 
                 }
 
-                    else if (r.Name.ToLower() == "Pawn")
+                    else if (r.Name.ToLower() == "baricade")
                 {
 
                     }
@@ -170,6 +181,7 @@ namespace Baricade.Model
                     {
                         f = s;
                         insertInto(s.Id, s);
+                        previous = s;
                     }
                 }
                 else if (r.Name.ToLower() == "forestsquare")
@@ -179,6 +191,7 @@ namespace Baricade.Model
                     {
                         forest = s;
                         insertInto(s.Id, s);
+                        previous = s;
                     }
                 }
                 else if (r.Name.ToLower() == "board")
@@ -244,7 +257,7 @@ namespace Baricade.Model
         {
             for (int i = 0; i < linkList.Count; i++)
             {
-                if (linkList[i].Up >0)
+                if (linkList[i].Up > 0)
                 {
                     linkList[i].links[Direction.Up] = linkList[find(linkList[i].Up)];
                 }
@@ -261,9 +274,10 @@ namespace Baricade.Model
 
                 if (linkList[i].Right > 0)
                 {
-                    linkList[i].links[Direction.Right]= linkList[linkList[i].Right];
+                    linkList[i].links[Direction.Right] = linkList[linkList[i].Right];
                 }
             }
+            board.Squares = linkList;
         }
 
         private int find(int p)
