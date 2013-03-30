@@ -10,7 +10,7 @@ namespace Baricade.Model
     class Player : XmlData<Player>
     {
         private int player;
-        private string color;
+        private PlayerColor color;
         private PlayerSquare playerSquare;
         private List<Pawn> playerPawns;
         private BaricadePiece barricade;
@@ -27,7 +27,7 @@ namespace Baricade.Model
             }
         }
 
-        public Player(int player, string color, int pawns, PlayerSquare square)
+        public Player(int player, PlayerColor color, int pawns, PlayerSquare square)
         {
             this.player = player;
             this.color = color;
@@ -40,7 +40,7 @@ namespace Baricade.Model
             }
         }
 
-        public string Color
+        public PlayerColor Color
         {
             get { return color; }
             private set { color = value; }

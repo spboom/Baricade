@@ -9,11 +9,16 @@ namespace Baricade.ViewModel
 {
     class VForestSquare:VRestSquare
     {
-        public VForestSquare(ForestSquare square)
-            : base(square)
+        public VForestSquare(ForestSquare square) : base(square) {}
+
+        public override String getName()
         {
-            open='~';
-            close='~';
+            return "ForestSquare" + "-" + Piece.View.getName();
+        }
+
+        public override String getText()
+        {
+            return TextView.ForestSquare_OpenTag + "" + Piece.View.getChar() + "" + TextView.ForestSquare_CloseTag;
         }
     }
 }

@@ -9,11 +9,16 @@ namespace Baricade.ViewModel
 {
     class VFinishSquare:VRestSquare
     {
-        public VFinishSquare(FinishSquare square)
-            :base(square)
+        public VFinishSquare(FinishSquare square) :base(square) {}
+
+        public override String getName()
         {
-            open = '!';
-            close = '!';
+            return "FinishSquare" + "-" + Piece.View.getName();
+        }
+
+        public override String getText()
+        {
+            return TextView.FinishSquare_OpenTag + "" + Piece.View.getChar() + "" + TextView.FinishSquare_CloseTag;
         }
     }
 }

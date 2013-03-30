@@ -9,19 +9,33 @@ namespace Baricade.ViewModel
 {
     class VPiece
     {
-        private Piece piece;
-        public VPiece(Piece p)
+        protected Piece piece;
+
+        public VPiece(Piece piece)
         {
-            piece = p;
+            this.piece = piece;
         }
 
-        public char getChar()
+        public Piece Piece
         {
-            if (piece.Player!= null)
-            {
-                return piece.Player.Color.ToUpper().ToCharArray()[0];
-            }
-            return '*';
+            get { return piece; }
+            protected set { piece = value; }
+        }
+
+        public Square Square
+        {
+            get { return Piece.Square; }
+            set { Piece.Square = value; }
+        }
+
+        public virtual string getName()
+        {
+            return null;
+        }
+
+        public virtual char getChar()
+        {
+            return ' ';
         }
     }
 }

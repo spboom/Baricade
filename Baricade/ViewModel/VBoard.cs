@@ -17,12 +17,12 @@ namespace Baricade.ViewModel
             this.board = board;
         }
 
-        public Image[,] getImageBoard()//TODO
+        public Image[,] getImageBoard() // TODO: Use the method getName() for the filename.
         {
             return null;
         }
 
-        public String[,] getStrignBoard()//TODO
+        public String[,] getStringBoard() // TODO: Use the method getText() for the text.
         {
             return null;
         }
