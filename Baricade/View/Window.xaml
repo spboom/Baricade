@@ -1,6 +1,0 @@
-﻿<Window x:Class="Baricade.View.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Window" SizeToContent="WidthAndHeight">
-    <Grid Name="board"/>
-</Window>

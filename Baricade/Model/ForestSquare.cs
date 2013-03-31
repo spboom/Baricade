@@ -27,17 +27,17 @@ namespace Baricade.Model
             pawns.Add(p);
         }
 
-        public virtual bool isWalkable()
+        public override bool isWalkable()
         {
             return false;
         }
 
-        public virtual bool mayContainBarricade()
+        public override bool mayContainBarricade()
         {
             return false;
         }
 
-        public virtual bool mayContainPawn()
+        public override bool mayContainPawn()
         {
             return true;
         }

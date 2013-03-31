@@ -10,17 +10,17 @@ namespace Baricade.Model
     {
         public FinishSquare() : base() { }
 
-        public virtual bool isWalkable()
+        public override bool isWalkable()
         {
             return true;
         }
 
-        public virtual bool mayContainBarricade()
+        public override bool mayContainBarricade()
         {
             return false;
         }
 
-        public virtual bool mayContainPawn()
+        public override bool mayContainPawn()
         {
             return true;
         }
