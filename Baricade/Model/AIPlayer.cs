@@ -13,7 +13,7 @@ namespace Baricade.Model
         {
 
         }
-        public AIPlayer(int player, string color, int pawns, PlayerSquare square)
+        public AIPlayer(int player, PlayerColor color, int pawns, PlayerSquare square)
             : base(player, color, pawns, square)
         {
 

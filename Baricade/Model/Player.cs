@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,11 @@ namespace Baricade.Model
             set { barricade = value; }
         }
 
+        public List<Pawn> PlayerPawns
+        {
+            get { return playerPawns; }
+            private set { playerPawns = value; }
+        }
         /*
          * Add an new or existing pawn to the player and put it on the playerSquare.
          */
@@ -78,6 +84,11 @@ namespace Baricade.Model
         public int numberOfPawnsAtStart()
         {
             return playerPawns.Count;
+        }
+
+        public int PlayerId()
+        {
+            return player;
         }
     }
 }

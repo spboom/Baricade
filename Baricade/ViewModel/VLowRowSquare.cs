@@ -7,20 +7,21 @@ using Baricade.Model;
 
 namespace Baricade.ViewModel
 {
-    class VLowRowSquare:VSquare
+    class VLowRowSquare : VSquare
     {
         public VLowRowSquare(LowRowSquare square)
             : base(square)
-        {
-            public override String getName()
+        { }
+        public override String getName()
         {
             return "LowRowSquare" + "-" + Piece.View.getName();
         }
 
         public override String getText()
         {
-            return TextView.LowRowSquare_OpenTag + "" + Piece.View.getChar() + "" + TextView.LowRowSquare_CloseTag;
-        }
+            return TextView.Square_OpenTag + "" + Piece.View.getChar() + "" + TextView.Square_CloseTag;
         }
     }
 }
+
+

@@ -16,7 +16,7 @@ namespace Baricade.Model
             for (int i = 0; i < game.Players.Count; i++)
             {
                 Player player = game.Players.pop();
-                file.WriteLine("\t<" + player.GetType().Name + " playersquare=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />");
+                file.WriteLine("\t<" + player.GetType().Name + " playersquare=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId() + "\" />");
                 for (int j = 0; j < player.PlayerPawns.Count; j++)
                 {
                     Pawn p = player.PlayerPawns[j];
