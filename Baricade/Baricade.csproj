@@ -59,6 +59,8 @@
     </Compile>
     <Compile Include="Model\LowRowSquare.cs" />
     <Compile Include="Model\Saver.cs" />
+    <Compile Include="ViewModel\PlayerColor.cs" />
+    <Compile Include="ViewModel\TextView.cs" />
     <Compile Include="ViewModel\VBaricade.cs" />
     <Compile Include="ViewModel\VBaricadeSquare.cs" />
     <Compile Include="ViewModel\VBaricadeVillageSquare.cs" />
@@ -68,11 +70,9 @@
     <Compile Include="ViewModel\VLowRowSquare.cs" />
     <Compile Include="ViewModel\VPawn.cs" />
     <Compile Include="ViewModel\VPiece.cs" />
-    <Compile Include="ViewModel\VPlayerColors.cs" />
     <Compile Include="ViewModel\VPlayerSquare.cs" />
     <Compile Include="ViewModel\VRestSquare.cs" />
     <Compile Include="ViewModel\VSquare.cs" />
-    <Compile Include="ViewModel\VText.cs" />
     <Compile Include="ViewModel\VVillageSquare.cs" />
     <Compile Include="View\Window.xaml.cs">
       <DependentUpon>Window.xaml</DependentUpon>
