@@ -43,7 +43,7 @@ namespace Baricade.Model
         public int CurrentDiceRoll
         {
             get { return currentDiceRoll; }
-            private set { currentDiceRoll = value; }
+            set { currentDiceRoll = value; }
         }
 
         public Circuit<Player> Players

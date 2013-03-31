@@ -5,20 +5,28 @@
     <DockPanel Name="Layout">
         <Menu Name="Menu" DockPanel.Dock="Top">
             <MenuItem Header="_Game">
-                <MenuItem Header="_New Game"/>
-                <MenuItem Header="_Load Game"/>
-                <MenuItem Header="_Save Game"/>
-                <MenuItem Header="_Save Model"/>
+                <MenuItem Header="New Game"
+                    x:Name="mNewGame" Click="mNewGame_Click"/>
+                <MenuItem Header="Load Game"
+                    x:Name="mLoadGame" Click="mLoadGame_Click"/>
+                <MenuItem Header="Save Game"
+                    x:Name="mSaveGame" Click="mSaveGame_Click"/>
+                <MenuItem Header="Save Model"
+                    x:Name="mSaveModel" Click="mSaveModel_Click"/>
             </MenuItem>
 
             <MenuItem Header="_Styles">
-                <MenuItem Header="_Text"/>
-                <MenuItem Header="_Barricade"/>
+                <MenuItem Header="Text"
+                    x:Name="mTextStyle" Click="mTextStyle_Click"/>
+                <MenuItem Header="Barricade"
+                    x:Name="mBarricadeStyle" Click="mBarricadeStyle_Click"/>
             </MenuItem>
             
-            <MenuItem Header="_Cheats">
-                <MenuItem Header="_Current Player"/>
-                <MenuItem Header="_Current Dice thow"/>
+            <MenuItem Header="Cheats">
+                <MenuItem Header="Current Player"
+                    x:Name="mCurrentPlayer" Click="mCurrentPlayer_Click"/>
+                <MenuItem Header="Current Dice thow"
+                    x:Name="mCurrentDiceThrow" Click="mCurrentDiceThrow_Click"/>
             </MenuItem>
         </Menu>
 
@@ -26,7 +34,8 @@
             <Grid Name="gridBoard" DockPanel.Dock="Top" />
 
             <DockPanel Name="Actions" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="100">
-                <Button Content="Throw Dice" Name="btnThrowDice" Height="20" Width="76" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Click="btnThrowClick"/>
+                <Button Content="Throw Dice" Name="btnThrowDice" Height="20" Width="76" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Click="btnThrow_Click"/>
+                <Button Content="End Turn" Name="btnNextTurn" Height="20" Width="76" Margin="20,0,0,0" Click="btnEndTurn_Click"></Button>
                 <Label x:Name="lblThrow" Content="4" Height="100" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="72" BorderThickness="0"/>
             </DockPanel>
         </DockPanel>

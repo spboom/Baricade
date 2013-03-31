@@ -74,6 +74,12 @@
     <Compile Include="ViewModel\VRestSquare.cs" />
     <Compile Include="ViewModel\VSquare.cs" />
     <Compile Include="ViewModel\VVillageSquare.cs" />
+    <Compile Include="View\ChooseDiceRoll.xaml.cs">
+      <DependentUpon>ChooseDiceRoll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChoosePlayer.xaml.cs">
+      <DependentUpon>ChoosePlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -143,6 +149,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="View\ChooseDiceRoll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChoosePlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
