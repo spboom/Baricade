@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Game
+    public class Game
     {
         private Circuit<Player> players;
         private Board board;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Factory
+    public class Factory
     {
         public Factory()
         {

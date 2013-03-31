@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using Baricade.ViewModel;
 namespace Baricade.Model
 {
-    class Square : XmlData<Square>
+    public class Square : XmlData<Square>
     {
         private VSquare view;
         protected Board board;

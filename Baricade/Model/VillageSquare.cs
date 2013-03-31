@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class VillageSquare : Square
+    public class VillageSquare : Square
     {
         public VillageSquare() : base() { }
 

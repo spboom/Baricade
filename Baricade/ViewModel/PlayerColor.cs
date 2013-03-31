@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    enum PlayerColor
+    public enum PlayerColor
     {
         Red, Blue, Green, Yellow
     }

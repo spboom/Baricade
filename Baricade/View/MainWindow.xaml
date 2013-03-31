@@ -1,7 +1,7 @@
-﻿<Window x:Class="Baricade.View.Window"
+﻿<Window x:Class="Baricade.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Window" Height="600" Width="800">
+        Title="Barricade" Height="600" Width="800">
     <DockPanel Name="Layout">
         <Menu Name="Menu" DockPanel.Dock="Top">
             <MenuItem Header="_Game">
@@ -26,7 +26,7 @@
             <Grid Name="gridBoard" DockPanel.Dock="Top" />
 
             <DockPanel Name="Actions" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="100">
-                <Button Content="Throw Dice" Name="btnThrowDice" Height="20" Width="76" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0"/>
+                <Button Content="Throw Dice" Name="btnThrowDice" Height="20" Width="76" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Click="btnThrowClick"/>
                 <Label x:Name="lblThrow" Content="4" Height="100" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="72" BorderThickness="0"/>
             </DockPanel>
         </DockPanel>

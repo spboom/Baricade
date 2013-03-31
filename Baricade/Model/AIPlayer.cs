@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class AIPlayer : Player
+    public class AIPlayer : Player
     {
         public AIPlayer(int player, int pawns,PlayerSquare square)
             : base(player, pawns, square)

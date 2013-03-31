@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Link :XmlData<Link>
+    public class Link :XmlData<Link>
     {
         private Square _square;
         private Link _up;

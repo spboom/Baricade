@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Baricade.Model
 {
-    class Saver
+    public class Saver
     {
         public Saver(Game game, String name)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class BaricadeVillageSquare : VillageSquare
+    public class BaricadeVillageSquare : VillageSquare
     {
         public override bool isWalkable()
         {

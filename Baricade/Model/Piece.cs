@@ -12,7 +12,7 @@ namespace Baricade.Model
      * or belongs to no one at first and exchanges owners throughout the game (such 
      * as a barricade).  
      */
-    abstract class Piece : XmlData<Piece>
+    public abstract class Piece : XmlData<Piece>
     {
         private Player player;
         private int playerId;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Board : XmlData<Board>
+    public class Board : XmlData<Board>
     {
         private int _height;
         private int _width;

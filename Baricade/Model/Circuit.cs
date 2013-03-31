@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Circuit<T>
+    public class Circuit<T>
     {
         public int Count { get { return list.Count; } }
         private List<T> list;

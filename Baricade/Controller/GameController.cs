@@ -19,15 +19,21 @@ namespace Baricade.Controller
             set { game = value; }
         }
 
+        internal Loader Loader
+        {
+            get { return loader; }
+            set { loader = value; }
+        }
+
         public GameController()
         {
-            //loader = new Loader();
-            //int board = 1;
-            //game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
+            loader = new Loader();
+            int board = 1;
+            game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
             //game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Saves/test.xml");
             //new Saver(Game, "test");
 
-            Window MainWindow = new Window();
+            MainWindow MainWindow = new MainWindow(Game);
             MainWindow.Show();
         }
     }
