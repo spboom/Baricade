@@ -16,11 +16,12 @@ namespace Baricade.Model
         public int up, left, right, down;
         public Square[] links;
         public int height = -1;
+        protected bool mayContainBaricade;
 
-        public Board Board
+        public Square()
         {
-            get { return board; }
-            set { board = value; }
+            mayContainBaricade = true;
+            links = new Square[4];
         }
 
         public Piece Piece
@@ -33,7 +34,17 @@ namespace Baricade.Model
             }
         }
 
-        public virtual string Name { get { return ""; } protected set { } }
+        public Board Board
+        {
+            get { return board; }
+            set { board = value; }
+        }
+
+        public VSquare View
+        {
+            get { return view; }
+            set { view = value; }
+        }
 
         public int Id
         {
@@ -63,17 +74,6 @@ namespace Baricade.Model
         {
             get { return down; }
             set { down = value; }
-        }
-
-        public Square()
-        {
-            links = new Square[4];
-        }
-
-        public VSquare View
-        {
-            get { return view; }
-            set { view = value; }
         }
 
         public void setDirection(int direction, Square s)

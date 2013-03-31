@@ -9,22 +9,33 @@ namespace Baricade.ViewModel
 {
     class VSquare
     {
-        private Square square;
-        protected char open = '(';
-        protected char close = ')';
+        protected Square square;
 
         public VSquare(Square square)
         {
             this.square = square;
         }
-        public virtual String getString()
+
+        public Square Square
         {
-            char piece = ' ';
-            if (square.Piece != null)
-            {
-                piece = square.Piece.View.getChar();
-            }
-            return open + "" + piece + "" + close;
+            get { return square; }
+            protected set { square = value; }
+        }
+
+        public Piece Piece
+        {
+            get { return square.Piece; }
+            set { square.Piece = value; }
+        }
+
+        public virtual String getName()
+        {
+            return "Square" + "-" + Piece.View.getName();
+        }
+
+        public virtual String getText()
+        {
+            return TextView.Square_OpenTag + "" + Piece.View.getChar() + "" + TextView.Square_CloseTag;
         }
     }
 }
