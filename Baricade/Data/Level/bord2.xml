@@ -1,76 +1,67 @@
 <board numberofpawns="5">
-	<finish id="1" down="6"/>
-	<villageSquare id="2" down="11" right="3"/>
-	<villageSquare id="3" left="2" right="4"/>
-	<villageSquare id="4" left="3" right="5"/>
-	<villageSquare id="5" left="4" right="6"/>
-	<baricadeVillageSquare id="6" left="5" right="7" up="1"/>
-	<villageSquare id="7" left="6" right="8"/>
-	<villageSquare id="8" left="7" right="9"/>
-	<villageSquare id="9" left="8" right="10"/>
-	<villageSquare id="10" left="9" down="19"/>
-	<villageSquare id="11" up="2" right="12"/>
-	<villageSquare id="12" left="11" right="13"/>
-	<villageSquare id="13" left="12" right="14"/>
-	<villageSquare id="14" left="13" right="15"/>
-	<baricadeVillageSquare id="15" left="14" right="16" down="23"/>
-	<villageSquare id="16" left="15" right="17"/>
-	<villageSquare id="17" left="16" right="18"/>
-	<villageSquare id="18" left="17" right="19"/>
-	<villageSquare id="19" left="18" up="10"/>
-	<villageSquare id="20" down="27" right="21"/>
-	<villageSquare id="21" left="20" right="22"/>
-	<baricadeVillageSquare id="22" left="21" right="23"/>
-	<villageSquare id="23" left="22" up="15" right="24"/>
-	<baricadeVillageSquare id="24" left="23" right="25"/>
-	<villageSquare id="25" left="24" right="26"/>
-	<villageSquare id="26" left="25" down="33"/>
-	<RestSquare id="27" up="20" right="28"/>
-	<baricadesquare id="28" left="27" right="29"/>
-	<square id="29" left="28" right="30"/>
-	<square id="30" left="29" right="31"/>
-	<square id="31" left="30" right="32"/>
-	<baricadesquare id="32" left="31" right="33"/>
-	<RestSquare id="33" up="26" left="32"/>
-	<square id="34" down="42" right="35"/>
-	<square id="35" left="34" right="36"/>
-	<RestSquare id="36" up="30" left="35" right="37" down="65"/>
-	<square id="37" left="36" right="38"/>
-	<square id="38" left="37" down="46"/>
-	<RestSquare id="39" down="50" right="40"/>
-	<square id="40" left="39" right="41"/>
-	<RestSquare id="41" left="40" down="52" right="42"/>
-	<square id="42" left="41" right="43" up="34"/>
-	<square id="43" left="42" right="44"/>
-	<RestSquare id="44" left="43" down="55" right="45"/>
-	<square id="45" left="44" right="46"/>
-	<square id="46" left="45" right="47" up="38"/>
-	<RestSquare id="47" left="46" down="58" right="48"/>
-	<square id="48" left="47" right="49"/>
-	<RestSquare id="49" left="48" down="60"/>
-	<square id="50" up="39" right="51" mayContainbaricade="false"/>
-	<square id="51" left="50" right="52" down="61" mayContainbaricade="false"/>
-	<square id="52" left="51" right="53" up="40" mayContainbaricade="false"/>
-	<square id="53" left="52" right="54" down="62" mayContainbaricade="false"/>
-	<square id="54" left="53" right="55" mayContainbaricade="false"/>
-	<square id="55" left="54" right="56" up="44" mayContainbaricade="false"/>
-	<square id="56" left="55" right="57" mayContainbaricade="false"/>
-	<square id="57" left="56" right="58" down="63" mayContainbaricade="false"/>
-	<square id="58" left="57" right="59" up="47" mayContainbaricade="false"/>
-	<square id="59" left="58" right="60" down="64" mayContainbaricade="false"/>
-	<square id="60" left="59" up="49" mayContainbaricade="false"/>
-	<playerSquare id="61" speler="1" up="51"/>
-	<playerSquare id="62" speler="3" up="53"/>
-	<playerSquare id="63" speler="4" up="57"/>
-	<playerSquare id="64" speler="2" up="59"/>
-	<forestSquare id ="65" up="36"/>
-
-
-
-
-
-
-
-
-
-</board
+  <finish id="1" down="6"/>
+  <villageSquare id="2" down="11" right="3"/>
+  <villageSquare id="3" left="2" right="4"/>
+  <villageSquare id="4" left="3" right="5"/>
+  <villageSquare id="5" left="4" right="6"/>
+  <baricadeVillageSquare id="6" left="5" right="7" up="1"/>
+  <villageSquare id="7" left="6" right="8"/>
+  <villageSquare id="8" left="7" right="9"/>
+  <villageSquare id="9" left="8" right="10"/>
+  <villageSquare id="10" left="9" down="19"/>
+  <villageSquare id="11" up="2" right="12"/>
+  <villageSquare id="12" left="11" right="13"/>
+  <villageSquare id="13" left="12" right="14"/>
+  <villageSquare id="14" left="13" right="15"/>
+  <baricadeVillageSquare id="15" left="14" right="16" down="23"/>
+  <villageSquare id="16" left="15" right="17"/>
+  <villageSquare id="17" left="16" right="18"/>
+  <villageSquare id="18" left="17" right="19"/>
+  <villageSquare id="19" left="18" up="10"/>
+  <villageSquare id="20" down="27" right="21"/>
+  <villageSquare id="21" left="20" right="22"/>
+  <baricadeVillageSquare id="22" left="21" right="23"/>
+  <villageSquare id="23" left="22" up="15" right="24"/>
+  <baricadeVillageSquare id="24" left="23" right="25"/>
+  <villageSquare id="25" left="24" right="26"/>
+  <villageSquare id="26" left="25" down="33"/>
+  <RestSquare id="27" up="20" right="28"/>
+  <baricadesquare id="28" left="27" right="29"/>
+  <square id="29" left="28" right="30"/>
+  <square id="30" left="29" right="31"/>
+  <square id="31" left="30" right="32"/>
+  <baricadesquare id="32" left="31" right="33"/>
+  <RestSquare id="33" up="26" left="32"/>
+  <square id="34" down="42" right="35"/>
+  <square id="35" left="34" right="36"/>
+  <RestSquare id="36" up="30" left="35" right="37" down="65"/>
+  <square id="37" left="36" right="38"/>
+  <square id="38" left="37" down="46"/>
+  <RestSquare id="39" down="50" right="40"/>
+  <square id="40" left="39" right="41"/>
+  <RestSquare id="41" left="40" down="52" right="42"/>
+  <square id="42" left="41" right="43" up="34"/>
+  <square id="43" left="42" right="44"/>
+  <RestSquare id="44" left="43" down="55" right="45"/>
+  <square id="45" left="44" right="46"/>
+  <square id="46" left="45" right="47" up="38"/>
+  <RestSquare id="47" left="46" down="58" right="48"/>
+  <square id="48" left="47" right="49"/>
+  <RestSquare id="49" left="48" down="60"/>
+  <lowrowsquare id="50" up="39" right="51"/>
+  <lowrowsquare id="51" left="50" right="52" down="61"/>
+  <lowrowsquare id="52" left="51" right="53" up="40"/>
+  <lowrowsquare id="53" left="52" right="54" down="62"/>
+  <lowrowsquare id="54" left="53" right="55"/>
+  <lowrowsquare id="55" left="54" right="56" up="44"/>
+  <lowrowsquare id="56" left="55" right="57"/>
+  <lowrowsquare id="57" left="56" right="58" down="63"/>
+  <lowrowsquare id="58" left="57" right="59" up="47"/>
+  <lowrowsquare id="59" left="58" right="60" down="64"/>
+  <lowrowsquare id="60" left="59" up="49"/>
+  <playerSquare id="61" speler="1" up="51"/>
+  <playerSquare id="62" speler="3" up="53"/>
+  <playerSquare id="63" speler="4" up="57"/>
+  <playerSquare id="64" speler="2" up="59"/>
+  <forestSquare id ="65" up="36"/>
+</board>

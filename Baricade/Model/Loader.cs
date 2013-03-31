@@ -24,6 +24,7 @@ namespace Baricade.Model
         private List<Square> linkList = new List<Square>();
         private Circuit<Player> playerList = new Circuit<Player>();
         private List<BaricadePiece> baricades = new List<BaricadePiece>();
+        private List<Pawn> pawns = new List<Pawn>();
         private List<BaricadeSquare> baricadeSquares = new List<BaricadeSquare>();
         private Board board;
 
@@ -142,19 +143,32 @@ namespace Baricade.Model
                     Pawn p = new Pawn();
                     if (p.readElement(r))
                     {
-                        playerList[p.PlayerId]
+                        p.Player = playerList.getAt(p.PlayerId);
                     }
 
                 }
 
-                    else if (r.Name.ToLower() == "baricade")
+                else if (r.Name.ToLower() == "baricade")
                 {
-
+                    BaricadePiece b = new BaricadePiece();
+                    if(b.readElement(r))
+                    {
+                        baricades.Add(b);
                     }
+                }
+
+                else if (r.Name.ToLower() == "lowrowsquare")
+                {
+                    LowRowSquare s = new LowRowSquare();
+                    if(s.readElement(r))
+                    {
+                        insertInto(s.Id,s);
+                    }
+                }
 
                 else if (r.Name.ToLower() == "player")
                 {
-                    Player p = new Player(playerList.Count+1, NumberOfPawns, playerSquares[playerList.Count]);
+                    Player p = new Player(playerList.Count + 1, NumberOfPawns, playerSquares[playerList.Count]);
                     if (p.readElement(r))
                     {
                         _numberofPlayers++;
@@ -206,6 +220,8 @@ namespace Baricade.Model
             }
             link();
             checkPlayers();
+            setPiecesToSquares();
+            checkPieces();
             playerList.setCurrent(_currentPlayer);
             setHeight(playerList.peek().PlayerSquare, 0);
             return new Game(board, playerList,f);
@@ -216,13 +232,60 @@ namespace Baricade.Model
             if (playerList.Count != playerSquares.Count)
             {
                 playerList = new Circuit<Player>();
-                for (int i=0;i<playerSquares.Count;i++)
+                for (int i = 0; i < playerSquares.Count; i++)
                 {
-                    Player player = new Player(i + 1, _numberOfPawns, playerSquares[playerList.Count]);
+                    Player player = new Player(i + 1, _numberOfPawns, playerSquares[i]);
                     player.PlayerSquare = playerSquares[i];
                     playerList.Add(player);
 
                 }
+            }
+        }
+
+        public void checkPieces()
+        {
+            for (int i = 0; i < playerList.Count; i++)
+            {
+                Player p = playerList.pop();
+                if (p.PlayerPawns.Count != NumberOfPawns)
+                {
+                    if (p.PlayerPawns.Count > NumberOfPawns)
+                    {
+                        if (p.PlayerSquare.Pieces.Count > 0)
+                        {
+                            p.PlayerSquare.Pieces.RemoveAt(0);
+                        }
+                        else
+                        {
+                            int lowPos = 0;
+                            for (int j = 0; i < p.PlayerPawns.Count; i++)
+                            {
+                                if (p.PlayerPawns[j].Square.height < p.PlayerPawns[lowPos].Square.height)
+                                {
+                                    lowPos = j;
+                                }
+                            }
+                            p.PlayerPawns[lowPos].Square.Piece = null;
+                            p.PlayerPawns.RemoveAt(lowPos);
+                        }
+                    }
+                    else
+                    {
+                        while (p.PlayerPawns.Count < NumberOfPawns)
+                        {
+                            p.PlayerPawns.Add(new Pawn(p.PlayerSquare, p));
+                        }
+                    }
+                }
+            }
+        }
+            
+
+        private void setPiecesToSquares()
+        {
+            for (int i = 0; i < pawns.Count; i++)
+            {
+
             }
         }
 
@@ -269,7 +332,7 @@ namespace Baricade.Model
 
                 if (linkList[i].Down > 0)
                 {
-                    linkList[i].links[Direction.Down] = linkList[find(linkList[i].Down)];
+                    linkList[i].links[Direction.Down] = linkList[find(linkList[i].Down)];//omg
                 }
 
                 if (linkList[i].Right > 0)

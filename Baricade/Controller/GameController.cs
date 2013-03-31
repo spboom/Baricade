@@ -23,6 +23,7 @@ namespace Baricade.Controller
             loader = new Loader();
             int board = 1;
             game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
+            new Saver(Game, "test");
         }
     }
 }

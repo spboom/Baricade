@@ -46,6 +46,12 @@ namespace Baricade.Model
             private set { currentDiceRoll = value; }
         }
 
+        public Circuit<Player> Players
+        {
+            get { return players; }
+            private set { players = value; }
+        }
+
         /*
          *
          */

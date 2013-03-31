@@ -47,7 +47,7 @@ namespace Baricade.Model
             return list[pointer];
         }
 
-        public T Pop()
+        public T pop()
         {
             return list[Pointer++];
         }
@@ -79,6 +79,11 @@ namespace Baricade.Model
                 position = Count - 1;
             }
             pointer = position;
+        }
+
+        public T getAt(int position)
+        {
+            return list[position];
         }
     }
 }

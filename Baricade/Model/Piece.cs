@@ -15,6 +15,7 @@ namespace Baricade.Model
     abstract class Piece : XmlData<Piece>
     {
         private Player player;
+        private int playerId;
         private Square square;
         private VPiece view;
 
@@ -30,6 +31,10 @@ namespace Baricade.Model
             this.player = player;
         }
 
+        public Piece()
+        {
+        }
+
         public Square Square
         {
             get { return square; }
@@ -39,7 +44,13 @@ namespace Baricade.Model
         public Player Player
         {
             get { return player; }
-            protected set { player = value; }
+            set { player = value; }
+        }
+
+        public int PlayerId
+        {
+            get { return playerId; }
+            set { playerId = value; }
         }
 
         /*

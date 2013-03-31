@@ -7,14 +7,14 @@
 	<baricadesquare id="6" left="5" up="2" right="7"/>
 	<square id="7" left="6" down="13" right="8"/>
 	<baricadesquare id="8" left="7" up="4" right="9"/>
-	<square id="9" right="8" down="15"/>
-	<square id="10" down="17" right="11" mayContainbaricade="false"/>
-	<square id="11" left="10" up="5" right="12" mayContainbaricade="false"/>
-	<square id="12" left="11" down="18" right="13" mayContainbaricade="false"/>
-	<square id="13" left="12" up="7" right="14" mayContainbaricade="false"/>
-	<square id="14" left="13" down="19" right="15" mayContainbaricade="false"/>
-	<square id="15" left="14" up="9" right="16" mayContainbaricade="false"/>
-	<square id="16" left="15" down="20"/>
+	<lowrowsquare id="9" right="8" down="15"/>
+	<lowrowsquare id="10" down="17" right="11"/>
+	<lowrowsquare id="11" left="10" up="5" right="12"/>
+	<lowrowsquare id="12" left="11" down="18" right="13"/>
+	<lowrowsquare id="13" left="12" up="7" right="14"/>
+	<lowrowsquare id="14" left="13" down="19" right="15"/>
+	<lowrowsquare id="15" left="14" up="9" right="16"/>
+	<lowrowsquare id="16" left="15" down="20"/>
 	<playerSquare id="17" speler="1" up="10"/>
 	<playerSquare id="18" speler="3" up="12"/>
 	<playerSquare id="19" speler="4" up="14"/>

@@ -9,15 +9,26 @@ namespace Baricade.Model
 {
     class Player : XmlData<Player>
     {
-        private int player;
+        private int playerId;
+
+        public int PlayerId
+        {
+            get { return playerId; }
+            private set { playerId = value; }
+        }
         private string color;
         private PlayerSquare playerSquare;
         private List<Pawn> playerPawns;
+
+        public List<Pawn> PlayerPawns
+        {
+            get { return playerPawns; }
+        }
         private BaricadePiece barricade;
 
         public Player(int player, int pawns, PlayerSquare square)
         {
-            this.player = player;
+            this.playerId = player;
 
             playerPawns = new List<Pawn>();
 
@@ -29,7 +40,7 @@ namespace Baricade.Model
 
         public Player(int player, string color, int pawns, PlayerSquare square)
         {
-            this.player = player;
+            this.playerId = player;
             this.color = color;
 
             playerPawns = new List<Pawn>();
@@ -77,7 +88,7 @@ namespace Baricade.Model
 
         public int numberOfPawnsAtStart()
         {
-            return playerPawns.Count;
+            return playerSquare.Pieces.Count;
         }
     }
 }

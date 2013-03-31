@@ -9,19 +9,26 @@ namespace Baricade.Model
 {
     class PlayerSquare : RestSquare
     {
+        private List<Pawn> _pieces = new List<Pawn>();
+
+        internal List<Pawn> Pieces
+        {
+            get { return _pieces; }
+            set { _pieces = value; }
+        }
         public PlayerSquare() : base() { }
 
-        public virtual bool isWalkable()
+        public override bool isWalkable()
         {
             return false;
         }
 
-        public virtual bool mayContainBarricade()
+        public override bool mayContainBarricade()
         {
             return false;
         }
 
-        public virtual bool mayContainPawn()
+        public override bool mayContainPawn()
         {
             return true;
         }

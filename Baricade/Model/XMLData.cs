@@ -22,9 +22,14 @@ namespace Baricade.Model
 
                         String value = f.GetAttribute(prop.Name.ToLower());
                         int i;
+                        bool b;
                         if (int.TryParse(value, out i))
                         {
                             prop.SetValue(this, i, null);
+                        }
+                        else if (bool.TryParse(value, out b))
+                        {
+                            prop.SetValue(this, b, null);
                         }
                         else
                         {
@@ -40,10 +45,10 @@ namespace Baricade.Model
 
         public void writeElement(TextWriter tw)
         {
-            Type t = typeof(T);
-            tw.WriteLine("<" + t.Name.ToLower());
+            Type t = this.GetType();
+            tw.Write("<" + t.Name.ToLower());
             foreach (System.Reflection.PropertyInfo prop in t.GetProperties())
-                tw.WriteLine("\t" + prop.Name.ToLower() + "=\"" + prop.GetValue(this, null) + "\"");
+                tw.Write(" " + prop.Name.ToLower() + "=\"" + prop.GetValue(this, null) + "\"");
             tw.WriteLine("/>");
         }
     }

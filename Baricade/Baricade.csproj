@@ -57,12 +57,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\LowRowSquare.cs" />
+    <Compile Include="Model\Saver.cs" />
     <Compile Include="ViewModel\VBaricade.cs" />
     <Compile Include="ViewModel\VBaricadeSquare.cs" />
     <Compile Include="ViewModel\VBaricadeVillageSquare.cs" />
     <Compile Include="ViewModel\VBoard.cs" />
     <Compile Include="ViewModel\VFinishSquare.cs" />
     <Compile Include="ViewModel\VForestSquare.cs" />
+    <Compile Include="ViewModel\VLowRowSquare.cs" />
     <Compile Include="ViewModel\VPawn.cs" />
     <Compile Include="ViewModel\VPiece.cs" />
     <Compile Include="ViewModel\VPlayerSquare.cs" />
@@ -133,14 +136,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Saves\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="View\Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Saves\Makefile.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

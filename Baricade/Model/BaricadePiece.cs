@@ -9,7 +9,7 @@ namespace Baricade.Model
     class BaricadePiece : Piece
     {
         public BaricadePiece(Square s, Player p = null) : base(s, p) { }
-
+        public BaricadePiece() { }
         /*
          * Put the barricade into the current player's hand. This barricade must be placed on the board before the end of the turn.
          * 

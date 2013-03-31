@@ -16,7 +16,6 @@ namespace Baricade.Model
         public int up, left, right, down;
         public Square[] links;
         public int height = -1;
-        protected bool mayContainBaricade;
 
         public Board Board
         {
@@ -68,7 +67,6 @@ namespace Baricade.Model
 
         public Square()
         {
-            mayContainBaricade = true;
             links = new Square[4];
         }
 

@@ -9,7 +9,7 @@ namespace Baricade.Model
     class Pawn : Piece
     {
         public Pawn(Square s, Player p) : base(s, p) { }
-
+        public Pawn() { }
         /*
          * The method isHit replaces the pawn on the square with the one in the signature and
          * places it in the associated player's starting position.
