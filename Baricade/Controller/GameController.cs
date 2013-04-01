@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Baricade.Model;
 using Baricade.View;
+using System.Windows;
 
 namespace Baricade.Controller
 {
-    class GameController
+    public class GameController
     {
         private Game game;
         private Loader loader;
@@ -29,12 +30,8 @@ namespace Baricade.Controller
         {
             loader = new Loader();
             int board = 1;
-            game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
-            new Saver(game, "test");
-            loader = new Loader();
-            game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Saves/test.xml");
-            new Saver(Game, "test2");
-            MainWindow MainWindow = new MainWindow(Game);
+            Game = Loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
+            MainWindow MainWindow = new MainWindow(this);
             MainWindow.Show();
         }
     }

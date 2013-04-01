@@ -83,6 +83,9 @@
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NewGame.xaml.cs">
+      <DependentUpon>NewGame.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\GameController.cs" />
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

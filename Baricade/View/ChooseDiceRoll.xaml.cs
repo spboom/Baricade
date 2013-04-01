@@ -30,7 +30,7 @@ namespace Baricade.View
 
         private void btnOKClick(object sender, RoutedEventArgs e)
         {
-            mainWindow.Game.CurrentDiceRoll = Convert.ToInt32(cmbDiceThrow.Text);
+            mainWindow.GameController.Game.CurrentDiceRoll = Convert.ToInt32(cmbDiceThrow.Text);
             mainWindow.lblThrow.Content = Convert.ToInt32(cmbDiceThrow.Text);
         }
 

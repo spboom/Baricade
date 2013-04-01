@@ -9,9 +9,9 @@ namespace Baricade.Model
 {
     public class Saver
     {
-        public Saver(Game game, String name)
+        public Saver(Game game, String filename)
         {
-            StreamWriter file = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Saves/" + name + ".xml");
+            StreamWriter file = new StreamWriter(filename);
             file.WriteLine("<board numberofpawns=\"" + game.Board.NumberOfPawns + "\" height=\"" + game.Board.Height + "\" width=\"" + game.Board.Width + "\">");
             for (int i = 0; i < game.Board.Squares.Count; i++)
             {

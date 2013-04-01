@@ -1,4 +1,6 @@
-﻿using Baricade.Model;
+﻿using Baricade.Controller;
+using Baricade.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,43 +22,68 @@ namespace Baricade.View
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
-        private Game game;
+        private GameController controller;
 
-        public MainWindow(Game game)
+        public MainWindow(GameController controller)
         {
-            this.game = game;
-
+            this.controller = controller;
             InitializeComponent();
         }
 
-        public Game Game
+        public GameController GameController
         {
-            get { return game; }
-            set { game = value; }
+            get { return controller; }
+            set { controller = value; }
         }
 
         private void btnThrow_Click(object sender, RoutedEventArgs e)
         {
-            game.throwDice();
-            lblThrow.Content = game.CurrentDiceRoll;
+            GameController.Game.throwDice();
+            lblThrow.Content = GameController.Game.CurrentDiceRoll;
         }
 
         private void btnEndTurn_Click(object sender, RoutedEventArgs e)
         {
-
+            GameController.Game.nextTurn();
         }
         
         // Game Menu
         private void mNewGame_Click(object sender, RoutedEventArgs e)
         {
+            NewGame newGame = new NewGame();
+            newGame.Show();
         }
 
         private void mLoadGame_Click(object sender, RoutedEventArgs e)
         {
+            string filename = "";
+
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.InitialDirectory = Environment.CurrentDirectory + "\\Data\\Saves";
+            openFile.DefaultExt = ".xml";
+            openFile.Filter = "XML Files|*.xml";
+
+            if (openFile.ShowDialog() == true)
+            {
+                filename = openFile.FileName;
+                GameController.Game = GameController.Loader.Load(filename);
+            }            
         }
 
         private void mSaveGame_Click(object sender, RoutedEventArgs e)
         {
+            string filename = "";
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.InitialDirectory = Environment.CurrentDirectory + "\\Data\\Saves";
+            saveFile.DefaultExt = ".xml";
+            saveFile.Filter = "XML Files|*.xml";
+
+            if(saveFile.ShowDialog() == true)
+            {
+                filename = saveFile.FileName;
+                new Saver(controller.Game, filename);
+            }
         }
 
         private void mSaveModel_Click(object sender, RoutedEventArgs e)
