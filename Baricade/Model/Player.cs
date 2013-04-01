@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Player : XmlData<Player>
+    public class Player : XmlData<Player>
     {
         private int playerId;
         private PlayerColor color;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Game
+    public class Game
     {
         private Circuit<Player> players;
         private Board board;
@@ -43,7 +43,7 @@ namespace Baricade.Model
         public int CurrentDiceRoll
         {
             get { return currentDiceRoll; }
-            private set { currentDiceRoll = value; }
+            set { currentDiceRoll = value; }
         }
 
         public Circuit<Player> Players

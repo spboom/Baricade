@@ -7,7 +7,7 @@ using Baricade.Model;
 
 namespace Baricade.ViewModel
 {
-    class VSquare
+    public class VSquare
     {
         protected Square square;
 

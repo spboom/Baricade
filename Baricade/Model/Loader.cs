@@ -8,7 +8,7 @@ using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
-    class Loader
+    public class Loader
     {
         private String chosenStyle;
         private int _numberOfHumanPlayers = 0;

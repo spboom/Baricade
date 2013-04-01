@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class VillageSquare : Square
+    public class VillageSquare : Square
     {
         public VillageSquare() : base() { }
 
-        public virtual bool isWalkable()
+        public override bool isWalkable()
         {
             return true;
         }
 
-        public virtual bool mayContainBarricade()
+        public override bool mayContainBarricade()
         {
             return true;
         }
 
-        public virtual bool mayContainPawn()
+        public override bool mayContainPawn()
         {
             return true;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class PlayerSquare : RestSquare
+    public class PlayerSquare : RestSquare
     {
         private List<Pawn> _pieces = new List<Pawn>();
 

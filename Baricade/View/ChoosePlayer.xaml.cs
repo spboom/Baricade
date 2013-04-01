@@ -15,12 +15,16 @@ using System.Windows.Shapes;
 namespace Baricade.View
 {
     /// <summary>
-    /// Interaction logic for Window.xaml
+    /// Interaction logic for ChoosePlayer.xaml
     /// </summary>
-    public partial class Window : System.Windows.Window
+    public partial class ChoosePlayer : Window
     {
-        public Window()
+        private MainWindow mainWindow;
+
+        public ChoosePlayer(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
+
             InitializeComponent();
         }
     }

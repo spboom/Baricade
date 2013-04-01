@@ -74,8 +74,14 @@
     <Compile Include="ViewModel\VRestSquare.cs" />
     <Compile Include="ViewModel\VSquare.cs" />
     <Compile Include="ViewModel\VVillageSquare.cs" />
-    <Compile Include="View\Window.xaml.cs">
-      <DependentUpon>Window.xaml</DependentUpon>
+    <Compile Include="View\ChooseDiceRoll.xaml.cs">
+      <DependentUpon>ChooseDiceRoll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChoosePlayer.xaml.cs">
+      <DependentUpon>ChoosePlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +109,7 @@
     <Compile Include="Model\XMLData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -125,7 +132,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Level\bord1.xml">
@@ -140,7 +149,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="View\Window.xaml">
+    <Page Include="View\ChooseDiceRoll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChoosePlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

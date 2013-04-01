@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Pawn : Piece
+    public class Pawn : Piece
     {
         public Pawn(Square s, Player p) : base(s, p) { }
         public Pawn() { }

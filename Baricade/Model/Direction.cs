@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baricade.Model
 {
-    class Direction
+    public class Direction
     {
         public static int Up = 0;
         public static int Right = 1;
