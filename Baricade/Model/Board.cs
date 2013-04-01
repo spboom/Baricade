@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
@@ -15,6 +16,13 @@ namespace Baricade.Model
         private ForestSquare _forestSquare;
         private List<BaricadePiece> baricades;
         private List<Square> squares;
+        private VBoard view;
+
+        internal VBoard View
+        {
+            get { return view; }
+            set { view = value; }
+        }
 
         public List<Square> Squares
         {
@@ -64,6 +72,7 @@ namespace Baricade.Model
 
         public Board()
         {
+            View = new VBoard(this);
             baricades = new List<BaricadePiece>();
             squares = new List<Square>();
         }
