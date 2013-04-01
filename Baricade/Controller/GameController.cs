@@ -30,8 +30,10 @@ namespace Baricade.Controller
             loader = new Loader();
             int board = 1;
             game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
-            //game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Saves/test.xml");
-            new Saver(Game, "test");
+            new Saver(game, "test");
+            loader = new Loader();
+            game = loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Saves/test.xml");
+            new Saver(Game, "test2");
             MainWindow MainWindow = new MainWindow(Game);
             MainWindow.Show();
         }

@@ -17,7 +17,14 @@ namespace Baricade.Model
         private Player player;
         private int playerId;
         private Square square;
+        private int squareId;
         private VPiece view;
+        
+        public int SquareId
+        {
+            get { return squareId; }
+            set { squareId = value; }
+        }
 
         internal VPiece View
         {
@@ -27,8 +34,8 @@ namespace Baricade.Model
 
         public Piece(Square square, Player player = null)
         {
-            this.square = square;
-            this.player = player;
+            Square = square;
+            Player = player;
         }
 
         public Piece()
@@ -45,7 +52,14 @@ namespace Baricade.Model
         public Player Player
         {
             get { return player; }
-            set { player = value; }
+            set
+            {
+                if (value != null)
+                {
+                    PlayerId = value.PlayerId;
+                }
+                player = value;
+            }
         }
 
         public int PlayerId

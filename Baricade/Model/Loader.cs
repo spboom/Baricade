@@ -143,7 +143,7 @@ namespace Baricade.Model
                     Pawn p = new Pawn();
                     if (p.readElement(r))
                     {
-                        p.Player = playerList.getAt(p.PlayerId);
+                        pawns.Add(p);
                     }
 
                 }
@@ -174,8 +174,8 @@ namespace Baricade.Model
                         _numberofPlayers++;
                         _numberOfHumanPlayers++;
 
-                                                    p.PlayerSquare = (PlayerSquare)linkList[p.PlayerSquareId];
-
+                        p.PlayerSquare = (PlayerSquare)linkList[find(p.PlayerSquareId)];
+                        p.PlayerId = playerList.Count + 1;
                         playerList.Add(p);
                     }
                 }
@@ -193,7 +193,7 @@ namespace Baricade.Model
                     }
                 }
 
-                else if (r.Name.ToLower() == "finish")
+                else if (r.Name.ToLower() == "finishsquare")
                 {
                     FinishSquare s = new FinishSquare();
                     if (s.readElement(r))
@@ -223,13 +223,32 @@ namespace Baricade.Model
                     }
                 }
             }
+            r.Close();
             link();
-            checkPlayers();
             setPiecesToSquares();
+            setPawnsToPlayer();
+            checkPlayers();
             checkPieces();
             playerList.setCurrent(_currentPlayer);
-            setHeight(playerList.peek().PlayerSquare, 0);
+            setPosition(f, f.X, f.Y);
             return new Game(board, playerList,f);
+        }
+
+        private void setPawnsToPlayer()
+        {
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                for (int j = 0; j < playerList.Count; j++)
+                {
+                    if (playerList.peek().PlayerId == pawns[i].PlayerId)
+                    {
+                        pawns[i].Player = playerList.peek();
+                        playerList.peek().addPawn(pawns[i],pawns[i].Square);
+                        break;
+                    }
+                    playerList.pop();
+                }
+            }
         }
 
         private void checkPlayers()
@@ -243,7 +262,7 @@ namespace Baricade.Model
                     player.PlayerId = playerList.Count + 1;
                     List<Pawn> pawns = new List<Pawn>();
                     player.PlayerSquare = playerSquares[i];
-                    switch (i)
+                    switch (i+1)
                     {
                         case 1:
                             player.Color = PlayerColor.Blue;
@@ -310,13 +329,16 @@ namespace Baricade.Model
         {
             for (int i = 0; i < pawns.Count; i++)
             {
-
+                Pawn p = pawns[i];
+                p.Square = linkList[find(p.SquareId)];
             }
         }
 
-        private void setHeight(Square square, int height)
+        private void setPosition(Square square, int x, int y)
         {
-            square.height = height;
+            square.height = board.Height-1 - y;
+            square.X = x;
+            square.Y = y;
             for (int i = 0; i < square.links.Length; i++)
             {
                 if (square.links[i] != null)
@@ -326,14 +348,16 @@ namespace Baricade.Model
                         switch (i)
                         {
                             case 0:     //Direction.Up
-                                setHeight(square.links[i], height + 1);
-                                break;
-                            case 2:     //Direction.Down
-                                setHeight(square.links[i], height - 1);
+                                setPosition(square.links[i], x, y - 1);
                                 break;
                             case 1:     //Direction.Right
+                                setPosition(square.links[i], x + 1, y);
+                                break;
+                            case 2:     //Direction.Down
+                                setPosition(square.links[i], x, y + 1);
+                                break;
                             case 3:     //Direction.Left
-                                setHeight(square.links[i], height);
+                                setPosition(square.links[i], x - 1, y);
                                 break;
                         }
                     }

@@ -21,7 +21,6 @@ namespace Baricade.Model
         {
             view = new VSquare(this);
             links = new Square[4];
-
         }
 
         public int X

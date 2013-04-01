@@ -12,7 +12,7 @@ namespace Baricade.Model
         public Saver(Game game, String name)
         {
             StreamWriter file = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Saves/" + name + ".xml");
-            file.WriteLine("<board numberofpawns=\""+game.Board.NumberOfPawns+"\">");
+            file.WriteLine("<board numberofpawns=\"" + game.Board.NumberOfPawns + "\" height=\"" + game.Board.Height + "\" width=\"" + game.Board.Width + "\">");
             for (int i = 0; i < game.Board.Squares.Count; i++)
             {
                 Square s = game.Board.Squares[i];
@@ -33,15 +33,19 @@ namespace Baricade.Model
                 {
                     file.Write(" down=\"" + s.down + "\"");
                 }
-                file.WriteLine(" />");
+                if (s is FinishSquare)
+                {
+                    file.Write(" x=\"" + s.X + "\" y=\"" + s.Y + "\"");
+                }
+                file.WriteLine("/>");
             }
             for (int i = 0; i < game.Players.Count; i++)
             {
-                Player player = game.Players.next();
+                Player player = game.Players.pop();
                 for (int j = 0; j < player.PlayerPawns.Count; j++)
                 {
                     Pawn p = player.PlayerPawns[j];
-                    file.WriteLine("\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" square=\"" + p.Square.Id + "\" />");
+                    file.WriteLine("\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" squareid=\"" + p.Square.Id + "\" />");
                 }
                 file.WriteLine("\t<" + player.GetType().Name + " playersquareid=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />");
             }

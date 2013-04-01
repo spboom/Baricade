@@ -64,6 +64,11 @@ namespace Baricade.Model
          */
         public void addPawn(Pawn p)
         {
+            addPawn(p, playerSquare);
+        }
+
+        public void addPawn(Pawn p, Square s)
+        {
             playerPawns.Add(p);
             p.Square = PlayerSquare;
         }

@@ -25,11 +25,7 @@ namespace Baricade.Model
                         bool b;
                         if (int.TryParse(value, out i))
                         {
-                            if (i == 0)
-                            {
-                                prop.SetValue(this, -1, null);
-                            }
-                            else
+                            if (i != 0)
                             {
                                 prop.SetValue(this, i, null);
                             }
@@ -56,7 +52,10 @@ namespace Baricade.Model
                         }
                         else
                         {
-                            prop.SetValue(this, value, null);
+                            if (value != null)
+                            {
+                                prop.SetValue(this, value, null);
+                            }
                         }
 
                     }
