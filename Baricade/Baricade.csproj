@@ -86,6 +86,7 @@
     <Compile Include="View\NewGame.xaml.cs">
       <DependentUpon>NewGame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TextView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\GameController.cs" />

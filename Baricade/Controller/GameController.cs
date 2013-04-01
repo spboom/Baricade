@@ -34,5 +34,11 @@ namespace Baricade.Controller
             MainWindow MainWindow = new MainWindow(this);
             MainWindow.Show();
         }
+
+        public void loadGame(String URI)
+        {
+            loader = new Loader();
+            game = loader.Load(URI);
+        }
     }
 }
