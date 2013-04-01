@@ -1,5 +1,5 @@
-<board numberofpawns="5">
-  <finish id="1" down="6"/>
+<board numberofpawns="5" height="10" width="11">
+  <finish id="1" down="6" x="5" y="9"/>
   <villageSquare id="2" down="11" right="3"/>
   <villageSquare id="3" left="2" right="4"/>
   <villageSquare id="4" left="3" right="5"/>

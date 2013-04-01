@@ -38,12 +38,12 @@ namespace Baricade.Model
             for (int i = 0; i < game.Players.Count; i++)
             {
                 Player player = game.Players.next();
-                file.WriteLine("\t<" + player.GetType().Name + " playersquareid=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />");
                 for (int j = 0; j < player.PlayerPawns.Count; j++)
                 {
                     Pawn p = player.PlayerPawns[j];
-                    file.WriteLine("\t\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" square=\"" + p.Square.Id + "\" />");
+                    file.WriteLine("\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" square=\"" + p.Square.Id + "\" />");
                 }
+                file.WriteLine("\t<" + player.GetType().Name + " playersquareid=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />");
             }
             file.WriteLine("</board>");
             file.Close();

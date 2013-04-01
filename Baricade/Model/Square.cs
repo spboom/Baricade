@@ -16,12 +16,24 @@ namespace Baricade.Model
         public int up, left, right, down;
         public Square[] links;
         public int height = -1;
-        protected bool mayContainBaricade;
 
         public Square()
         {
-            mayContainBaricade = true;
+            view = new VSquare(this);
             links = new Square[4];
+
+        }
+
+        public int X
+        {
+            get { return view.X; }
+            set { view.X = value; }
+        }
+
+        public int Y
+        {
+            get { return view.Y; }
+            set { view.Y = value; }
         }
 
         public Piece Piece

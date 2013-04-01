@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
@@ -14,6 +15,7 @@ namespace Baricade.Model
         public ForestSquare()
             : base()
         {
+            View = new VForestSquare(this);
             pawns = new ArrayList();
         }
 

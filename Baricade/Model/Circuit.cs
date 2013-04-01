@@ -17,35 +17,27 @@ namespace Baricade.Model
             get { return pointer; }
             set
             {
-                if (value > pointer)
+                if (value >= list.Count)
                 {
-                    if (value > list.Count - 1)
-                    {
-                        pointer = 0;
-                    }
-                    else
-                    {
-                        pointer = value;
-                    }
+                    pointer = 0;
                 }
-                else if (value < pointer)
-                {
-                    if (value < 0)
-                    {
-                        pointer = list.Count - 1;
-                    }
 
-                    pointer = value;
+                else if (value < 0)
+                {
+                    pointer = list.Count - 1;
                 }
+
                 else
                 {
                     pointer = value;
                 }
             }
         }
+       
         public Circuit()
         {
             list = new List<T>();
+            Pointer = 0;
         }
 
         public T peek()
@@ -65,7 +57,8 @@ namespace Baricade.Model
 
         public T next()
         {
-            return list[++Pointer];
+            Pointer++;
+            return list[Pointer];
         }
 
         public void Add(T t)

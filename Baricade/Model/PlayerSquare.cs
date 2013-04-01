@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
@@ -16,7 +17,11 @@ namespace Baricade.Model
             get { return _pieces; }
             set { _pieces = value; }
         }
-        public PlayerSquare() : base() { }
+        public PlayerSquare()
+            : base()
+        {
+            View = new VPlayerSquare(this);
+        }
 
         public override bool isWalkable()
         {

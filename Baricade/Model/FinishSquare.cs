@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
     public class FinishSquare : RestSquare
     {
-        public FinishSquare() : base() { }
+        public FinishSquare()
+            : base()
+        {
+            View = new VFinishSquare(this);
+        }
 
         public override bool isWalkable()
         {

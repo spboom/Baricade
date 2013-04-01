@@ -33,6 +33,7 @@ namespace Baricade.Model
 
         public Piece()
         {
+            View = new VPiece(this);
         }
 
         public Square Square
