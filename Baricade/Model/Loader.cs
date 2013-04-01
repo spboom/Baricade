@@ -168,22 +168,27 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "player")
                 {
-                    Player p = new Player(playerList.Count + 1, NumberOfPawns, playerSquares[playerList.Count]);
+                    Player p = new Player();
                     if (p.readElement(r))
                     {
                         _numberofPlayers++;
                         _numberOfHumanPlayers++;
+
+                                                    p.PlayerSquare = (PlayerSquare)linkList[p.PlayerSquareId];
+
                         playerList.Add(p);
                     }
                 }
 
                 else if (r.Name.ToLower() == "aiplayer")
                 {
-                    AIPlayer p = new AIPlayer(playerList.Count + 1, NumberOfPawns, playerSquares[playerList.Count]);
+                    AIPlayer p = new AIPlayer();
                     if (p.readElement(r))
                     {
                         _numberOfAIPlayers++;
                         _numberOfHumanPlayers++;
+                        p.PlayerSquare = (PlayerSquare)linkList[p.PlayerSquareId];
+                        p.PlayerId = playerList.Count + 1;
                         playerList.Add(p);
                     }
                 }
@@ -234,10 +239,30 @@ namespace Baricade.Model
                 playerList = new Circuit<Player>();
                 for (int i = 0; i < playerSquares.Count; i++)
                 {
-                    Player player = new Player(i + 1, _numberOfPawns, playerSquares[i]);
+                    Player player = new Player();
+                    player.PlayerId = playerList.Count + 1;
+                    List<Pawn> pawns = new List<Pawn>();
                     player.PlayerSquare = playerSquares[i];
+                    switch (i)
+                    {
+                        case 1:
+                            player.Color = PlayerColor.Blue;
+                            break;
+                        case 2:
+                            player.Color = PlayerColor.Green;
+                            break;
+                        case 3:
+                            player.Color = PlayerColor.Red;
+                            break;
+                        case 4:
+                            player.Color = PlayerColor.Yellow;
+                            break;
+                    }
+                    for (int j = 0; j < NumberOfPawns; j++)
+                    {
+                        pawns.Add(new Pawn(player.PlayerSquare, player));
+                    }
                     playerList.Add(player);
-
                 }
             }
         }

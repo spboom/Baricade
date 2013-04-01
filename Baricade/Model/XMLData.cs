@@ -31,6 +31,22 @@ namespace Baricade.Model
                         {
                             prop.SetValue(this, b, null);
                         }
+                        else if (PlayerColor.Blue.ToString() == value)
+                        {
+                            prop.SetValue(this, PlayerColor.Blue, null);
+                        }
+                        else if (PlayerColor.Green.ToString() == value)
+                        {
+                            prop.SetValue(this, PlayerColor.Green, null);
+                        }
+                        else if (PlayerColor.Red.ToString() == value)
+                        {
+                            prop.SetValue(this, PlayerColor.Red, null);
+                        }
+                        else if (PlayerColor.Yellow.ToString() == value)
+                        {
+                            prop.SetValue(this, PlayerColor.Yellow, null);
+                        }
                         else
                         {
                             prop.SetValue(this, value, null);

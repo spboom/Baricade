@@ -19,9 +19,13 @@ namespace Baricade.Model
             {
                 if (value > pointer)
                 {
-                    if (value > list.Count-1)
+                    if (value > list.Count - 1)
                     {
                         pointer = 0;
+                    }
+                    else
+                    {
+                        pointer = value;
                     }
                 }
                 else if (value < pointer)
@@ -30,10 +34,12 @@ namespace Baricade.Model
                     {
                         pointer = list.Count - 1;
                     }
-                }
-                else if (value == pointer)
-                {
 
+                    pointer = value;
+                }
+                else
+                {
+                    pointer = value;
                 }
             }
         }

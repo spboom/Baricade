@@ -10,4 +10,7 @@ namespace Baricade.Model
     {
         Red, Blue, Green, Yellow
     }
+
+    
+    
 }
