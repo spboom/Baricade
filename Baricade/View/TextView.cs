@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Baricade.Controller;
+using Baricade.ViewModel;
+using Baricade.Model;
 
 namespace Baricade.View
 {
@@ -18,6 +20,7 @@ namespace Baricade.View
             Console.WriteLine("Welcome to Baricade \n type \"help\" for help");
             while (true)
             {
+                show();
                 String line = Console.ReadLine().ToLower();
                 String[] options = line.Split(' ');
                 check(options);
@@ -76,9 +79,29 @@ namespace Baricade.View
         {
             if (options.Length > 1)
             {
-
+                if (options[1] == "currentplayer")
+                {
+                    if (options.Length > 2)
+                    {
+                        setCurrentPlayer(options[2]);
+                    }
+                }
             }
-            Console.WriteLine("no (legit) cheat command given");
+            Console.WriteLine("cheat:\n currentplayer #");
+            for (int i = 0; i < controller.Game.Players.List.Count; i++)
+            {
+                Console.WriteLine("\t " + i + ":" + controller.Game.Players.List[i].Color);
+            }
+        }
+
+        private void setCurrentPlayer(string p)
+        {
+            int i=0;
+            if (int.TryParse(p, out i))
+            {
+                controller.Game.Players.setCurrent(i);
+            }
+            Console.WriteLine("Not a number: "+p);
         }
 
         private void printHelp()
@@ -91,7 +114,7 @@ namespace Baricade.View
 
         private void show()
         {
-
+            Board bord = controller.Game.Board;
         }
     }
 }

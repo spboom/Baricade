@@ -231,6 +231,7 @@ namespace Baricade.Model
             checkPieces();
             playerList.setCurrent(_currentPlayer);
             setPosition(f, f.X, f.Y);
+            board.Squares = linkList;
             return new Game(board, playerList,f);
         }
 
@@ -381,15 +382,14 @@ namespace Baricade.Model
 
                 if (linkList[i].Down > 0)
                 {
-                    linkList[i].links[Direction.Down] = linkList[find(linkList[i].Down)];//omg
+                    linkList[i].links[Direction.Down] = linkList[find(linkList[i].Down)];
                 }
 
                 if (linkList[i].Right > 0)
                 {
-                    linkList[i].links[Direction.Right] = linkList[linkList[i].Right];
+                    linkList[i].links[Direction.Right] = linkList[find(linkList[i].Right)];
                 }
             }
-            board.Squares = linkList;
         }
 
         private int find(int p)

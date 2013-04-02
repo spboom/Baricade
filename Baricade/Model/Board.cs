@@ -16,6 +16,7 @@ namespace Baricade.Model
         private ForestSquare _forestSquare;
         private List<BaricadePiece> baricades;
         private List<Square> squares;
+        private Square[,] twoDBord;
         private VBoard view;
 
         internal VBoard View
@@ -27,7 +28,23 @@ namespace Baricade.Model
         public List<Square> Squares
         {
             get { return squares; }
-            set { squares = value; }
+            set
+            {
+                squares = value;
+                if (value != null)
+                {
+                    to2D();
+                }
+            }
+        }
+
+        private void to2D()
+        {
+            twoDBord = new Square[Height,Width];
+            for (int i = 0; i < squares.Count; i++)
+            {
+                twoDBord[squares[i].Y, squares[i].X] = squares[i];
+            }
         }
 
         public List<BaricadePiece> Baricades

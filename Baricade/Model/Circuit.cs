@@ -10,6 +10,12 @@ namespace Baricade.Model
     {
         public int Count { get { return list.Count; } }
         private List<T> list;
+
+        public List<T> List
+        {
+            get { return list; }
+           private set { list = value; }
+        }
         private int pointer;
 
         private int Pointer
