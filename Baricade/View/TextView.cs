@@ -116,16 +116,54 @@ namespace Baricade.View
         {
             Board bord = controller.Game.Board;
             Square[,] field = bord.TwoDBord;
-            String[,] text = new String[field.GetUpperBound(0) * 2, field.GetUpperBound(1) * 2];
-            int Yofset = 1;
+            String[,] text = new String[field.GetUpperBound(0) * 2 - 1, field.GetUpperBound(1) * 2 - 1];
+            int Yofset = 0;
+            string hor = "---";
+            string ver = " | ";
             for (int y = 0; y < field.GetUpperBound(0); y++)
             {
-                int Xofset = 1;
+                int Xofset = 0;
                 for (int x = 0; x < field.GetUpperBound(1); x++)
                 {
                     if (field[y, x] != null)
                     {
-                        text[y + Yofset, x + Xofset] = field[y, x].View.getText();//TODO ofset!!
+                        text[y + Yofset, x + Xofset] = field[y, x].View.getText();//TODO empty string->"   "!!
+                        for (int i = 0; i < field[y, x].links.Length; i++)
+                        {
+                            bool NotNull = field[y, x].links[i] != null;
+                            string line = "   ";
+                            switch (i)
+                            {
+                                case 0:
+                                    if (NotNull)
+                                    {
+                                        line = ver;
+                                    }
+                                    text[y + Yofset - 1, x + Xofset] = line;
+
+                                    break;
+                                case 1: if (NotNull)
+                                    {
+                                        line = hor;
+                                    }
+                                    text[y + Yofset, x + Xofset + 1] = line;
+                                    break;
+                                case 2:
+                                    if (NotNull)
+                                    {
+                                        line = ver;
+                                    }
+                                    text[y + Yofset + 1, x + Xofset] = line;
+                                    break;
+                                case 3:
+                                    if (NotNull)
+                                    {
+                                        line = hor;
+                                    }
+                                    text[y + Yofset, x + Xofset - 1] = hor;
+                                    break;
+                            }
+                        }
                     }
                     else
                     {

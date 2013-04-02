@@ -83,6 +83,13 @@ namespace Baricade.Model
             ForestSquare forest = null;
             playerSquares = new List<PlayerSquare>();
             Square previous = null;
+            
+            linkList = new List<Square>();
+            playerList = new Circuit<Player>();
+            baricades = new List<BaricadePiece>();
+            pawns = new List<Pawn>();
+            baricadeSquares = new List<BaricadeSquare>();
+
 
             while (r.Read())
             {
