@@ -57,7 +57,7 @@ namespace Baricade.View
             FileInfo[] files = dir.GetFiles();
             if (options.Length > 1)
             {
-                for(int i=0;i<files.Length;i++)
+                for (int i = 0; i < files.Length; i++)
                 {
                     if (files[i].Name == options[i])
                     {
@@ -66,7 +66,7 @@ namespace Baricade.View
                     }
                 }
             }
-            for (int i=0;i<files.Length;i++)
+            for (int i = 0; i < files.Length; i++)
             {
                 if (files[i].Extension == "xml")
                 {
@@ -96,12 +96,12 @@ namespace Baricade.View
 
         private void setCurrentPlayer(string p)
         {
-            int i=0;
+            int i = 0;
             if (int.TryParse(p, out i))
             {
                 controller.Game.Players.setCurrent(i);
             }
-            Console.WriteLine("Not a number: "+p);
+            Console.WriteLine("Not a number: " + p);
         }
 
         private void printHelp()
@@ -115,6 +115,24 @@ namespace Baricade.View
         private void show()
         {
             Board bord = controller.Game.Board;
+            Square[,] field = bord.TwoDBord;
+            String[,] text = new String[field.GetUpperBound(0) * 2, field.GetUpperBound(1) * 2];
+            int Yofset = 1;
+            for (int y = 0; y < field.GetUpperBound(0); y++)
+            {
+                int Xofset = 1;
+                for (int x = 0; x < field.GetUpperBound(1); x++)
+                {
+                    if (field[y, x] != null)
+                    {
+                        text[y + Yofset, x + Xofset] = field[y, x].View.getText();//TODO ofset!!
+                    }
+                    else
+                    {
+                        text[y + Yofset, x + Xofset] = "   ";
+                    }
+                }
+            }
         }
     }
 }

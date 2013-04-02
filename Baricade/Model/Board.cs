@@ -16,6 +16,12 @@ namespace Baricade.Model
         private List<BaricadePiece> baricades;
         private List<Square> squares;
         private Square[,] twoDBord;
+
+        public Square[,] TwoDBord
+        {
+            get { return twoDBord; }
+            private set { twoDBord = value; }
+        }
         private VBoard view;
 
         internal VBoard View
