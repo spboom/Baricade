@@ -13,7 +13,11 @@ namespace Baricade.ViewModel
 
         public override String getName()
         {
-            return "FinishSquare" + "-" + Piece.View.getName();
+            if(Piece != null) {
+                return "FinishSquare" + "-" + Piece.View.getName();
+            }
+
+            return "FinishSquare";
         }
 
         public override String getText()

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Baricade.Model;
 using Baricade.View;
 using System.Windows;
+using Baricade.ViewModel;
 
 namespace Baricade.Controller
 {

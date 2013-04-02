@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Baricade.View
 {
-    /// <summary>
-    /// Interaction logic for Window.xaml
-    /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
         private GameController controller;
@@ -27,7 +24,45 @@ namespace Baricade.View
         public MainWindow(GameController controller)
         {
             this.controller = controller;
+
             InitializeComponent();
+            setupGrid();
+            fillGrid();
+        }
+
+        private void setupGrid()
+        {
+            Board board = controller.Game.Board;
+
+            for (int i = 0; i < board.Width; i++)
+            {
+                ColumnDefinition column = new ColumnDefinition();
+                gridPanel.ColumnDefinitions.Add(column);
+            }
+
+            for (int i = 0; i < board.Height; i++)
+            {
+                RowDefinition row = new RowDefinition();
+                gridPanel.RowDefinitions.Add(row);
+            }
+
+            gridPanel.Width = board.Width * 40;
+            gridPanel.Height = board.Height * 40;
+            this.Width = gridPanel.Width * 1.2;
+            this.Height = gridPanel.Height * 1.4;
+        }
+
+        private void fillGrid() {
+            foreach (Square s in controller.Game.Board.TwoDBoard) {
+                if (s != null)
+                {
+                    Image image = new Image();
+                    image.Source = new BitmapImage(new Uri("pack://application:,,,/Style/" + s.View.getName() + ".jpg"));
+                    image.SetValue(Grid.RowProperty, s.View.Y);
+                    image.SetValue(Grid.ColumnProperty, s.View.X);
+                    gridPanel.Children.Add(image);
+                }
+            }
         }
 
         public GameController GameController

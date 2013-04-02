@@ -44,7 +44,12 @@ namespace Baricade.ViewModel
 
         public virtual String getName()
         {
-            return "Square" + "-" + Piece.View.getName();
+            if (Piece != null)
+            {
+                return "Square" + "-" + Piece.View.getName();
+            }
+
+            return "Square";
         }
 
         public virtual String getText()

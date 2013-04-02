@@ -12,7 +12,6 @@ namespace Baricade.Model
         private int _height;
         private int _width;
         private int _numberOfPawns;
-        private String style;
         private ForestSquare _forestSquare;
         private List<BaricadePiece> baricades;
         private List<Square> squares;
@@ -38,9 +37,16 @@ namespace Baricade.Model
             }
         }
 
+        public Square[,] TwoDBoard
+        {
+            get { return twoDBord; }
+            private set { twoDBord = value; }
+        }
+
         private void to2D()
         {
             twoDBord = new Square[Height,Width];
+
             for (int i = 0; i < squares.Count; i++)
             {
                 twoDBord[squares[i].Y, squares[i].X] = squares[i];

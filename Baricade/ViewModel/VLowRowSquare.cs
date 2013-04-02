@@ -14,7 +14,12 @@ namespace Baricade.ViewModel
         { }
         public override String getName()
         {
-            return "LowRowSquare" + "-" + Piece.View.getName();
+            if (Piece != null)
+            {
+                return "LowRowSquare" + "-" + Piece.View.getName();
+            }
+
+            return "LowRowSquare";
         }
 
         public override String getText()

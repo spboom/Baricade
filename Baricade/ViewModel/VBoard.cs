@@ -17,7 +17,7 @@ namespace Baricade.ViewModel
             this.board = board;
         }
 
-        public Image[,] getImageBoard() // TODO: Use the method getName() for the filename.
+        public VSquare[,] getImageBoard() // TODO: Use the method getName() for the filename.
         {
             return null;
         }
