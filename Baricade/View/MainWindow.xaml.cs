@@ -21,6 +21,8 @@ namespace Baricade.View
     {
         private GameController controller;
         private Board board;
+        private Square firstSelectedSquare;
+        private Square secondSelectedSquare;
 
         public MainWindow(GameController controller)
         {
@@ -30,6 +32,24 @@ namespace Baricade.View
             InitializeComponent();
             setupGrid();
             fillGrid();
+        }
+        
+        public GameController GameController
+        {
+            get { return controller; }
+            set { controller = value; }
+        }
+
+        private Square FirstSelectedSquare
+        {
+            get { return firstSelectedSquare; }
+            set { firstSelectedSquare = value; }
+        }
+
+        private Square SecondSelectedSquare
+        {
+            get { return secondSelectedSquare; }
+            set { secondSelectedSquare = value; }
         }
 
         private void setupGrid()
@@ -72,16 +92,45 @@ namespace Baricade.View
             }
         }
 
-        public GameController GameController
-        {
-            get { return controller; }
-            set { controller = value; }
-        }
-
         private void Cell_Click(object sender, RoutedEventArgs e)
         {
             Image image = e.Source as Image;
-            MessageBox.Show(image.Name);
+            selectSquare(image);
+        }
+
+        private void selectSquare(Image image)
+        {
+            if (FirstSelectedSquare == null && SecondSelectedSquare == null)
+            {
+                FirstSelectedSquare = getSquareFromCell(image.Name);
+
+                /*if (FirstSelectedSquare.Piece == null)
+                {
+                    FirstSelectedSquare = null;
+                }*/
+            }
+
+            else if (FirstSelectedSquare != null && SecondSelectedSquare == null)
+            {
+                SecondSelectedSquare = getSquareFromCell(image.Name);
+            }
+
+            if (SecondSelectedSquare != null && FirstSelectedSquare != null)
+            {
+                if (FirstSelectedSquare.Piece != null)
+                {
+                    GameController.Game.movePiece(FirstSelectedSquare.Piece, SecondSelectedSquare);
+                }
+
+                FirstSelectedSquare = null;
+                SecondSelectedSquare = null;
+            }
+        }
+
+        private Square getSquareFromCell(String cell)
+        {
+            String[] coordinates = cell.Substring(1).Split('x');
+            return board.TwoDBoard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
         }
 
         private void btnThrow_Click(object sender, RoutedEventArgs e)
