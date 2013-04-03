@@ -10,7 +10,6 @@ namespace Baricade.Model
 {
     public class Loader
     {
-        private String chosenStyle;
         private int _numberOfHumanPlayers = 0;
         private int _numberOfAIPlayers = 0;
         private int _numberOfPawns = -1;

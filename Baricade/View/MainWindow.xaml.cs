@@ -20,10 +20,12 @@ namespace Baricade.View
     public partial class MainWindow : System.Windows.Window
     {
         private GameController controller;
+        private Board board;
 
         public MainWindow(GameController controller)
         {
             this.controller = controller;
+            this.board = controller.Game.Board;
 
             InitializeComponent();
             setupGrid();
@@ -32,8 +34,6 @@ namespace Baricade.View
 
         private void setupGrid()
         {
-            Board board = controller.Game.Board;
-
             for (int i = 0; i < board.Width; i++)
             {
                 ColumnDefinition column = new ColumnDefinition();
@@ -52,12 +52,16 @@ namespace Baricade.View
             this.Height = gridPanel.Height * 1.4;
         }
 
-        private void fillGrid() {
-            foreach (Square s in controller.Game.Board.TwoDBoard) {
+        private void fillGrid()
+        {
+            foreach (Square s in board.TwoDBoard)
+            {
                 if (s != null)
                 {
                     Image image = new Image();
-                    image.Source = new BitmapImage(new Uri("pack://application:,,,/Style/" + s.View.getName() + ".jpg"));
+                    String path = "pack://application:,,,/Style/" + board.View.Style + "/" + s.View.getName() + ".jpg";
+
+                    image.Source = new BitmapImage(new Uri(path));
                     image.SetValue(Grid.RowProperty, s.View.Y);
                     image.SetValue(Grid.ColumnProperty, s.View.X);
                     gridPanel.Children.Add(image);
@@ -81,7 +85,7 @@ namespace Baricade.View
         {
             GameController.Game.nextTurn();
         }
-        
+
         // Game Menu
         private void mNewGame_Click(object sender, RoutedEventArgs e)
         {
@@ -102,7 +106,7 @@ namespace Baricade.View
             {
                 filename = openFile.FileName;
                 GameController.Game = GameController.Loader.Load(filename);
-            }            
+            }
         }
 
         private void mSaveGame_Click(object sender, RoutedEventArgs e)
@@ -114,7 +118,7 @@ namespace Baricade.View
             saveFile.DefaultExt = ".xml";
             saveFile.Filter = "XML Files|*.xml";
 
-            if(saveFile.ShowDialog() == true)
+            if (saveFile.ShowDialog() == true)
             {
                 filename = saveFile.FileName;
                 new Saver(controller.Game, filename);
@@ -125,13 +129,10 @@ namespace Baricade.View
         {
         }
 
-        // Style Menu
-        private void mTextStyle_Click(object sender, RoutedEventArgs e)
+        private void mChooseStyle_Click(object sender, RoutedEventArgs e)
         {
-        }
-        
-        private void mBarricadeStyle_Click(object sender, RoutedEventArgs e)
-        {
+            StyleChooser styleChooser = new StyleChooser(this);
+            styleChooser.Show();
         }
 
         // Cheat Menu

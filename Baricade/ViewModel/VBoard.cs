@@ -11,21 +11,23 @@ namespace Baricade.ViewModel
     class VBoard
     {
         private Board board;
+        private String style;
 
         public VBoard(Board board)
         {
             this.board = board;
         }
 
-        public VSquare[,] getImageBoard() // TODO: Use the method getName() for the filename.
+        public Board Board
         {
-            return null;
+            get { return board; }
+            private set { board = value; }
         }
 
-        public String[,] getStringBoard() // TODO: Use the method getText() for the text.
+        public String Style
         {
-            return null;
+            get { return style; }
+            set { style = value; }
         }
     }
-    
 }

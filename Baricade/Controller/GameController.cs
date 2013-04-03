@@ -32,6 +32,7 @@ namespace Baricade.Controller
             loader = new Loader();
             int board = 1;
             Game = Loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
+            Game.Board.View.Style = "Minimalistic";
             MainWindow MainWindow = new MainWindow(this);
             MainWindow.Show();
         }

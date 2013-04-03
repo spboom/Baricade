@@ -13,15 +13,10 @@
                     x:Name="mSaveGame" Click="mSaveGame_Click"/>
                 <MenuItem Header="Save Model"
                     x:Name="mSaveModel" Click="mSaveModel_Click"/>
+                <MenuItem Header="Choose Style"
+                    x:Name="mChooseStyle" Click="mChooseStyle_Click"/>
             </MenuItem>
 
-            <MenuItem Header="_Styles">
-                <MenuItem Header="Text"
-                    x:Name="mTextStyle" Click="mTextStyle_Click"/>
-                <MenuItem Header="Barricade"
-                    x:Name="mBarricadeStyle" Click="mBarricadeStyle_Click"/>
-            </MenuItem>
-            
             <MenuItem Header="Cheats">
                 <MenuItem Header="Current Player"
                     x:Name="mCurrentPlayer" Click="mCurrentPlayer_Click"/>
