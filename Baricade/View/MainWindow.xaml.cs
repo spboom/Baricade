@@ -59,11 +59,14 @@ namespace Baricade.View
                 if (s != null)
                 {
                     Image image = new Image();
-                    String path = "pack://application:,,,/Style/" + board.View.Style + "/" + s.View.getName() + ".jpg";
+                    image.Name = "y" + s.View.Y + "x" + s.View.X;
 
+                    String path = "pack://application:,,,/Style/" + board.View.Style + "/" + s.View.getName() + ".jpg";
                     image.Source = new BitmapImage(new Uri(path));
+
                     image.SetValue(Grid.RowProperty, s.View.Y);
                     image.SetValue(Grid.ColumnProperty, s.View.X);
+
                     gridPanel.Children.Add(image);
                 }
             }
@@ -73,6 +76,12 @@ namespace Baricade.View
         {
             get { return controller; }
             set { controller = value; }
+        }
+
+        private void Cell_Click(object sender, RoutedEventArgs e)
+        {
+            Image image = e.Source as Image;
+            MessageBox.Show(image.Name);
         }
 
         private void btnThrow_Click(object sender, RoutedEventArgs e)
