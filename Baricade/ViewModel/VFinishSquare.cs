@@ -22,7 +22,7 @@ namespace Baricade.ViewModel
 
         public override String getText()
         {
-            return TextView.FinishSquare_OpenTag + "" + Piece.View.getChar() + "" + TextView.FinishSquare_CloseTag;
+            return TextView.FinishSquare_OpenTag + "" + getPieceString() + "" + TextView.FinishSquare_CloseTag;
         }
     }
 }

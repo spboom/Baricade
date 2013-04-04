@@ -42,5 +42,10 @@ namespace Baricade.Controller
             loader = new Loader();
             game = loader.Load(URI);
         }
+
+        internal void Text()
+        {
+            View.TextView textview = new View.TextView(this);
+        }
     }
 }

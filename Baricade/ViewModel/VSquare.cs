@@ -54,7 +54,16 @@ namespace Baricade.ViewModel
 
         public virtual String getText()
         {
-            return TextView.Square_OpenTag + "" + Piece.View.getChar() + "" + TextView.Square_CloseTag;
+            return TextView.Square_OpenTag + "" + getPieceString() + "" + TextView.Square_CloseTag;
+        }
+
+        public virtual char getPieceString()
+        {
+            if (Piece != null)
+            {
+                return Piece.View.getChar();
+            }
+            return ' ';
         }
     }
 }

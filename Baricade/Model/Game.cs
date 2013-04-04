@@ -19,6 +19,7 @@ namespace Baricade.Model
         {
             this.board = board;
             this.players = players;
+            currentPlayer = players.peek();
             _finishSquare = finish;
         }
 
@@ -43,7 +44,17 @@ namespace Baricade.Model
         public int CurrentDiceRoll
         {
             get { return currentDiceRoll; }
-            set { currentDiceRoll = value; }
+            set
+            {
+                if (value <= 6 && value >= 1)
+                {
+                    currentDiceRoll = value;
+                }
+                else
+                {
+                    throwDice();
+                }
+            }
         }
 
         public Circuit<Player> Players

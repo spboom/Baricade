@@ -16,13 +16,17 @@ namespace Baricade.View
 
         public TextView(GameController controller)
         {
+            Console.SetWindowPosition(0, 0);
+            Console.BufferWidth *= 2;
             this.controller = controller;
-            Console.WriteLine("Welcome to Baricade \n type \"help\" for help");
+            Console.WriteLine("Welcome to Baricade \ntype \"help\" for help");
             while (true)
             {
                 show();
                 String line = Console.ReadLine().ToLower();
                 String[] options = line.Split(' ');
+                Console.Clear();
+                Console.WriteLine(line);
                 check(options);
             }
         }
@@ -84,14 +88,37 @@ namespace Baricade.View
                     if (options.Length > 2)
                     {
                         setCurrentPlayer(options[2]);
+                        return;
+                    }
+                }
+                else if (options[1] == "currentdice")
+                {
+                    if (options.Length > 2)
+                    {
+                        setCurrentDice(options[2]);
+                        return;
                     }
                 }
             }
-            Console.WriteLine("cheat:\n currentplayer #");
+            Console.WriteLine("cheat:");
+            Console.WriteLine("currentplayer #");
             for (int i = 0; i < controller.Game.Players.List.Count; i++)
             {
                 Console.WriteLine("\t " + i + ":" + controller.Game.Players.List[i].Color);
             }
+            Console.WriteLine("currentdice #");
+            Console.WriteLine("number between 1 and 6");
+        }
+
+        private void setCurrentDice(string p)
+        {
+            int i = 0;
+            if (int.TryParse(p, out i))
+            {
+                controller.Game.CurrentDiceRoll = i;
+                return;
+            }
+            Console.WriteLine("Not a number: " + p);
         }
 
         private void setCurrentPlayer(string p)
@@ -100,24 +127,34 @@ namespace Baricade.View
             if (int.TryParse(p, out i))
             {
                 controller.Game.Players.setCurrent(i);
+                return;
             }
             Console.WriteLine("Not a number: " + p);
         }
 
         private void printHelp()
         {
-            Console.WriteLine("help: displays this text");
-            Console.WriteLine("load: prints all the files possible to load when a filename is mentioned after load the specified file is loaded");
-            Console.WriteLine("cheat: print all the possible cheats if you want to use one type the command behind \"cheat\"");
-            Console.WriteLine("save: saves current game with given name");
+            Console.WriteLine("help:    displays this text");
+            Console.WriteLine("load:    prints all the files possible to load when a filename is mentioned after load the specified file is loaded");
+            Console.WriteLine("cheat:   print all the possible cheats if you want to use one type the command behind \"cheat\"");
+            Console.WriteLine("save:    saves current game with given name");
+            Console.WriteLine("move:    ");
         }
 
         private void show()
         {
             Board bord = controller.Game.Board;
             Square[,] field = bord.TwoDBord;
-            String[,] text = new String[field.GetUpperBound(0) * 2 - 1, field.GetUpperBound(1) * 2 - 1];
+            String[,] text = new String[field.GetUpperBound(0) * 2 + 1, field.GetUpperBound(1) * 2 + 1];
+            for (int y = 0; y < text.GetUpperBound(0); y++)
+            {
+                for (int x = 0; x < text.GetUpperBound(1); x++)
+                {
+                    text[y, x] = "   ";
+                }
+            }
             int Yofset = 0;
+            int Ymax = text.GetUpperBound(0), Xmax = text.GetUpperBound(1);
             string hor = "---";
             string ver = " | ";
             for (int y = 0; y < field.GetUpperBound(0); y++)
@@ -127,7 +164,7 @@ namespace Baricade.View
                 {
                     if (field[y, x] != null)
                     {
-                        text[y + Yofset, x + Xofset] = field[y, x].View.getText();//TODO empty string->"   "!!
+                        text[y + Yofset, x + Xofset] = field[y, x].View.getText();
                         for (int i = 0; i < field[y, x].links.Length; i++)
                         {
                             bool NotNull = field[y, x].links[i] != null;
@@ -139,28 +176,39 @@ namespace Baricade.View
                                     {
                                         line = ver;
                                     }
-                                    text[y + Yofset - 1, x + Xofset] = line;
-
+                                    if (y + Yofset - 1 >= 0)
+                                    {
+                                        text[y + Yofset - 1, x + Xofset] = line;
+                                    }
                                     break;
                                 case 1: if (NotNull)
                                     {
                                         line = hor;
                                     }
-                                    text[y + Yofset, x + Xofset + 1] = line;
+                                    if (x + Xofset + 1 < Xmax)
+                                    {
+                                        text[y + Yofset, x + Xofset + 1] = line;
+                                    }
                                     break;
                                 case 2:
                                     if (NotNull)
                                     {
                                         line = ver;
                                     }
-                                    text[y + Yofset + 1, x + Xofset] = line;
+                                    if (y + Yofset + 1 < Ymax)
+                                    {
+                                        text[y + Yofset + 1, x + Xofset] = line;
+                                    }
                                     break;
                                 case 3:
                                     if (NotNull)
                                     {
                                         line = hor;
                                     }
-                                    text[y + Yofset, x + Xofset - 1] = hor;
+                                    if (x + Xofset - 1 >= 0)
+                                    {
+                                        text[y + Yofset, x + Xofset - 1] = hor;
+                                    }
                                     break;
                             }
                         }
@@ -169,8 +217,46 @@ namespace Baricade.View
                     {
                         text[y + Yofset, x + Xofset] = "   ";
                     }
+                    Xofset++;
                 }
+                Yofset++;
             }
+
+            //actual printing
+            //"\ X:  01    02    03"
+            //"Y   __________________"
+            //"01 | < >---< >---< >"
+            Console.WriteLine("Current turn: " + controller.Game.CurrentPlayer.Color.ToString());
+            Console.WriteLine("Dice throw: " + controller.Game.CurrentDiceRoll);
+            Console.Write("\\ X:");
+            String underLine = "   ";
+            for (int i = 0; i < text.GetUpperBound(1)/2; i++)
+            {
+                string s = "";
+                if (i + 1 < 10)
+                {
+                    s = "0";
+                }
+                s += (i + 1).ToString();
+                Console.Write("  " + s + "  ");
+                underLine += "______";
+            }
+            Console.WriteLine();
+            Console.WriteLine("Y" + underLine);
+            for (int y = 0; y < text.GetUpperBound(0); y++)
+            {
+                if (y + 1 < 10)
+                {
+                    Console.Write("0");
+                }
+                Console.Write(y + 1 + " | ");
+                for (int x = 0; x < text.GetUpperBound(1); x++)
+                {
+                    Console.Write(text[y, x]);
+                }
+                Console.WriteLine("|");
+            }
+            Console.WriteLine(" " + underLine);
         }
     }
 }
