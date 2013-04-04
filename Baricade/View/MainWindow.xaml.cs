@@ -187,17 +187,8 @@ namespace Baricade.View
         {
         }
 
-        private void mChooseStyle_Click(object sender, RoutedEventArgs e)
-        {
-        }
         // Style Menu
-        private void mTextStyle_Click(object sender, RoutedEventArgs e)
-        {
-            controller.Text();
-            this.Close();
-        }
-        
-        private void mBarricadeStyle_Click(object sender, RoutedEventArgs e)
+        private void mChooseStyle_Click(object sender, RoutedEventArgs e)
         {
             StyleChooser styleChooser = new StyleChooser(this);
             styleChooser.Show();
