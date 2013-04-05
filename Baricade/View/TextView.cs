@@ -12,22 +12,35 @@ namespace Baricade.View
 {
     class TextView
     {
+        private string commandline;
         private GameController controller;
 
         public TextView(GameController controller)
         {
-            Console.SetWindowPosition(0, 0);
+            Console.Title = "Welcome to Baricade \ntype \"help\" for help";
             Console.BufferWidth *= 2;
             this.controller = controller;
+            show();
             Console.WriteLine("Welcome to Baricade \ntype \"help\" for help");
             while (true)
             {
-                show();
                 String line = Console.ReadLine().ToLower();
+                line.Trim();
                 String[] options = line.Split(' ');
                 Console.Clear();
-                Console.WriteLine(line);
+                show();
+                Console.WriteLine();
+                if (line == "")
+                {
+                    line = "<empty>";
+                }
+                commandline = "Command: " + line;
+                Console.WriteLine(commandline);
+                Console.WriteLine();
+                Console.WriteLine();
                 check(options);
+                Console.WriteLine();
+                Console.WriteLine();
             }
         }
 
@@ -45,17 +58,69 @@ namespace Baricade.View
                     cheat(options);
                     break;
                 case "save":
-                    save();
+                    save(options);
+                    break;
+                default:
+                    printHelp();
                     break;
             }
         }
 
-        private void save()//TODO:make
+        private void save(string[] options)//TODO:make
         {
+            if (options.Length > 1)
+            {
+                String name = options[1];
+                String[] split = name.Split('.');
+                if (split.Length >= 2 && split[split.Length - 1] == "xml")
+                {
+                    DirectoryInfo dir = new DirectoryInfo(Environment.CurrentDirectory + "\\Data\\Saves");
+                    FileInfo[] files = dir.GetFiles();
+                    bool exists = false;
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        if (files[i].Name == name)
+                        {
+                            exists = true;
+                        }
+                    }
+                    if (exists)
+                    {
+                        String awnser = null;
+                        while (!(awnser == "y" || awnser == "n"))
+                        {
+                            Console.Clear();
+                            show();
+                            Console.WriteLine(commandline);
+                            Console.WriteLine("File already exists do you want to override it? y/n");
+                            awnser = Console.ReadLine();
+                            awnser.ToLower();
+                        }
+                        if (awnser == "n")
+                        {
+                            Console.WriteLine("Saving canceled");
+                            return;
+                        }
+                    }
+                    try
+                    {
+                        new Saver(controller.Game, Environment.CurrentDirectory + "\\Data\\Saves\\" + name);
+                        Console.WriteLine("Saving...");
+                        System.Threading.Thread.Sleep(2500);
+                        Console.WriteLine("done");
+                        return;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("there was an error when saving, try again with an other file name.");
+                    }
+                }
+            }
 
+            Console.WriteLine("give a legit name for the save file");
         }
 
-        private void load(string[] options)//TODO:check
+        private void load(string[] options)
         {
             DirectoryInfo dir = new DirectoryInfo(Environment.CurrentDirectory + "\\Data\\Saves");
             FileInfo[] files = dir.GetFiles();
@@ -63,16 +128,22 @@ namespace Baricade.View
             {
                 for (int i = 0; i < files.Length; i++)
                 {
-                    if (files[i].Name == options[i])
+                    if (files[i].Name == options[1])
                     {
                         controller.loadGame(files[i].FullName);
+                        Console.Clear();
+                        Console.WriteLine(commandline);
+                        Console.WriteLine("loading...");
+                        System.Threading.Thread.Sleep(2500);
+                        Console.WriteLine("done");
+                        show();
                         return;
                     }
                 }
             }
             for (int i = 0; i < files.Length; i++)
             {
-                if (files[i].Extension == "xml")
+                if (files[i].Extension == ".xml")
                 {
                     Console.WriteLine(files[i].Name);
                 }
@@ -137,7 +208,7 @@ namespace Baricade.View
             Console.WriteLine("help:    displays this text");
             Console.WriteLine("load:    prints all the files possible to load when a filename is mentioned after load the specified file is loaded");
             Console.WriteLine("cheat:   print all the possible cheats if you want to use one type the command behind \"cheat\"");
-            Console.WriteLine("save:    saves current game with given name");
+            Console.WriteLine("save:    saves current game with given name don't forget the \".xml\" extension");
             Console.WriteLine("move:    ");
         }
 
@@ -146,9 +217,9 @@ namespace Baricade.View
             Board bord = controller.Game.Board;
             Square[,] field = bord.TwoDBord;
             String[,] text = new String[field.GetUpperBound(0) * 2 + 1, field.GetUpperBound(1) * 2 + 1];
-            for (int y = 0; y < text.GetUpperBound(0); y++)
+            for (int y = 0; y <= text.GetUpperBound(0); y++)
             {
-                for (int x = 0; x < text.GetUpperBound(1); x++)
+                for (int x = 0; x <= text.GetUpperBound(1); x++)
                 {
                     text[y, x] = "   ";
                 }
@@ -157,10 +228,10 @@ namespace Baricade.View
             int Ymax = text.GetUpperBound(0), Xmax = text.GetUpperBound(1);
             string hor = "---";
             string ver = " | ";
-            for (int y = 0; y < field.GetUpperBound(0); y++)
+            for (int y = 0; y <= field.GetUpperBound(0); y++)
             {
                 int Xofset = 0;
-                for (int x = 0; x < field.GetUpperBound(1); x++)
+                for (int x = 0; x <= field.GetUpperBound(1); x++)
                 {
                     if (field[y, x] != null)
                     {
@@ -172,40 +243,25 @@ namespace Baricade.View
                             switch (i)
                             {
                                 case 0:
-                                    if (NotNull)
+                                    if (NotNull && y + Yofset - 1 >= 0)
                                     {
-                                        line = ver;
-                                    }
-                                    if (y + Yofset - 1 >= 0)
-                                    {
-                                        text[y + Yofset - 1, x + Xofset] = line;
+                                        text[y + Yofset - 1, x + Xofset] = ver;
                                     }
                                     break;
-                                case 1: if (NotNull)
+                                case 1:
+                                    if (NotNull && x + Xofset + 1 < Xmax)
                                     {
-                                        line = hor;
-                                    }
-                                    if (x + Xofset + 1 < Xmax)
-                                    {
-                                        text[y + Yofset, x + Xofset + 1] = line;
+                                        text[y + Yofset, x + Xofset + 1] = hor;
                                     }
                                     break;
                                 case 2:
-                                    if (NotNull)
+                                    if (NotNull && y + Yofset + 1 < Ymax)
                                     {
-                                        line = ver;
-                                    }
-                                    if (y + Yofset + 1 < Ymax)
-                                    {
-                                        text[y + Yofset + 1, x + Xofset] = line;
+                                        text[y + Yofset + 1, x + Xofset] = ver;
                                     }
                                     break;
                                 case 3:
-                                    if (NotNull)
-                                    {
-                                        line = hor;
-                                    }
-                                    if (x + Xofset - 1 >= 0)
+                                    if (NotNull && x + Xofset - 1 >= 0)
                                     {
                                         text[y + Yofset, x + Xofset - 1] = hor;
                                     }
@@ -230,7 +286,7 @@ namespace Baricade.View
             Console.WriteLine("Dice throw: " + controller.Game.CurrentDiceRoll);
             Console.Write("\\ X:");
             String underLine = "   ";
-            for (int i = 0; i < text.GetUpperBound(1)/2; i++)
+            for (int i = 0; i <= text.GetUpperBound(1)/2; i++)
             {
                 string s = "";
                 if (i + 1 < 10)
@@ -243,14 +299,25 @@ namespace Baricade.View
             }
             Console.WriteLine();
             Console.WriteLine("Y" + underLine);
-            for (int y = 0; y < text.GetUpperBound(0); y++)
+            for (int y = 0; y <= text.GetUpperBound(0); y++)
             {
-                if (y + 1 < 10)
+                if (y % 2 == 0)
                 {
-                    Console.Write("0");
+                    if (((y/2) + 1) < 10)
+                    {
+                        Console.Write("0" + ((y/2)+1));
+                    }
+                    else
+                    {
+                        Console.Write((y/2)+1);
+                    }
                 }
-                Console.Write(y + 1 + " | ");
-                for (int x = 0; x < text.GetUpperBound(1); x++)
+                else
+                {
+                    Console.Write("  ");
+                }
+                Console.Write(" | ");
+                for (int x = 0; x <= text.GetUpperBound(1); x++)
                 {
                     Console.Write(text[y, x]);
                 }

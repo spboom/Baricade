@@ -29,6 +29,17 @@ namespace Baricade.View
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine(lbStyle.SelectedIndex);
+            switch (lbStyle.SelectedIndex)
+            {
+                case 0:
+                    mainWindow.toTextMode();
+                    Close();
+                    break;
+                case 1:
+                    Close();
+                    break;
+            }
         }
     }
 }

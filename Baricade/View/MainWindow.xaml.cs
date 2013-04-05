@@ -206,5 +206,11 @@ namespace Baricade.View
             ChooseDiceRoll roll = new ChooseDiceRoll(this);
             roll.Show();
         }
+
+        public void toTextMode()
+        {
+            new TextView(controller);
+            Close();
+        }
     }
 }
