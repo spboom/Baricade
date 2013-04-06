@@ -14,6 +14,7 @@ namespace Baricade.Model
         private int currentTurn;
         private int currentDiceRoll;
         private FinishSquare _finishSquare;
+        private bool playerMovedPiece;
 
         public Game(Board board, Circuit<Player> players, FinishSquare finish)
         {
@@ -21,6 +22,7 @@ namespace Baricade.Model
             this.players = players;
             currentPlayer = players.peek();
             _finishSquare = finish;
+            playerMovedPiece = false;
         }
 
         public Board Board
@@ -68,6 +70,7 @@ namespace Baricade.Model
          */
         public void nextTurn()
         {
+            playerMovedPiece = false;
             CurrentDiceRoll = 0;
             currentTurn++;
         }
@@ -102,6 +105,8 @@ namespace Baricade.Model
          */
         public bool movePiece(Piece piece, Square square)
         {
+
+            playerMovedPiece = true;
             return true;
         }
     }

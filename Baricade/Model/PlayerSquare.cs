@@ -12,6 +12,18 @@ namespace Baricade.Model
     {
         private List<Pawn> _pieces = new List<Pawn>();
 
+        public override Piece Piece
+        {
+            get
+            {
+                if (Pieces.Count >= 1)
+                {
+                    return Pieces[0];
+                }
+                return null;
+            }
+        }
+
         internal List<Pawn> Pieces
         {
             get { return _pieces; }
@@ -33,9 +45,24 @@ namespace Baricade.Model
             return false;
         }
 
+        private void addPawn(Pawn p)
+        {
+            Pieces.Add(p);
+        }
+
         public override bool mayContainPawn()
         {
             return true;
+        }
+
+        public override void setPawn(Pawn p)
+        {
+            Pieces.Add(p);
+        }
+
+        public override void removePawn(Pawn p)
+        {
+            Pieces.Remove(p);
         }
     }
 }

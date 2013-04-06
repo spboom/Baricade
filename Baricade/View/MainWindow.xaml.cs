@@ -209,8 +209,8 @@ namespace Baricade.View
 
         public void toTextMode()
         {
-            new TextView(controller);
             Close();
+            new TextView(controller);
         }
     }
 }

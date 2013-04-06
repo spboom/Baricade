@@ -73,33 +73,30 @@ namespace Baricade.Model
          */
         public bool moveTo(Square s)
         {
-            if (this.Square is PlayerSquare)
+            if (s != null)
             {
-                this.Player.removePawn();
-            }
-
-            if (s.isWalkable())
-            {
-                if ((this is Pawn && s.mayContainPawn()) ^ (this is BaricadePiece && s.mayContainBarricade()))
+                if (s.isWalkable())
                 {
-                    if (s.isOccupied())
+                    if ((this is Pawn && s.mayContainPawn()) ^ (this is BaricadePiece && s.mayContainBarricade()))
                     {
-                        if (s.Piece.isHit(this))
+                        if (s.isOccupied())
+                        {
+                            if (s.Piece.isHit(this))
+                            {
+                                this.Square = s;
+                                s.Piece = this;
+                                return true;
+                            }
+                        }
+                        else
                         {
                             this.Square = s;
                             s.Piece = this;
                             return true;
                         }
                     }
-                    else
-                    {
-                        this.Square = s;
-                        s.Piece = this;
-                        return true;
-                    }
                 }
             }
-
             return false;
         }
 

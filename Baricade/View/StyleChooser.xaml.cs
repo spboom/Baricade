@@ -33,8 +33,8 @@ namespace Baricade.View
             switch (lbStyle.SelectedIndex)
             {
                 case 0:
-                    mainWindow.toTextMode();
                     Close();
+                    mainWindow.toTextMode();
                     break;
                 case 1:
                     Close();

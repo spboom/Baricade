@@ -35,7 +35,7 @@ namespace Baricade.Model
             set { view.Y = value; }
         }
 
-        public Piece Piece
+        public virtual Piece Piece
         {
             get { return _piece; }
 
@@ -94,7 +94,7 @@ namespace Baricade.Model
                 links[direction] = s;
             }
         }
-        public List<Square> getNext(Square from, int stepsleft)
+        public Square[] getNext(Square from, int stepsleft)
         {
             List<Square> next = new List<Square>();
             for (int i = 0; i < links.Length; i++)
@@ -111,7 +111,7 @@ namespace Baricade.Model
                     }
                 }
             }
-            return next;
+            return next.ToArray();
         }
 
         public virtual Square getReturnTo()
@@ -142,6 +142,16 @@ namespace Baricade.Model
         public virtual bool mayContainPawn() // Overridden at subclasses.
         {
             return true;
+        }
+
+        public virtual void setPawn(Pawn p)
+        {
+            Piece = p;
+        }
+
+        public virtual void removePawn(Pawn p)
+        {
+            Piece = null;
         }
 
         /*

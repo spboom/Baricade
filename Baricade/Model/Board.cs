@@ -105,5 +105,20 @@ namespace Baricade.Model
             baricades = new List<BaricadePiece>();
             squares = new List<Square>();
         }
+
+        internal bool canMoveTo(Pawn pawn, int x, int y, int moves)
+        {
+            Square goal = twoDBord[y, x];
+            Square[] possibilities = pawn.Square.getNext(pawn.Square, moves);
+            for (int i = 0; i < possibilities.Length; i++)
+            {
+                if (goal == possibilities[i])
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

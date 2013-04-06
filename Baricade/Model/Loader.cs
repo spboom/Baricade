@@ -338,6 +338,13 @@ namespace Baricade.Model
             {
                 Pawn p = pawns[i];
                 p.Square = linkList[find(p.SquareId)];
+                p.Square.setPawn(p);
+            }
+            for (int i = 0; i < baricades.Count; i++)
+            {
+                BaricadePiece b = baricades[i];
+                b.Square = linkList[find(b.SquareId)];
+                b.Square.Piece = b;
             }
         }
 
