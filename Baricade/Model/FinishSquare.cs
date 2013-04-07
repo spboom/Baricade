@@ -7,7 +7,7 @@ using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
-    public class FinishSquare : RestSquare
+    public class FinishSquare : RestSquare//TODO winning
     {
         public FinishSquare()
             : base()

@@ -72,18 +72,10 @@ namespace Baricade.Model
             playerPawns.Add(p);
             p.Square = PlayerSquare;
         }
-
-        /*
-         * If a pawn is moved from the playerSquare, then lower the amount.
-         */
-        public void removePawn()
-        {
-            playerPawns.RemoveAt(playerPawns.Count);
-        }
-
+       
         public int numberOfPawnsAtStart()
         {
-            return playerPawns.Count;
+            return PlayerSquare.Pieces.Count;
         }
     }
 }

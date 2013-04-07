@@ -82,8 +82,14 @@ namespace Baricade.View
                     image.Name = "y" + s.View.Y + "x" + s.View.X;
 
                     String path = "pack://application:,,,/Style/" + board.View.Style + "/" + s.View.getName() + ".jpg";
-                    image.Source = new BitmapImage(new Uri(path));
-
+                    try
+                    {
+                        image.Source = new BitmapImage(new Uri(path));
+                    }
+                    catch
+                    {
+                        image.Source = new BitmapImage(new Uri("pack://application:,,,/Style/Minimalistic/square.jpg"));
+                    }
                     image.SetValue(Grid.RowProperty, s.View.Y);
                     image.SetValue(Grid.ColumnProperty, s.View.X);
 

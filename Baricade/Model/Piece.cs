@@ -35,6 +35,7 @@ namespace Baricade.Model
         public Piece(Square square, Player player = null)
         {
             Square = square;
+            Square.Piece = this;
             Player = player;
         }
 
@@ -71,38 +72,15 @@ namespace Baricade.Model
         /*
          * This method is used to move a piece to a a square after the path to the square is valid.
          */
-        public bool moveTo(Square s)
-        {
-            if (s != null)
-            {
-                if (s.isWalkable())
-                {
-                    if ((this is Pawn && s.mayContainPawn()) ^ (this is BaricadePiece && s.mayContainBarricade()))
-                    {
-                        if (s.isOccupied())
-                        {
-                            if (s.Piece.isHit(this))
-                            {
-                                this.Square = s;
-                                s.Piece = this;
-                                return true;
-                            }
-                        }
-                        else
-                        {
-                            this.Square = s;
-                            s.Piece = this;
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
+        public abstract bool moveTo(Square s);
+        
 
         /*
          * This method checks if it's legal to strike this pawn and if so sends it to its destination.
          */
         public abstract bool isHit(Piece p);
+
+
+        public abstract bool pawnMayMoveTrough();
     }
 }

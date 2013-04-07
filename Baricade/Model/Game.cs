@@ -105,9 +105,9 @@ namespace Baricade.Model
          */
         public bool movePiece(Piece piece, Square square)
         {
-
+            piece.moveTo(square);
             playerMovedPiece = true;
-            return true;
+            return false;
         }
     }
 }

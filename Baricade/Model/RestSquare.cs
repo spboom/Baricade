@@ -32,5 +32,10 @@ namespace Baricade.Model
         {
             return true;
         }
+
+        public override bool mayPawnBeHit()
+        {
+            return false;
+        }
     }
 }

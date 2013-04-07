@@ -24,7 +24,7 @@ namespace Baricade.Model
         private Circuit<Player> playerList = new Circuit<Player>();
         private List<BaricadePiece> baricades = new List<BaricadePiece>();
         private List<Pawn> pawns = new List<Pawn>();
-        private List<BaricadeSquare> baricadeSquares = new List<BaricadeSquare>();
+        private List<Square> baricadeSquares = new List<Square>();
         private Board board;
 
         public int NumberOfHumanPlayers
@@ -87,7 +87,7 @@ namespace Baricade.Model
             playerList = new Circuit<Player>();
             baricades = new List<BaricadePiece>();
             pawns = new List<Pawn>();
-            baricadeSquares = new List<BaricadeSquare>();
+            baricadeSquares = new List<Square>();
 
 
             while (r.Read())
@@ -119,6 +119,7 @@ namespace Baricade.Model
                     if (s.readElement(r))
                     {
                         insertInto(s.Id, s);
+                        baricadeSquares.Add(s);
                         previous = s;
                     }
                 }
@@ -129,6 +130,7 @@ namespace Baricade.Model
                     if(s.readElement(r))
                     {
                         insertInto(s.Id, s);
+                        baricadeSquares.Add(s);
                         previous = s;
                     }
                 }
@@ -298,7 +300,7 @@ namespace Baricade.Model
             for (int i = 0; i < playerList.Count; i++)
             {
                 Player p = playerList.pop();
-                if (p.PlayerPawns.Count != NumberOfPawns)
+                while (p.PlayerPawns.Count != NumberOfPawns)
                 {
                     if (p.PlayerPawns.Count > NumberOfPawns)
                     {
@@ -316,15 +318,39 @@ namespace Baricade.Model
                                     lowPos = j;
                                 }
                             }
-                            p.PlayerPawns[lowPos].Square.Piece = null;
+                            p.PlayerPawns[lowPos].Square.removePawn(p.PlayerPawns[lowPos]);
                             p.PlayerPawns.RemoveAt(lowPos);
                         }
                     }
                     else
                     {
-                        while (p.PlayerPawns.Count < NumberOfPawns)
+                        p.PlayerPawns.Add(new Pawn(p.PlayerSquare, p));
+                    }
+                }
+            }
+            int last = 0;
+            while (baricadeSquares.Count != baricades.Count)
+            {
+                if (baricades.Count < baricadeSquares.Count)
+                {
+                    for(int i=last;i<baricadeSquares.Count;i++)
+                    {
+                        if (!baricadeSquares[i].isOccupied())
                         {
-                            p.PlayerPawns.Add(new Pawn(p.PlayerSquare, p));
+                            baricades.Add(new BaricadePiece(baricadeSquares[i]));
+                            last=i+1;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < baricadeSquares.Count; i++)
+                    {
+                        if (baricadeSquares[i].isTransversable())
+                        {
+                            baricades.Remove((BaricadePiece)baricadeSquares[i].Piece);
+                            break;
                         }
                     }
                 }

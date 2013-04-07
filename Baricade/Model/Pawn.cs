@@ -25,7 +25,7 @@ namespace Baricade.Model
          */
         public override bool isHit(Piece p) // Only a pawn can hit a pawn.
         {
-            if (p is Piece)
+            if (this.Square.mayPawnBeHit())
             {
                 // If the current player tries to hit one of his own pawns, then return false.
                 if (this.Player == p.Player)
@@ -33,20 +33,45 @@ namespace Baricade.Model
                     return false;
                 }
 
-                // If the pawn is on village square, then send it to the forest square on the board.
-                if (this.Square is VillageSquare)
-                {
-                    this.Square.Piece = null;
-                    this.Square.Board.ForestSquare.addPawn(this);
-
-                }
-                else // go to player square
-                {
-                    this.Square.Piece = null;
-                    this.Player.addPawn(this);
-                }
-
+                Square to = Square.getReturnTo();
+                Square.removePawn(this);
+                Square = to;
+                Square.setPawn(this);
                 return true;
+            }
+            return false;
+        }
+
+        public override bool pawnMayMoveTrough()
+        {
+            return true;
+        }
+
+        public override bool moveTo(Square s)
+        {
+            if (s != null)
+            {
+                if (s.isWalkable())
+                {
+                    if (s.mayContainPawn())
+                    {
+                        if (s.isOccupied())
+                        {
+                            if (s.Piece.isHit(this))
+                            {
+                                this.Square = s;
+                                s.Piece = this;
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            this.Square = s;
+                            s.Piece = this;
+                            return true;
+                        }
+                    }
+                }
             }
             return false;
         }

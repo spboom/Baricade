@@ -84,15 +84,30 @@ namespace Baricade.View
                 {
                     if (split[0] == "B")
                     {
-                        int x, y;
-                        if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
+                        if (controller.Game.CurrentPlayer.Baricade != null)
                         {
-                            x--;
-                            y--;
-                            if (x >= 0 && y >= 0)
+                            int x, y;
+                            if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
                             {
-
+                                x--;
+                                y--;
+                                if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
+                                {
+                                    if (controller.Game.movePiece(controller.Game.CurrentPlayer.Baricade, controller.Game.Board.TwoDBoard[y, x]))
+                                    {
+                                        Console.WriteLine("Baricade moved to (" + split[1] + ", " + split[2] + ")");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("can't move to (" + split[1] + ", " + split[2] + ")");
+                                    }
+                                }
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine("You dont have a Baricade in your hand.");
+                            return;
                         }
                     }
                     else
@@ -114,6 +129,7 @@ namespace Baricade.View
                                         controller.Game.movePiece(controller.Game.CurrentPlayer.PlayerPawns[i], controller.Game.Board.TwoDBoard[y, x]);
                                         show();
                                         Console.WriteLine(split[0] + " moved to (" + split[1] + ", " + split[2] + ")");
+                                        return;
                                     }
                                 }
                             }

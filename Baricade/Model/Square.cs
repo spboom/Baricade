@@ -94,7 +94,7 @@ namespace Baricade.Model
                 links[direction] = s;
             }
         }
-        public Square[] getNext(Square from, int stepsleft)
+        public Square[] getNext(Square from, int stepsleft)//TODO maymove trough
         {
             List<Square> next = new List<Square>();
             for (int i = 0; i < links.Length; i++)
@@ -159,7 +159,7 @@ namespace Baricade.Model
          */
         public bool isTransversable()
         {
-            return !(Piece is BaricadePiece);
+            return (isOccupied() && Piece.pawnMayMoveTrough());
         }
 
         /*
@@ -169,5 +169,14 @@ namespace Baricade.Model
         {
             return !(Piece == null);
         }
+
+        /*
+         * Can a Pawn be hit on this square?
+         */
+        public virtual bool mayPawnBeHit()
+        {
+            return true;
+        }
+        
     }
 }
