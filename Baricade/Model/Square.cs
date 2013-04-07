@@ -15,6 +15,7 @@ namespace Baricade.Model
         private int id;
         public int up, left, right, down;
         public Square[] links;
+        public int[] distance;
         public int height = -1;
 
         public Square()

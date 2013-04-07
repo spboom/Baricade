@@ -12,9 +12,9 @@
   <villageSquare id="11" up="2" right="12"/>
   <villageSquare id="12" left="11" right="13"/>
   <villageSquare id="13" left="12" right="14"/>
-  <villageSquare id="14" left="13" right="15"/>
+  <RestSquare id="14" left="13" right="15"/>
   <baricadeVillageSquare id="15" left="14" right="16" down="23"/>
-  <villageSquare id="16" left="15" right="17"/>
+  <RestSquare id="16" left="15" right="17"/>
   <villageSquare id="17" left="16" right="18"/>
   <villageSquare id="18" left="17" right="19"/>
   <villageSquare id="19" left="18" up="10"/>
@@ -28,23 +28,23 @@
   <RestSquare id="27" up="20" right="28"/>
   <baricadesquare id="28" left="27" right="29"/>
   <square id="29" left="28" right="30"/>
-  <square id="30" left="29" right="31"/>
+  <square id="30" left="29" right="31" down="36"/>
   <square id="31" left="30" right="32"/>
   <baricadesquare id="32" left="31" right="33"/>
   <RestSquare id="33" up="26" left="32"/>
-  <square id="34" down="42" right="35"/>
+  <square id="34" down="66" right="35"/>
   <square id="35" left="34" right="36"/>
   <RestSquare id="36" up="30" left="35" right="37" down="65"/>
   <square id="37" left="36" right="38"/>
-  <square id="38" left="37" down="46"/>
+  <square id="38" left="37" down="67"/>
   <RestSquare id="39" down="50" right="40"/>
   <square id="40" left="39" right="41"/>
   <RestSquare id="41" left="40" down="52" right="42"/>
-  <square id="42" left="41" right="43" up="34"/>
+  <square id="42" left="41" right="43" up="66"/>
   <square id="43" left="42" right="44"/>
   <RestSquare id="44" left="43" down="55" right="45"/>
   <square id="45" left="44" right="46"/>
-  <square id="46" left="45" right="47" up="38"/>
+  <square id="46" left="45" right="47" up="67"/>
   <RestSquare id="47" left="46" down="58" right="48"/>
   <square id="48" left="47" right="49"/>
   <RestSquare id="49" left="48" down="60"/>
@@ -64,4 +64,6 @@
   <playerSquare id="63" speler="4" up="57"/>
   <playerSquare id="64" speler="2" up="59"/>
   <forestSquare id ="65" up="36"/>
+  <connector id="66" up="34" down="42"/>
+  <connector id="67" up="38" down="46"/>
 </board>

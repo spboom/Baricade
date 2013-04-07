@@ -55,10 +55,56 @@ namespace Baricade.View
                 case "move":
                     move(options);
                     break;
+                case "newgame":
+                    NewGame(options);
+                    break;
                 default:
                     printHelp();
                     break;
             }
+        }
+
+        private void NewGame(string[] options)
+        {
+            DirectoryInfo dir = new DirectoryInfo(Environment.CurrentDirectory + "\\Data\\Level");
+            FileInfo[] files = dir.GetFiles();
+            if (options.Length > 2)
+            {
+                int humanPlayers;
+                if(int.TryParse(options[2],out humanPlayers))
+                {
+                    FileInfo file = null;
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        if (files[i].Name == options[1])
+                        {
+                            file = files[i];
+                            break;
+                        }
+                    }
+                    if (file != null)
+                    {
+                        controller.newGame(humanPlayers, file.FullName);
+                        show();
+                        Console.WriteLine("New Game Started!");
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Board " + options[2] + "doesn't exist!");
+                    }
+                }
+            }
+            Console.WriteLine("newGame bordFileName #ofHumanPlayers");
+            Console.WriteLine("  bordFileName:");
+            for (int i = 0; i < files.Length; i++)
+            {
+                Console.WriteLine("    "+files[i]);
+            }
+            Console.WriteLine("  #ofHumanPlayers:");
+            Console.WriteLine("    any number between 0 and 4");
+
+
         }
 
         private void move(string[] options)
@@ -72,64 +118,75 @@ namespace Baricade.View
 
                 for (int j = 0; j < squares.Length; j++)
                 {
-                    codes.Add("P" + (i + 1) + ":" + (squares[j].X+1) + ", " + (squares[j].Y+1));
+                    codes.Add("P" + (i + 1) + ":" + (squares[j].X + 1) + ", " + (squares[j].Y + 1));
+                }
+                if (codes.Count == 0)
+                {
+                    codes.Add("skip");
                 }
             }
 
             if (options.Length > 1)
             {
-                char[] splitOn = { ':', ',', ' ' };
-                string[] split = options[1].Split(splitOn);
-                if (split.Length == 3)
+                if (options[1] == "skip" && codes[0] == "skip")
                 {
-                    if (split[0] == "B")
+                    controller.Game.nextTurn();
+                }
+                else
+                {
+                    char[] splitOn = { ':', ',', ' ' };
+                    string[] split = options[1].Split(splitOn);
+                    if (split.Length == 3)
                     {
-                        if (controller.Game.CurrentPlayer.Baricade != null)
+                        if (split[0] == "B")
                         {
-                            int x, y;
-                            if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
+                            if (controller.Game.CurrentPlayer.Baricade != null)
                             {
-                                x--;
-                                y--;
-                                if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
+                                int x, y;
+                                if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
                                 {
-                                    if (controller.Game.movePiece(controller.Game.CurrentPlayer.Baricade, controller.Game.Board.TwoDBoard[y, x]))
+                                    x--;
+                                    y--;
+                                    if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
                                     {
-                                        Console.WriteLine("Baricade moved to (" + split[1] + ", " + split[2] + ")");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("can't move to (" + split[1] + ", " + split[2] + ")");
+                                        if (controller.Game.movePiece(controller.Game.CurrentPlayer.Baricade, controller.Game.Board.TwoDBoard[y, x]))
+                                        {
+                                            Console.WriteLine("Baricade moved to (" + split[1] + ", " + split[2] + ")");
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("can't move to (" + split[1] + ", " + split[2] + ")");
+                                        }
                                     }
                                 }
+                            }
+                            else
+                            {
+                                Console.WriteLine("You dont have a Baricade in your hand.");
+                                return;
                             }
                         }
                         else
                         {
-                            Console.WriteLine("You dont have a Baricade in your hand.");
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        int i;
-                        string[] init = split[0].Split('p');
-                        if (init.Length == 2 && int.TryParse(init[1], out i) && i - 1 < controller.Game.CurrentPlayer.PlayerPawns.Count && i - 1 >= 0)
-                        {
-                            i--;
-                            int x, y;
-                            if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
+                            int i;
+                            string[] init = split[0].Split('p');
+                            if (init.Length == 2 && int.TryParse(init[1], out i) && i - 1 < controller.Game.CurrentPlayer.PlayerPawns.Count && i - 1 >= 0)
                             {
-                                x--;
-                                y--;
-                                if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
+                                i--;
+                                int x, y;
+                                if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
                                 {
-                                    if (controller.Game.Board.canMoveTo(controller.Game.CurrentPlayer.PlayerPawns[i], x, y, controller.Game.CurrentDiceRoll))//TODO
+                                    x--;
+                                    y--;
+                                    if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
                                     {
-                                        controller.Game.movePiece(controller.Game.CurrentPlayer.PlayerPawns[i], controller.Game.Board.TwoDBoard[y, x]);
-                                        show();
-                                        Console.WriteLine(split[0] + " moved to (" + split[1] + ", " + split[2] + ")");
-                                        return;
+                                        if (controller.Game.Board.canMoveTo(controller.Game.CurrentPlayer.PlayerPawns[i], x, y, controller.Game.CurrentDiceRoll))//TODO
+                                        {
+                                            controller.Game.movePiece(controller.Game.CurrentPlayer.PlayerPawns[i], controller.Game.Board.TwoDBoard[y, x]);
+                                            show();
+                                            Console.WriteLine(split[0] + " moved to (" + split[1] + ", " + split[2] + ")");
+                                            return;
+                                        }
                                     }
                                 }
                             }
@@ -137,18 +194,15 @@ namespace Baricade.View
                     }
                 }
             }
-            else
+            Console.WriteLine("Move Pawn:");
+            Console.WriteLine("P#:X, Y");
+            Console.WriteLine("Place Baricade:");
+            Console.WriteLine("B:X, Y");
+            Console.WriteLine();
+            Console.WriteLine("possibilities:");
+            for (int i = 0; i < codes.Count; i++)
             {
-                Console.WriteLine("Move Pawn:");
-                Console.WriteLine("P#:X, Y");
-                Console.WriteLine("Place Baricade:");
-                Console.WriteLine("B:X, Y");
-                Console.WriteLine();
-                Console.WriteLine("possibilities:");
-                for (int i = 0; i < codes.Count; i++)
-                {
-                    Console.WriteLine(codes[i]);
-                }
+                Console.WriteLine(codes[i]);
             }
         }
 
@@ -301,6 +355,7 @@ namespace Baricade.View
             Console.WriteLine("cheat:   print all the possible cheats if you want to use one type the command behind \"cheat\"");
             Console.WriteLine("save:    saves current game with given name don't forget the \".xml\" extension");
             Console.WriteLine("move:    moves the specified pawn or places the baricade in possesion to the given coördinates");
+            Console.WriteLine("newGame: creates a new game with the given board and number of human players");
         }
 
         private void show()

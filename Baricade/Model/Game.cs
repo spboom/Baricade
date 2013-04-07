@@ -73,14 +73,15 @@ namespace Baricade.Model
             playerMovedPiece = false;
             CurrentDiceRoll = 0;
             currentTurn++;
+            CurrentPlayer = nextPlayer();
         }
 
         /*
          *
          */
-        public void nextPlayer()
+        public Player nextPlayer()
         {
-            players.next();
+            return players.next();
         }
 
         /*
@@ -105,8 +106,11 @@ namespace Baricade.Model
          */
         public bool movePiece(Piece piece, Square square)
         {
-            piece.moveTo(square);
-            playerMovedPiece = true;
+            if (!playerMovedPiece)
+            {
+                playerMovedPiece = true;
+                return piece.moveTo(square);
+            }
             return false;
         }
     }

@@ -23,21 +23,25 @@ namespace Baricade.ViewModel
         public static char PlayerSquare_CloseTag = '>';
 
         public static char BarricadeSquare_OpenTag = '+';
-        public static char BarricadeSquare_CloseTag = '+';
+        public static char BarricadeSquare_CloseTag = BarricadeSquare_OpenTag;
 
         public static char BaricadeVillageSquare_OpenTag = ':';
-        public static char BaricadeVillageSquare_CloseTag = ':';
+        public static char BaricadeVillageSquare_CloseTag = BaricadeVillageSquare_OpenTag;
 
         public static char RestSquare_OpenTag = '[';
         public static char RestSquare_CloseTag = ']';
 
         public static char ForestSquare_OpenTag = '~';
-        public static char ForestSquare_CloseTag = '~';
+        public static char ForestSquare_CloseTag = ForestSquare_OpenTag;
 
         public static char FinishSquare_OpenTag = '!';
-        public static char FinishSquare_CloseTag = '!';
+        public static char FinishSquare_CloseTag = FinishSquare_OpenTag;
 
         public static char VillageSquare_OpenTag = '{';
         public static char VillageSquare_CloseTag = '}';
+
+        //link
+        public static char Connector_OpenTag = ' ';
+        public static char Connector_CloseTag = Connector_OpenTag;
     }
 }

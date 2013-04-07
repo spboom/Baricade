@@ -12,6 +12,10 @@ namespace Baricade.Model
         public Pawn(Square s, Player p)
             : base(s, p)
         {
+            if (Square != null)
+            {
+                Square.setPawn(this);
+            }
             View = new VPawn(this);
         }
         public Pawn()

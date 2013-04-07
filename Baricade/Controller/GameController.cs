@@ -47,5 +47,10 @@ namespace Baricade.Controller
         {
             View.TextView textview = new View.TextView(this);
         }
+
+        internal void newGame(int humanPlayers, string p)
+        {
+            game = loader.Load(p, humanPlayers);
+        }
     }
 }

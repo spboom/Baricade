@@ -35,7 +35,10 @@ namespace Baricade.Model
         public Piece(Square square, Player player = null)
         {
             Square = square;
-            Square.Piece = this;
+            if (square != null)
+            {
+                Square.Piece = this;
+            }
             Player = player;
         }
 

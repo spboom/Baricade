@@ -60,8 +60,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Connector.cs" />
     <Compile Include="Model\LowRowSquare.cs" />
     <Compile Include="Model\Saver.cs" />
+    <Compile Include="ViewModel\VConnector.cs" />
     <Compile Include="ViewModel\PlayerColor.cs" />
     <Compile Include="ViewModel\TextView.cs" />
     <Compile Include="ViewModel\VBaricade.cs" />

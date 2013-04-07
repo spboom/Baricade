@@ -71,6 +71,7 @@ namespace Baricade.Model
         {
             playerPawns.Add(p);
             p.Square = PlayerSquare;
+            PlayerSquare.setPawn(p);
         }
        
         public int numberOfPawnsAtStart()

@@ -25,6 +25,7 @@ namespace Baricade.Model
         private List<BaricadePiece> baricades = new List<BaricadePiece>();
         private List<Pawn> pawns = new List<Pawn>();
         private List<Square> baricadeSquares = new List<Square>();
+        private List<Connector> connectors = new List<Connector>();
         private Board board;
 
         public int NumberOfHumanPlayers
@@ -88,6 +89,7 @@ namespace Baricade.Model
             baricades = new List<BaricadePiece>();
             pawns = new List<Pawn>();
             baricadeSquares = new List<Square>();
+            connectors = new List<Connector>();
 
 
             while (r.Read())
@@ -124,7 +126,7 @@ namespace Baricade.Model
                     }
                 }
 
-                else if (r.Name.ToLower() == "baricadevillageSquare")
+                else if (r.Name.ToLower() == "baricadevillagesquare")
                 {
                     BaricadeVillageSquare s = new BaricadeVillageSquare();
                     if(s.readElement(r))
@@ -135,10 +137,19 @@ namespace Baricade.Model
                     }
                 }
 
+                else if (r.Name.ToLower() == "restsquare")
+                {
+                    RestSquare s = new RestSquare();
+                    if(s.readElement(r))
+                    {
+                        insertInto(s.Id,s);
+                    }
+                }
+
                 else if (r.Name.ToLower() == "playersquare")
                 {
                     PlayerSquare s = new PlayerSquare();
-                    if(s.readElement(r))
+                    if (s.readElement(r))
                     {
                         playerSquares.Add(s);
                         insertInto(s.Id, s);
@@ -159,7 +170,7 @@ namespace Baricade.Model
                 else if (r.Name.ToLower() == "baricade")
                 {
                     BaricadePiece b = new BaricadePiece();
-                    if(b.readElement(r))
+                    if (b.readElement(r))
                     {
                         baricades.Add(b);
                     }
@@ -168,9 +179,19 @@ namespace Baricade.Model
                 else if (r.Name.ToLower() == "lowrowsquare")
                 {
                     LowRowSquare s = new LowRowSquare();
-                    if(s.readElement(r))
+                    if (s.readElement(r))
                     {
-                        insertInto(s.Id,s);
+                        insertInto(s.Id, s);
+                    }
+                }
+
+                else if (r.Name.ToLower() == "connector")
+                {
+                    Connector s = new Connector();
+                    if (s.readElement(r))
+                    {
+                        insertInto(s.Id, s);
+                        connectors.Add(s);
                     }
                 }
 
@@ -239,8 +260,39 @@ namespace Baricade.Model
             checkPieces();
             playerList.setCurrent(_currentPlayer);
             setPosition(f, f.X, f.Y);
+            conectors();
             board.Squares = linkList;
-            return new Game(board, playerList,f);
+            Game game = new Game(board, playerList,f);
+            return game;
+        }
+
+        private void conectors()
+        {
+            for (int i = 0; i < connectors.Count; i++)
+            {
+                for (int d = 0; d < connectors[i].links.Length; d++)
+                {
+                    Square s = connectors[i].links[d];
+                    if (s != null)
+                    {
+                        switch (d)
+                        {
+                            case 0:
+                                s.links[2] = connectors[i].links[2];
+                                break;
+                            case 1:
+                                s.links[3] = connectors[i].links[3];
+                                break;
+                            case 2:
+                                s.links[0] = connectors[i].links[0];
+                                break;
+                            case 3:
+                                s.links[1] = connectors[i].links[1];
+                                break;
+                        }
+                    }
+                }
+            }
         }
 
         private void setPawnsToPlayer()
@@ -494,6 +546,60 @@ namespace Baricade.Model
                 }
                 linkList.Insert(min, s);
             }
+        }
+
+        internal Game Load(string s, int humanPlayers)
+        {
+            int humans=0;
+            Game game = Load(s);
+            Circuit<Player> players = new Circuit<Player>();
+            for (int i = 0; i < baricades.Count; i++)
+            {
+                baricades[i].Square.Piece = null;
+                baricades[i].Square = null;
+            }
+            
+            baricades = new List<BaricadePiece>();
+            while (baricades.Count < baricadeSquares.Count)
+            {
+                BaricadePiece b = new BaricadePiece();
+                baricadeSquares[baricades.Count].Piece = b;
+                baricades.Add(b);
+            }
+
+            for(int i=0;i<game.Players.Count;i++)
+            {
+                Player p = game.Players.pop();
+                for(int j=0;j<p.PlayerPawns.Count;j++)
+                {
+                    p.PlayerPawns[j].Square.removePawn(p.PlayerPawns[j]);
+                    p.PlayerPawns[j].Square = null;
+                }
+                PlayerColor color = p.Color;
+                int id = p.PlayerId;
+                PlayerSquare square = p.PlayerSquare;
+
+                if (humans < humanPlayers)
+                {
+                    p = new Player();
+                    humans++;
+                }
+                else
+                {
+                    p = new AIPlayer();
+                }
+                
+                p.PlayerSquare = square;
+                p.PlayerId = id;
+                p.Color = color;
+
+                for (int j = 0; j < game.Board.NumberOfPawns; j++)
+                {
+                    p.addPawn(new Pawn(null,p));
+                    
+                }
+            }
+            return game;
         }
     }
 }
