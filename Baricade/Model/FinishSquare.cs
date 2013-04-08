@@ -9,8 +9,8 @@ namespace Baricade.Model
 {
     public class FinishSquare : RestSquare//TODO winning
     {
-        public FinishSquare()
-            : base()
+        public FinishSquare(Board board)
+            : base(board)
         {
             View = new VFinishSquare(this);
         }

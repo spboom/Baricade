@@ -29,8 +29,8 @@ namespace Baricade.Model
             get { return _pieces; }
             set { _pieces = value; }
         }
-        public PlayerSquare()
-            : base()
+        public PlayerSquare(Board board)
+            : base(board)
         {
             View = new VPlayerSquare(this);
         }
@@ -58,11 +58,13 @@ namespace Baricade.Model
         public override void setPawn(Pawn p)
         {
             Pieces.Add(p);
+            p.Square = this;
         }
 
         public override void removePawn(Pawn p)
         {
             Pieces.Remove(p);
+            p.Square = null;
         }
     }
 }

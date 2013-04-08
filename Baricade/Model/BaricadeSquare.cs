@@ -9,8 +9,8 @@ namespace Baricade.Model
 {
     public class BaricadeSquare : Square
     {
-        public BaricadeSquare()
-            : base()
+        public BaricadeSquare(Board board)
+            : base(board)
         {
             View = new VBaricadeSquare(this);
         }

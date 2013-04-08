@@ -16,6 +16,13 @@ namespace Baricade.Model
         private List<BaricadePiece> baricades;
         private List<Square> squares;
         private Square[,] twoDBord;
+        private Game game;
+
+        public Game Game
+        {
+            get { return game; }
+            set { game = value; }
+        }
 
         public Square[,] TwoDBord
         {

@@ -9,8 +9,8 @@ namespace Baricade.Model
 {
     public class LowRowSquare:Square
     {
-        public LowRowSquare()
-            : base()
+        public LowRowSquare(Board board)
+            : base(board)
         {
             View = new VLowRowSquare(this);
         }

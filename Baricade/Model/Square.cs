@@ -18,8 +18,9 @@ namespace Baricade.Model
         public int[] distance;
         public int height = -1;
 
-        public Square()
+        public Square(Board board)
         {
+            Board = board;
             view = new VSquare(this);
             links = new Square[4];
         }
@@ -43,6 +44,10 @@ namespace Baricade.Model
             set
             {
                 _piece = value;
+                if (value != null)
+                {
+                    value.Square = this;
+                }
             }
         }
 
@@ -95,6 +100,7 @@ namespace Baricade.Model
                 links[direction] = s;
             }
         }
+
         public Square[] getNext(Square from, int stepsleft)//TODO maymove trough
         {
             List<Square> next = new List<Square>();
@@ -102,11 +108,14 @@ namespace Baricade.Model
             {
                 if (links[i] != null && !links[i].Equals(from))
                 {
-                    if (stepsleft > 0)
+                    if (stepsleft > 1)
                     {
-                        next.AddRange(links[i].getNext(this, stepsleft - 1));
+                        if (links[i].isTransversable())
+                        {
+                            next.AddRange(links[i].getNext(this, stepsleft - 1));
+                        }
                     }
-                    else
+                    else if (stepsleft == 1)
                     {
                         next.Add(links[i]);
                     }
@@ -148,10 +157,12 @@ namespace Baricade.Model
         public virtual void setPawn(Pawn p)
         {
             Piece = p;
+            p.Square = this;
         }
 
         public virtual void removePawn(Pawn p)
         {
+            Piece.Square = null;
             Piece = null;
         }
 
@@ -160,7 +171,11 @@ namespace Baricade.Model
          */
         public bool isTransversable()
         {
-            return (isOccupied() && Piece.pawnMayMoveTrough());
+            if (isOccupied())
+            {
+                return Piece.pawnMayMoveTrough();
+            }
+            return true;
         }
 
         /*

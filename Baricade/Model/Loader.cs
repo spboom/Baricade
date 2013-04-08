@@ -96,7 +96,7 @@ namespace Baricade.Model
             {
                 if (r.Name.ToLower() == "square")
                 {
-                    Square s = new Square();
+                    Square s = new Square(board);
                     if (s.readElement(r))
                     {
                         s.View = new VSquare(s);
@@ -107,7 +107,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "villagesquare")
                 {
-                    VillageSquare s = new VillageSquare();
+                    VillageSquare s = new VillageSquare(board);
                     if (s.readElement(r))
                     {
                         insertInto(s.Id, s);
@@ -117,7 +117,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "baricadesquare")
                 {
-                    BaricadeSquare s = new BaricadeSquare();
+                    BaricadeSquare s = new BaricadeSquare(board);
                     if (s.readElement(r))
                     {
                         insertInto(s.Id, s);
@@ -128,7 +128,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "baricadevillagesquare")
                 {
-                    BaricadeVillageSquare s = new BaricadeVillageSquare();
+                    BaricadeVillageSquare s = new BaricadeVillageSquare(board);
                     if(s.readElement(r))
                     {
                         insertInto(s.Id, s);
@@ -139,7 +139,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "restsquare")
                 {
-                    RestSquare s = new RestSquare();
+                    RestSquare s = new RestSquare(board);
                     if(s.readElement(r))
                     {
                         insertInto(s.Id,s);
@@ -148,7 +148,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "playersquare")
                 {
-                    PlayerSquare s = new PlayerSquare();
+                    PlayerSquare s = new PlayerSquare(board);
                     if (s.readElement(r))
                     {
                         playerSquares.Add(s);
@@ -178,7 +178,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "lowrowsquare")
                 {
-                    LowRowSquare s = new LowRowSquare();
+                    LowRowSquare s = new LowRowSquare(board);
                     if (s.readElement(r))
                     {
                         insertInto(s.Id, s);
@@ -187,7 +187,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "connector")
                 {
-                    Connector s = new Connector();
+                    Connector s = new Connector(board);
                     if (s.readElement(r))
                     {
                         insertInto(s.Id, s);
@@ -224,7 +224,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "finishsquare")
                 {
-                    FinishSquare s = new FinishSquare();
+                    FinishSquare s = new FinishSquare(board);
                     if (s.readElement(r))
                     {
                         f = s;
@@ -234,7 +234,7 @@ namespace Baricade.Model
                 }
                 else if (r.Name.ToLower() == "forestsquare")
                 {
-                    ForestSquare s = new ForestSquare();
+                    ForestSquare s = new ForestSquare(board);
                     if (s.readElement(r))
                     {
                         forest = s;
@@ -263,6 +263,7 @@ namespace Baricade.Model
             conectors();
             board.Squares = linkList;
             Game game = new Game(board, playerList,f);
+            board.Game = game;
             return game;
         }
 
@@ -338,7 +339,7 @@ namespace Baricade.Model
                             player.Color = PlayerColor.Yellow;
                             break;
                     }
-                    for (int j = 0; j < NumberOfPawns; j++)
+                    for (int j = 0; j <= NumberOfPawns; j++)
                     {
                         pawns.Add(new Pawn(player.PlayerSquare, player));
                     }
@@ -573,7 +574,6 @@ namespace Baricade.Model
                 for(int j=0;j<p.PlayerPawns.Count;j++)
                 {
                     p.PlayerPawns[j].Square.removePawn(p.PlayerPawns[j]);
-                    p.PlayerPawns[j].Square = null;
                 }
                 PlayerColor color = p.Color;
                 int id = p.PlayerId;
@@ -596,9 +596,10 @@ namespace Baricade.Model
                 for (int j = 0; j < game.Board.NumberOfPawns; j++)
                 {
                     p.addPawn(new Pawn(null,p));
-                    
                 }
+                players.Add(p);
             }
+            game.Players = players;
             return game;
         }
     }

@@ -10,5 +10,13 @@ namespace Baricade.Model
     {
         public AIPlayer()
         { }
+
+        public override bool Human
+        {
+            get
+            {
+                return false;
+            }
+        }
     }
 }

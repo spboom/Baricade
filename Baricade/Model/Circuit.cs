@@ -18,10 +18,10 @@ namespace Baricade.Model
         }
         private int pointer;
 
-        private int Pointer
+        public int Pointer
         {
             get { return pointer; }
-            set
+            private set
             {
                 if (value >= list.Count)
                 {

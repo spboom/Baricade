@@ -16,13 +16,25 @@ namespace Baricade.Model
         private FinishSquare _finishSquare;
         private bool playerMovedPiece;
 
+        public bool PlayerMovedPiece
+        {
+            get { return playerMovedPiece; }
+            set { playerMovedPiece = value; }
+        }
+        private bool diceTrown;
+
+        public bool DiceTrown
+        {
+            get { return diceTrown; }
+            set { diceTrown = value; }
+        }
+
         public Game(Board board, Circuit<Player> players, FinishSquare finish)
         {
             this.board = board;
             this.players = players;
             currentPlayer = players.peek();
             _finishSquare = finish;
-            playerMovedPiece = false;
         }
 
         public Board Board
@@ -62,7 +74,14 @@ namespace Baricade.Model
         public Circuit<Player> Players
         {
             get { return players; }
-            private set { players = value; }
+            set
+            {
+                players = value;
+                if (value != null)
+                {
+                    CurrentPlayer = value.peek();
+                }
+            }
         }
 
         /*
@@ -71,6 +90,7 @@ namespace Baricade.Model
         public void nextTurn()
         {
             playerMovedPiece = false;
+            diceTrown = false;
             CurrentDiceRoll = 0;
             currentTurn++;
             CurrentPlayer = nextPlayer();
@@ -97,8 +117,12 @@ namespace Baricade.Model
          */
         public void throwDice()
         {
-            Random random = new Random();
-            CurrentDiceRoll = random.Next(6) + 1;
+            if (!diceTrown)
+            {
+                diceTrown = true;
+                Random random = new Random();
+                CurrentDiceRoll = random.Next(6) + 1;
+            }
         }
 
         /*
@@ -108,8 +132,8 @@ namespace Baricade.Model
         {
             if (!playerMovedPiece)
             {
-                playerMovedPiece = true;
-                return piece.moveTo(square);
+                playerMovedPiece = piece.moveTo(square);;
+                return playerMovedPiece;
             }
             return false;
         }

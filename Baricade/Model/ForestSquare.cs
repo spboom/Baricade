@@ -12,8 +12,8 @@ namespace Baricade.Model
     {
         private ArrayList pawns;
 
-        public ForestSquare()
-            : base()
+        public ForestSquare(Board board)
+            : base(board)
         {
             View = new VForestSquare(this);
             pawns = new ArrayList();
@@ -24,7 +24,7 @@ namespace Baricade.Model
             pawns.Add(p);
         }
 
-        public void removePawn(Pawn p)
+        public override void removePawn(Pawn p)
         {
             pawns.Add(p);
         }

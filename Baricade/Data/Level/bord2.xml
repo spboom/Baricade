@@ -50,7 +50,7 @@
   <RestSquare id="49" left="48" down="60"/>
   <lowrowsquare id="50" up="39" right="51"/>
   <lowrowsquare id="51" left="50" right="52" down="61"/>
-  <lowrowsquare id="52" left="51" right="53" up="40"/>
+  <lowrowsquare id="52" left="51" right="53" up="41"/>
   <lowrowsquare id="53" left="52" right="54" down="62"/>
   <lowrowsquare id="54" left="53" right="55"/>
   <lowrowsquare id="55" left="54" right="56" up="44"/>

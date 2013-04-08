@@ -27,7 +27,7 @@ namespace Baricade.Model
          * The method isHit replaces the pawn on the square with the one in the signature and
          * places it in the associated player's starting position.
          */
-        public override bool isHit(Piece p) // Only a pawn can hit a pawn.
+        public override bool isHit(Pawn p) // Only a pawn can hit a pawn.
         {
             if (this.Square.mayPawnBeHit())
             {
@@ -38,9 +38,10 @@ namespace Baricade.Model
                 }
 
                 Square to = Square.getReturnTo();
+                Square from = Square;
                 Square.removePawn(this);
-                Square = to;
-                Square.setPawn(this);
+                from.setPawn(p);
+                to.setPawn(this);
                 return true;
             }
             return false;
@@ -61,17 +62,11 @@ namespace Baricade.Model
                     {
                         if (s.isOccupied())
                         {
-                            if (s.Piece.isHit(this))
-                            {
-                                this.Square = s;
-                                s.Piece = this;
-                                return true;
-                            }
+                            return s.Piece.isHit(this);
                         }
                         else
                         {
-                            this.Square = s;
-                            s.Piece = this;
+                            s.setPawn(this);
                             return true;
                         }
                     }

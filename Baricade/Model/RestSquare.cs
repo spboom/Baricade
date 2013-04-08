@@ -9,8 +9,8 @@ namespace Baricade.Model
 {
     public class RestSquare : Square
     {
-        public RestSquare()
-            : base()
+        public RestSquare(Board board)
+            : base(board)
         {
             View = new VRestSquare(this);
         }

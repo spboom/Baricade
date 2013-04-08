@@ -81,7 +81,7 @@ namespace Baricade.Model
         /*
          * This method checks if it's legal to strike this pawn and if so sends it to its destination.
          */
-        public abstract bool isHit(Piece p);
+        public abstract bool isHit(Pawn p);
 
 
         public abstract bool pawnMayMoveTrough();

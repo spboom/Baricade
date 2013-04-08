@@ -9,8 +9,8 @@ namespace Baricade.Model
 {
     class Connector:Square
     {
-        public Connector()
-            : base()
+        public Connector(Board board)
+            : base(board)
         {
             View = new VConnector(this);
         }

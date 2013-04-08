@@ -24,16 +24,23 @@ namespace Baricade.View
             Console.WriteLine("Welcome to Baricade \ntype \"help\" for help");
             while (true)
             {
-                String line = Console.ReadLine().ToLower();
-                line.Trim();
-                String[] options = line.Split(' ');
-                Console.Clear();
-                commandline = line;
-                show();
-                check(options);
-                Console.WriteLine();
-                Console.WriteLine();
-            }
+                if (controller.Game.CurrentPlayer.Human)
+                {
+                    String line = Console.ReadLine().ToLower();
+                    line.Trim();
+                    String[] options = line.Split(' ');
+                    Console.Clear();
+                    commandline = line;
+                    show();
+                    check(options);
+                    Console.WriteLine();
+                    Console.WriteLine();
+                }
+                else
+                {
+                    AIPlayer();
+                }
+                }
         }
 
         private void check(string[] options)
@@ -57,6 +64,11 @@ namespace Baricade.View
                     break;
                 case "newgame":
                     NewGame(options);
+                    break;
+                case "throwdice":
+                    controller.Game.throwDice();
+                    show();
+                    Console.WriteLine("you have thrown "+controller.Game.CurrentDiceRoll);
                     break;
                 default:
                     printHelp();
@@ -84,6 +96,10 @@ namespace Baricade.View
                     }
                     if (file != null)
                     {
+                        Console.Clear();
+                        Console.WriteLine(commandline);
+                        Console.WriteLine("Creating new Game...");
+                        System.Threading.Thread.Sleep(2500);
                         controller.newGame(humanPlayers, file.FullName);
                         show();
                         Console.WriteLine("New Game Started!");
@@ -91,7 +107,7 @@ namespace Baricade.View
                     }
                     else
                     {
-                        Console.WriteLine("Board " + options[2] + "doesn't exist!");
+                        Console.WriteLine("Board " + options[1] + " doesn't exist!");
                     }
                 }
             }
@@ -109,83 +125,101 @@ namespace Baricade.View
 
         private void move(string[] options)
         {
-            List<String> codes = new List<string>();
-            for (int i = 0; i < controller.Game.CurrentPlayer.PlayerPawns.Count; i++)
+            if (controller.Game.CurrentDiceRoll != 0)
             {
-                Square square = controller.Game.CurrentPlayer.PlayerPawns[i].Square;
+                List<String> codes = new List<string>();
+                for (int i = 0; i < controller.Game.CurrentPlayer.PlayerPawns.Count; i++)
+                {
+                    Square square = controller.Game.CurrentPlayer.PlayerPawns[i].Square;
 
-                Square[] squares = square.getNext(square, controller.Game.CurrentDiceRoll);
+                    Square[] squares = square.getNext(square, controller.Game.CurrentDiceRoll);
 
-                for (int j = 0; j < squares.Length; j++)
-                {
-                    codes.Add("P" + (i + 1) + ":" + (squares[j].X + 1) + ", " + (squares[j].Y + 1));
-                }
-                if (codes.Count == 0)
-                {
-                    codes.Add("skip");
-                }
-            }
-
-            if (options.Length > 1)
-            {
-                if (options[1] == "skip" && codes[0] == "skip")
-                {
-                    controller.Game.nextTurn();
-                }
-                else
-                {
-                    char[] splitOn = { ':', ',', ' ' };
-                    string[] split = options[1].Split(splitOn);
-                    if (split.Length == 3)
+                    for (int j = 0; j < squares.Length; j++)
                     {
-                        if (split[0] == "B")
+                        codes.Add("P" + (i + 1) + ":" + (squares[j].X + 1) + ", " + (squares[j].Y + 1));
+                    }
+                    if (codes.Count == 0)
+                    {
+                        codes.Add("skip");
+                    }
+                }
+
+                if (options.Length > 1)
+                {
+                    if (options[1] == "skip" && codes[0] == "skip")
+                    {
+                        controller.Game.nextTurn();
+                        show();
+                        return;
+                    }
+                    else
+                    {
+                        char[] splitOn = { ':', ',', ' ' };
+                        string[] split = options[1].Split(splitOn);
+                        if (split.Length == 3)
                         {
-                            if (controller.Game.CurrentPlayer.Baricade != null)
+                            if (split[0] == "B")
                             {
-                                int x, y;
-                                if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
+                                if (controller.Game.CurrentPlayer.Baricade != null)
                                 {
-                                    x--;
-                                    y--;
-                                    if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
+                                    int x, y;
+                                    if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
                                     {
-                                        if (controller.Game.movePiece(controller.Game.CurrentPlayer.Baricade, controller.Game.Board.TwoDBoard[y, x]))
+                                        x--;
+                                        y--;
+                                        if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
                                         {
-                                            Console.WriteLine("Baricade moved to (" + split[1] + ", " + split[2] + ")");
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("can't move to (" + split[1] + ", " + split[2] + ")");
+                                            if (controller.Game.movePiece(controller.Game.CurrentPlayer.Baricade, controller.Game.Board.TwoDBoard[y, x]))
+                                            {
+                                                Console.WriteLine("Baricade moved to (" + split[1] + ", " + split[2] + ")");
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("can't move to (" + split[1] + ", " + split[2] + ")");
+                                            }
                                         }
                                     }
+                                    return;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You dont have a Baricade in your hand.");
+                                    return;
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("You dont have a Baricade in your hand.");
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            int i;
-                            string[] init = split[0].Split('p');
-                            if (init.Length == 2 && int.TryParse(init[1], out i) && i - 1 < controller.Game.CurrentPlayer.PlayerPawns.Count && i - 1 >= 0)
-                            {
-                                i--;
-                                int x, y;
-                                if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
+                                int i;
+                                string[] init = split[0].Split('p');
+                                if (init.Length == 2 && int.TryParse(init[1], out i) && i - 1 < controller.Game.CurrentPlayer.PlayerPawns.Count && i - 1 >= 0)
                                 {
-                                    x--;
-                                    y--;
-                                    if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
+                                    i--;
+                                    int x, y;
+                                    if (int.TryParse(split[1], out x) && int.TryParse(split[2], out y))
                                     {
-                                        if (controller.Game.Board.canMoveTo(controller.Game.CurrentPlayer.PlayerPawns[i], x, y, controller.Game.CurrentDiceRoll))//TODO
+                                        x--;
+                                        y--;
+                                        if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
                                         {
-                                            controller.Game.movePiece(controller.Game.CurrentPlayer.PlayerPawns[i], controller.Game.Board.TwoDBoard[y, x]);
-                                            show();
-                                            Console.WriteLine(split[0] + " moved to (" + split[1] + ", " + split[2] + ")");
-                                            return;
+                                            if (controller.Game.Board.canMoveTo(controller.Game.CurrentPlayer.PlayerPawns[i], x, y, controller.Game.CurrentDiceRoll))//TODO
+                                            {
+                                                if (controller.Game.movePiece(controller.Game.CurrentPlayer.PlayerPawns[i], controller.Game.Board.TwoDBoard[y, x]))
+                                                {
+                                                    if (controller.Game.CurrentPlayer.Baricade == null)
+                                                    {
+                                                        controller.Game.nextTurn();
+                                                    }
+
+                                                    show();
+                                                    Console.WriteLine(split[0] + " moved to (" + split[1] + ", " + split[2] + ")");
+                                                    
+                                                    if (!controller.Game.CurrentPlayer.Human)
+                                                    {
+                                                        AIPlayer();
+                                                    }
+                                                    return;
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -193,16 +227,32 @@ namespace Baricade.View
                         }
                     }
                 }
+                Console.WriteLine("Move Pawn:");
+                Console.WriteLine("P#:X, Y");
+                Console.WriteLine("Place Baricade:");
+                Console.WriteLine("B:X, Y");
+                Console.WriteLine();
+                Console.WriteLine("possibilities:");
+                for (int i = 0; i < codes.Count; i++)
+                {
+                    Console.WriteLine(codes[i]);
+                }
+                return;
             }
-            Console.WriteLine("Move Pawn:");
-            Console.WriteLine("P#:X, Y");
-            Console.WriteLine("Place Baricade:");
-            Console.WriteLine("B:X, Y");
-            Console.WriteLine();
-            Console.WriteLine("possibilities:");
-            for (int i = 0; i < codes.Count; i++)
+            Console.WriteLine("you must throw the dice first!");
+        }
+
+        private void AIPlayer()
+        {
+            while (!controller.Game.CurrentPlayer.Human)
             {
-                Console.WriteLine(codes[i]);
+                controller.Game.throwDice();
+                show();
+                //System.Threading.Thread.Sleep(2500);
+                Console.Read();
+                controller.Game.CurrentPlayer.bestmove(controller.Game.CurrentDiceRoll);
+                controller.Game.nextTurn();
+                show();
             }
         }
 
@@ -349,13 +399,14 @@ namespace Baricade.View
 
         private void printHelp()
         {
-            Console.WriteLine("help:    displays this text, if you type anything that isn't recognized this is also dislpayed");
-            Console.WriteLine("         however if you type a command without it's parameters it wil display what options you have with that command");
-            Console.WriteLine("load:    prints all the files possible to load when a filename is mentioned after load the specified file is loaded");
-            Console.WriteLine("cheat:   print all the possible cheats if you want to use one type the command behind \"cheat\"");
-            Console.WriteLine("save:    saves current game with given name don't forget the \".xml\" extension");
-            Console.WriteLine("move:    moves the specified pawn or places the baricade in possesion to the given coördinates");
-            Console.WriteLine("newGame: creates a new game with the given board and number of human players");
+            Console.WriteLine("help:       displays this text, if you type anything that isn't recognized this is also dislpayed");
+            Console.WriteLine("            however if you type a command without it's parameters it wil display what options you have with that command");
+            Console.WriteLine("load:       prints all the files possible to load when a filename is mentioned after load the specified file is loaded");
+            Console.WriteLine("cheat:      print all the possible cheats if you want to use one type the command behind \"cheat\"");
+            Console.WriteLine("save:       saves current game with given name don't forget the \".xml\" extension");
+            Console.WriteLine("move:       moves the specified pawn or places the baricade in possesion to the given coördinates");
+            Console.WriteLine("newGame:    creates a new game with the given board and number of human players");
+            Console.WriteLine("throwdice:  does exactly what you would expect, it rolls the dice if you didn't do that already");
         }
 
         private void show()
@@ -385,7 +436,6 @@ namespace Baricade.View
                         for (int i = 0; i < field[y, x].links.Length; i++)
                         {
                             bool NotNull = field[y, x].links[i] != null;
-                            string line = "   ";
                             switch (i)
                             {
                                 case 0:
@@ -430,7 +480,12 @@ namespace Baricade.View
             //"01 | < >---< >---< >"
             Console.Clear();
             Console.WriteLine("Current turn: " + controller.Game.CurrentPlayer.Color.ToString());
-            Console.WriteLine("Dice throw: " + controller.Game.CurrentDiceRoll);
+            Console.Write("Dice throw: " + controller.Game.CurrentDiceRoll);
+            if (controller.Game.CurrentDiceRoll == 0)
+            {
+                Console.Write(" use the commando throwdice to start your turn");
+            }
+            Console.WriteLine();
             if (controller.Game.CurrentPlayer.Baricade != null)
             {
                 Console.WriteLine("There is a Baricade in possesion. you must place it to end your turn");
