@@ -4,16 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Baricade.Model;
+using System.Windows.Controls;
 
 namespace Baricade.ViewModel
 {
     class VPiece
     {
         protected Piece piece;
+        protected Image image;
 
         public VPiece(Piece piece)
         {
             this.piece = piece;
+        }
+
+        public Square Square
+        {
+            get { return Piece.Square; }
+            set { Piece.Square = value; }
         }
 
         public Piece Piece
@@ -22,10 +30,10 @@ namespace Baricade.ViewModel
             protected set { piece = value; }
         }
 
-        public Square Square
+        public Image Image
         {
-            get { return Piece.Square; }
-            set { Piece.Square = value; }
+            get { return image; }
+            set { image = value; }
         }
 
         public virtual string getName()

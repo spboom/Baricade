@@ -24,7 +24,7 @@ namespace Baricade.ViewModel
 
         public override String getName()
         {
-            return "Barricade";
+            return "barricade";
         }
 
         public override char getChar()

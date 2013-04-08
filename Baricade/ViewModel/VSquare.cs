@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Baricade.Model;
+using System.Windows.Controls;
 
 namespace Baricade.ViewModel
 {
     public class VSquare
     {
         protected Square square;
+        protected Image image;
         private int x;
         private int y;
 
@@ -42,14 +44,15 @@ namespace Baricade.ViewModel
             set { square.Piece = value; }
         }
 
+        public Image Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
+
         public virtual String getName()
         {
-            if (Piece != null)
-            {
-                return "Square" + "-" + Piece.View.getName();
-            }
-
-            return "Square";
+            return "square";
         }
 
         public virtual String getText()

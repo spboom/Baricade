@@ -21,8 +21,8 @@ namespace Baricade.View
     {
         private GameController controller;
         private Board board;
-        private Square firstSelectedSquare;
-        private Square secondSelectedSquare;
+        private Piece selectedPiece;
+        private Square selectedSquare;
 
         public MainWindow(GameController controller)
         {
@@ -33,23 +33,23 @@ namespace Baricade.View
             setupGrid();
             fillGrid();
         }
-        
+
         public GameController GameController
         {
             get { return controller; }
             set { controller = value; }
         }
 
-        private Square FirstSelectedSquare
+        private Piece SelectedPiece
         {
-            get { return firstSelectedSquare; }
-            set { firstSelectedSquare = value; }
+            get { return selectedPiece; }
+            set { selectedPiece = value; }
         }
 
-        private Square SecondSelectedSquare
+        private Square SelectedSquare
         {
-            get { return secondSelectedSquare; }
-            set { secondSelectedSquare = value; }
+            get { return selectedSquare; }
+            set { selectedSquare = value; }
         }
 
         private void setupGrid()
@@ -74,29 +74,42 @@ namespace Baricade.View
 
         private void fillGrid()
         {
+            String path = "pack://application:,,,/Style/" + board.View.Style + "/";
+
             foreach (Square s in board.TwoDBoard)
             {
                 if (s != null)
                 {
-                    Image image = new Image();
-                    image.Name = "y" + s.View.Y + "x" + s.View.X;
-
-                    String path = "pack://application:,,,/Style/" + board.View.Style + "/" + s.View.getName() + ".jpg";
+                    s.View.Image = new Image();
+                    s.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
 
                     try
                     {
-                        image.Source = new BitmapImage(new Uri(path));
+                        s.View.Image.Source = new BitmapImage(new Uri(path + s.View.getName() + ".jpg"));
                     }
                     catch
                     {
-                        image.Source = new BitmapImage(new Uri("pack://application:,,,/Style/Minimalistic/square.jpg"));
+                        s.View.Image.Source = new BitmapImage(new Uri("pack://application:,,,/Style/Minimalistic/square.jpg"));
                     }
 
-                    image.SetValue(Grid.RowProperty, s.View.Y);
-                    image.SetValue(Grid.ColumnProperty, s.View.X);
-                    image.Margin = new Thickness(1);
+                    s.View.Image.SetValue(Grid.RowProperty, s.View.Y);
+                    s.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
+                    s.View.Image.Margin = new Thickness(1);
 
-                    gridPanel.Children.Add(image);
+                    gridPanel.Children.Add(s.View.Image);
+
+                    if (s.Piece != null)
+                    {
+                        s.Piece.View.Image = new Image();
+                        s.Piece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
+
+                        s.Piece.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
+
+                        s.Piece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
+                        s.Piece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
+
+                        gridPanel.Children.Add(s.Piece.View.Image);
+                    }
                 }
             }
         }
@@ -104,42 +117,42 @@ namespace Baricade.View
         private void Cell_Click(object sender, RoutedEventArgs e)
         {
             Image image = e.Source as Image;
-            selectSquare(image);
+            selectCell(image);
         }
 
-        private void selectSquare(Image image)
+        private void selectCell(Image image)
         {
-            if (FirstSelectedSquare == null && SecondSelectedSquare == null)
-            {
-                FirstSelectedSquare = getSquareFromCell(image.Name);
+            String[] coordinates = image.Name.Substring(1).Split('x');
+            Square s = board.TwoDBoard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
 
-                /*if (FirstSelectedSquare.Piece == null)
-                {
-                    FirstSelectedSquare = null;
-                }*/
+            if (SelectedPiece != null)
+            {
+                GameController.Game.movePiece(SelectedPiece, s);
+
+                s.Piece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
+                s.Piece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
+                s.Piece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
+
+                SelectedPiece = null;
+                Console.WriteLine("Move");
+                return;
             }
 
-            else if (FirstSelectedSquare != null && SecondSelectedSquare == null)
+            if (s.Piece != null)
             {
-                SecondSelectedSquare = getSquareFromCell(image.Name);
+                selectedPiece = s.Piece;
+                Console.WriteLine("Piece");
             }
-
-            if (SecondSelectedSquare != null && FirstSelectedSquare != null)
+            else
             {
-                if (FirstSelectedSquare.Piece != null)
+                if (s is PlayerSquare)
                 {
-                    GameController.Game.movePiece(FirstSelectedSquare.Piece, SecondSelectedSquare);
+                    Console.WriteLine("quack");
                 }
 
-                FirstSelectedSquare = null;
-                SecondSelectedSquare = null;
+                selectedSquare = s;
+                Console.WriteLine("Square");
             }
-        }
-
-        private Square getSquareFromCell(String cell)
-        {
-            String[] coordinates = cell.Substring(1).Split('x');
-            return board.TwoDBoard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
         }
 
         private void btnThrow_Click(object sender, RoutedEventArgs e)

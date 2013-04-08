@@ -9,17 +9,11 @@ namespace Baricade.ViewModel
 {
     class VLowRowSquare : VSquare
     {
-        public VLowRowSquare(LowRowSquare square)
-            : base(square)
-        { }
+        public VLowRowSquare(LowRowSquare square) : base(square) { }
+        
         public override String getName()
         {
-            if (Piece != null)
-            {
-                return "LowRowSquare" + "-" + Piece.View.getName();
-            }
-
-            return "LowRowSquare";
+            return "lowRowSquare";
         }
 
         public override String getText()

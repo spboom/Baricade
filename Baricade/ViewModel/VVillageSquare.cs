@@ -13,11 +13,6 @@ namespace Baricade.ViewModel
 
         public override String getName()
         {
-            if (Piece != null)
-            {
-                return "VillageSquare" + "-" + Piece.View.getName();
-            }
-
             return "VillageSquare";
         }
 

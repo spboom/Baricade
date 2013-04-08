@@ -17,16 +17,16 @@ namespace Baricade.ViewModel
             switch (Piece.Player.Color)
             {
                 case PlayerColor.Red:
-                    name = "RedPawn";
+                    name = "redPawn";
                     break;
                 case PlayerColor.Blue:
-                    name = "BluePawn";
+                    name = "bluePawn";
                     break;
                 case PlayerColor.Green:
-                    name = "GreenPawn";
+                    name = "greenPawn";
                     break;
                 case PlayerColor.Yellow:
-                    name = "YellowPawn";
+                    name = "yellowPawn";
                     break;
                 default:
                     name = "?";
