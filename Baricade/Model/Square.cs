@@ -156,8 +156,8 @@ namespace Baricade.Model
 
         public virtual void setPawn(Pawn p)
         {
-            Piece = p;
             p.Square = this;
+            Piece = p;
         }
 
         public virtual void removePawn(Pawn p)

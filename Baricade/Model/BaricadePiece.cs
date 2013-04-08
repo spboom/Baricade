@@ -25,10 +25,10 @@ namespace Baricade.Model
          */
         public override bool isHit(Pawn p) // A barricade cannot be placed on a barricade, therefore only a pawn can hit a barricade.
         {
-            this.Player = p.Player;
+            Player = p.Player;
             p.Player.Baricade = this;
+            Square.Piece = null;
             Square.setPawn(p);
-            this.Square.Piece = null;
             return true;
         }
 
@@ -47,8 +47,8 @@ namespace Baricade.Model
                         else
                         {
                             Square.Piece = null;
+                            s.Piece = this;
                             Square = s;
-                            Square.Piece = this;
                             return true;
                         }
                     }

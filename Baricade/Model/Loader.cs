@@ -262,6 +262,10 @@ namespace Baricade.Model
             setPosition(f, f.X, f.Y);
             conectors();
             board.Squares = linkList;
+            if (forest != null)
+            {
+                board.ForestSquare = forest;
+            }
             Game game = new Game(board, playerList,f);
             board.Game = game;
             return game;
@@ -565,6 +569,7 @@ namespace Baricade.Model
             {
                 BaricadePiece b = new BaricadePiece();
                 baricadeSquares[baricades.Count].Piece = b;
+                b.Square = baricadeSquares[baricades.Count];
                 baricades.Add(b);
             }
 

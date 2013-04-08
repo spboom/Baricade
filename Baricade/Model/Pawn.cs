@@ -66,6 +66,7 @@ namespace Baricade.Model
                         }
                         else
                         {
+                            Square.removePawn(this);
                             s.setPawn(this);
                             return true;
                         }

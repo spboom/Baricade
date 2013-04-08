@@ -75,7 +75,7 @@ namespace Baricade.Model
         public ForestSquare ForestSquare
         {
             get { return _forestSquare; }
-            private set { _forestSquare = value; }
+            set { _forestSquare = value; }
         }
 
         public int Height

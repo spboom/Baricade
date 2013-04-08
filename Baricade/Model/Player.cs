@@ -141,7 +141,10 @@ namespace Baricade.Model
                     square = squares[i];
                 }
             }
-            p.Square.Board.Game.movePiece(p, square);
+            if (p.Square.Board.Game.movePiece(p, square))
+            {
+                return;
+            }
         }
     }
 }

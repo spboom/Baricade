@@ -33,7 +33,7 @@
         </Menu>
 
         <DockPanel Name="Container" DockPanel.Dock="Bottom">
-            <Grid Name="gridPanel" DockPanel.Dock="Top" Margin="50"/>
+            <Grid Name="gridPanel" DockPanel.Dock="Top"/>
 
             <DockPanel Name="Actions" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="100">
                 <Button Content="Throw Dice" Name="btnThrowDice" Height="20" Width="76" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Click="btnThrow_Click"/>

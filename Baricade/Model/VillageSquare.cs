@@ -32,7 +32,14 @@ namespace Baricade.Model
 
         public override Square getReturnTo()
         {
-            return board.ForestSquare;
+            if (board.ForestSquare != null)
+            {
+                return board.ForestSquare;
+            }
+            else
+            {
+                return base.getReturnTo();
+            }
         }
     }
 }

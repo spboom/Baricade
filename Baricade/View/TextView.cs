@@ -249,7 +249,7 @@ namespace Baricade.View
                 controller.Game.throwDice();
                 show();
                 //System.Threading.Thread.Sleep(2500);
-                Console.Read();
+                Console.ReadLine();
                 controller.Game.CurrentPlayer.bestmove(controller.Game.CurrentDiceRoll);
                 controller.Game.nextTurn();
                 show();
