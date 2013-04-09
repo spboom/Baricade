@@ -125,69 +125,45 @@ namespace Baricade.View
             String[] coordinates = image.Name.Substring(1).Split('x');
             Square s = board.TwoDBoard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
 
-            if (SelectedPiece != null && GameController.Game.PlayerMovedPiece == false)
+            if (SelectedPiece != null)
             {
-                if (SelectedPiece.Player == GameController.Game.CurrentPlayer)
-                {
-                    GameController.Game.movePiece(SelectedPiece, s);
+                GameController.Game.movePiece(SelectedPiece, s);
 
-                    SelectedPiece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
-                    SelectedPiece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
-                    SelectedPiece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
+                s.Piece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
+                s.Piece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
+                s.Piece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
 
-                    SelectedPiece = null;
-                    //Console.WriteLine("Move");
-                    return;
-                }
+                SelectedPiece = null;
+                Console.WriteLine("Move");
+                return;
             }
 
             if (s.Piece != null)
             {
                 selectedPiece = s.Piece;
-                //Console.WriteLine("Piece");
+                Console.WriteLine("Piece");
             }
             else
             {
+                if (s is PlayerSquare)
+                {
+                    Console.WriteLine("quack");
+                }
+
                 selectedSquare = s;
-                //Console.WriteLine("Square");
+                Console.WriteLine("Square");
             }
         }
 
         private void btnThrow_Click(object sender, RoutedEventArgs e)
         {
+            GameController.Game.throwDice();
             lblThrow.Content = GameController.Game.CurrentDiceRoll;
-
-            btnThrowDice.IsEnabled = false;
         }
 
         private void btnEndTurn_Click(object sender, RoutedEventArgs e)
         {
             GameController.Game.nextTurn();
-            changeColor(GameController.Game.CurrentPlayer.Color);
-
-            btnThrowDice.IsEnabled = true;
-        }
-
-        private void changeColor(PlayerColor color)
-        {
-            switch (color)
-            {
-                case PlayerColor.Red:
-                    lblPlayerColor.Foreground = Brushes.Red;
-                    break;
-                case PlayerColor.Blue:
-                    lblPlayerColor.Foreground = Brushes.Blue;
-                    break;
-                case PlayerColor.Green:
-                    lblPlayerColor.Foreground = Brushes.Green;
-                    break;
-                case PlayerColor.Yellow:
-                    lblPlayerColor.Foreground = Brushes.Yellow;
-                    break;
-                default:
-                    lblPlayerColor.Foreground = Brushes.Black;
-                    break;
-            }
         }
 
         // Game Menu

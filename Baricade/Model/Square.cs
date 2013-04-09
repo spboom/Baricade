@@ -172,6 +172,10 @@ namespace Baricade.Model
 
         public virtual void setPawn(Pawn p)
         {
+            if (p.Square != null)
+            {
+                p.Square.removePawn(p);
+            }
             p.Square = this;
             Piece = p;
         }
@@ -211,11 +215,12 @@ namespace Baricade.Model
         }
 
 
-        public Square getEmptyNext()
+        public Square getEmptyNext(Square from, List<Square> done)
         {
+            done.Add(this);
             for (int i = 0; i < links.Length; i++)
             {
-                if(links[i]!=null)
+                if(links[i]!=null&& links[i]!=from && !done.Contains(links[i]))
                 {
                     if (!links[i].isOccupied()&&links[i].mayContainBarricade())
                     {
@@ -227,7 +232,7 @@ namespace Baricade.Model
             {
                 if (links[i] != null)
                 {
-                    return links[i].getEmptyNext();
+                    return links[i].getEmptyNext(this ,done);
                 }
             }
             return null;

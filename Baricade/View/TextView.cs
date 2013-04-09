@@ -253,7 +253,12 @@ namespace Baricade.View
                 //System.Threading.Thread.Sleep(2500);
                 //if (count >= max)
                 {
-                    Console.ReadLine();
+                    String line = Console.ReadLine();
+                    int dice;
+                    if (int.TryParse(line, out dice))
+                    {
+                        controller.Game.CurrentDiceRoll = dice;
+                    }
                     count = 0;
                 }
                 controller.Game.CurrentPlayer.bestmove(controller.Game.CurrentDiceRoll);

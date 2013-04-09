@@ -140,7 +140,7 @@ namespace Baricade.Model
                                     high = otherPawns[i];
                                 }
                             }
-                            Square baricadeTo = high.Square.getEmptyNext();
+                            Square baricadeTo = high.Square.getEmptyNext(null,new List<Square>());
                             if (baricadeTo != null)
                             {
                                 Baricade.moveTo(baricadeTo);
