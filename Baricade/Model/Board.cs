@@ -116,7 +116,7 @@ namespace Baricade.Model
         internal bool canMoveTo(Pawn pawn, int x, int y, int moves)
         {
             Square goal = twoDBord[y, x];
-            Square[] possibilities = pawn.Square.getNext(pawn.Square, moves);
+            Square[] possibilities = pawn.Square.getNext(pawn.Square, moves, pawn);
             for (int i = 0; i < possibilities.Length; i++)
             {
                 if (goal == possibilities[i])

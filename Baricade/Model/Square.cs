@@ -101,7 +101,7 @@ namespace Baricade.Model
             }
         }
 
-        public Square[] getNext(Square from, int stepsleft)//TODO maymove trough
+        public Square[] getNext(Square from, int stepsleft, Piece p)//TODO maymove trough
         {
             List<Square> next = new List<Square>();
             for (int i = 0; i < links.Length; i++)
@@ -112,12 +112,28 @@ namespace Baricade.Model
                     {
                         if (links[i].isTransversable())
                         {
-                            next.AddRange(links[i].getNext(this, stepsleft - 1));
+                            next.AddRange(links[i].getNext(this, stepsleft - 1,p));
                         }
                     }
                     else if (stepsleft == 1)
                     {
-                        next.Add(links[i]);
+                        if (links[i].isOccupied() && links[i].Piece.Player != null)
+                        {
+                            if (links[i].Piece.Player == p.Player)
+                            {
+                            }
+                            else if (!links[i].mayPawnBeHit())
+                            {
+                            }
+                            else
+                            {
+                                next.Add(links[i]);
+                            }
+                        }
+                        else
+                        {
+                            next.Add(links[i]);
+                        }
                     }
                 }
             }
@@ -193,6 +209,28 @@ namespace Baricade.Model
         {
             return true;
         }
-        
+
+
+        public Square getEmptyNext()
+        {
+            for (int i = 0; i < links.Length; i++)
+            {
+                if(links[i]!=null)
+                {
+                    if (!links[i].isOccupied()&&links[i].mayContainBarricade())
+                    {
+                        return links[i];
+                    }
+                }
+            }
+            for (int i = 0; i < links.Length; i++)
+            {
+                if (links[i] != null)
+                {
+                    return links[i].getEmptyNext();
+                }
+            }
+            return null;
+        }
     }
 }

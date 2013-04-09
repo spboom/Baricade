@@ -8,7 +8,8 @@ namespace Baricade.Model
 {
     public class AIPlayer : Player
     {
-        public AIPlayer()
+        public AIPlayer(Circuit<Player> circuit)
+            :base(circuit)
         { }
 
         public override bool Human

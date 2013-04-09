@@ -197,7 +197,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "player")
                 {
-                    Player p = new Player();
+                    Player p = new Player(playerList);
                     if (p.readElement(r))
                     {
                         _numberofPlayers++;
@@ -211,7 +211,7 @@ namespace Baricade.Model
 
                 else if (r.Name.ToLower() == "aiplayer")
                 {
-                    AIPlayer p = new AIPlayer();
+                    AIPlayer p = new AIPlayer(playerList);
                     if (p.readElement(r))
                     {
                         _numberOfAIPlayers++;
@@ -324,9 +324,9 @@ namespace Baricade.Model
                 playerList = new Circuit<Player>();
                 for (int i = 0; i < playerSquares.Count; i++)
                 {
-                    Player player = new Player();
+                    Player player = new Player(playerList);
                     player.PlayerId = playerList.Count + 1;
-                    List<Pawn> pawns = new List<Pawn>();
+                    player.PlayerPawns = new List<Pawn>();
                     player.PlayerSquare = playerSquares[i];
                     switch (i+1)
                     {
@@ -343,9 +343,9 @@ namespace Baricade.Model
                             player.Color = PlayerColor.Yellow;
                             break;
                     }
-                    for (int j = 0; j <= NumberOfPawns; j++)
+                    for (int j = 0; j < NumberOfPawns; j++)
                     {
-                        pawns.Add(new Pawn(player.PlayerSquare, player));
+                        player.PlayerPawns.Add(new Pawn(player.PlayerSquare, player));
                     }
                     playerList.Add(player);
                 }
@@ -363,6 +363,7 @@ namespace Baricade.Model
                     {
                         if (p.PlayerSquare.Pieces.Count > 0)
                         {
+                            p.PlayerPawns.Remove(p.PlayerSquare.Pieces[0]);
                             p.PlayerSquare.Pieces.RemoveAt(0);
                         }
                         else
@@ -586,14 +587,13 @@ namespace Baricade.Model
 
                 if (humans < humanPlayers)
                 {
-                    p = new Player();
+                    p = new Player(players);
                     humans++;
                 }
                 else
                 {
-                    p = new AIPlayer();
+                    p = new AIPlayer(players);
                 }
-                
                 p.PlayerSquare = square;
                 p.PlayerId = id;
                 p.Color = color;

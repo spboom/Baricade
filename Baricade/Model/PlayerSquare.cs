@@ -22,6 +22,10 @@ namespace Baricade.Model
                 }
                 return null;
             }
+            set
+            {
+                base.Piece = value;
+            }
         }
 
         internal List<Pawn> Pieces
@@ -57,14 +61,14 @@ namespace Baricade.Model
 
         public override void setPawn(Pawn p)
         {
-            Pieces.Add(p);
             p.Square = this;
+            Pieces.Add(p);
         }
 
         public override void removePawn(Pawn p)
         {
-            Pieces.Remove(p);
             p.Square = null;
+            bool check = Pieces.Remove(p);
         }
     }
 }

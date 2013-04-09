@@ -132,7 +132,7 @@ namespace Baricade.View
                 {
                     Square square = controller.Game.CurrentPlayer.PlayerPawns[i].Square;
 
-                    Square[] squares = square.getNext(square, controller.Game.CurrentDiceRoll);
+                    Square[] squares = square.getNext(square, controller.Game.CurrentDiceRoll, controller.Game.CurrentPlayer.PlayerPawns[i]);
 
                     for (int j = 0; j < squares.Length; j++)
                     {
@@ -244,14 +244,21 @@ namespace Baricade.View
 
         private void AIPlayer()
         {
+            int count = 0, max = controller.Game.Players.Count;
             while (!controller.Game.CurrentPlayer.Human)
             {
+                
                 controller.Game.throwDice();
                 show();
                 //System.Threading.Thread.Sleep(2500);
-                Console.ReadLine();
+                //if (count >= max)
+                {
+                    Console.ReadLine();
+                    count = 0;
+                }
                 controller.Game.CurrentPlayer.bestmove(controller.Game.CurrentDiceRoll);
                 controller.Game.nextTurn();
+                count++;
                 show();
             }
         }
@@ -530,6 +537,11 @@ namespace Baricade.View
                 Console.WriteLine(" |");
             }
             Console.WriteLine(" " + underLine);
+            for (int i = 0; i < controller.Game.Players.List.Count; i++)
+            {
+                Player p = controller.Game.Players.List[i];
+                Console.WriteLine(p.PlayerPawns[0].View.getChar()+": "+p.PlayerSquare.Pieces.Count);
+            }
             Console.WriteLine();
             if (commandline == "")
             {
