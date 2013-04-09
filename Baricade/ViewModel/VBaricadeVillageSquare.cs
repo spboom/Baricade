@@ -7,18 +7,13 @@ using Baricade.Model;
 
 namespace Baricade.ViewModel
 {
-    class VBaricadeVillageSquare:VVillageSquare
+    class VBaricadeVillageSquare : VVillageSquare
     {
-        public VBaricadeVillageSquare(BaricadeVillageSquare square) : base(square) {}
+        public VBaricadeVillageSquare(BaricadeVillageSquare square) : base(square) { }
 
         public override String getName()
         {
-            if (Piece != null)
-            {
-                return "BarricadeVillageSquare" + "-" + Piece.View.getName();
-            }
-
-            return "BarricadeVillageSquare";
+            return "barricadeVillageSquare";
         }
 
         public override String getText()

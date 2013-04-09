@@ -7,13 +7,13 @@ using Baricade.Model;
 
 namespace Baricade.ViewModel
 {
-    class VFinishSquare:VRestSquare
+    class VFinishSquare : VRestSquare
     {
-        public VFinishSquare(FinishSquare square) : base(square) {}
+        public VFinishSquare(FinishSquare square) : base(square) { }
 
         public override String getName()
         {
-            return "FinishSquare";
+            return "finishSquare";
         }
 
         public override String getText()

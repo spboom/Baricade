@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Barricade">
 
-        <Window.Resources>
-            <Style TargetType="{x:Type Image}">
+    <Window.Resources>
+        <Style TargetType="{x:Type Image}">
             <EventSetter Event="MouseLeftButtonDown" Handler="Cell_Click" />
-            </Style>
-        </Window.Resources>
-    
-        <DockPanel Name="Layout">
+        </Style>
+    </Window.Resources>
+
+    <DockPanel Name="Layout">
         <Menu Name="Menu" DockPanel.Dock="Top">
             <MenuItem Header="_Game">
                 <MenuItem Header="New Game"
@@ -33,12 +33,13 @@
         </Menu>
 
         <DockPanel Name="Container" DockPanel.Dock="Bottom">
-            <Grid Name="gridPanel" DockPanel.Dock="Top"/>
+            <Grid Name="gridPanel" DockPanel.Dock="Top" Margin="50"/>
 
             <DockPanel Name="Actions" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="100">
                 <Button Content="Throw Dice" Name="btnThrowDice" Height="20" Width="76" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Click="btnThrow_Click"/>
-                <Button Content="End Turn" Name="btnNextTurn" Height="20" Width="76" Margin="20,0,0,0" Click="btnEndTurn_Click"></Button>
-                <Label x:Name="lblThrow" Content="4" Height="100" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="72" BorderThickness="0"/>
+                <Button Content="End Turn" Name="btnNextTurn" Height="20" Width="76" Margin="20,0,0,0" Click="btnEndTurn_Click"/>
+                <Label Name="lblPlayerColor" Content="P" Height="100" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="72" BorderThickness="0"/>
+                <Label Name="lblThrow" Content="4" Height="100" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="72" BorderThickness="0"/>
             </DockPanel>
         </DockPanel>
     </DockPanel>
