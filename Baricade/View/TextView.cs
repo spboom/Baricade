@@ -22,7 +22,7 @@ namespace Baricade.View
             this.controller = controller;
             show();
             Console.WriteLine("Welcome to Baricade \ntype \"help\" for help");
-            while (true)
+            while (!controller.Game.Finished)
             {
                 if (controller.Game.CurrentPlayer.Human)
                 {
@@ -40,7 +40,14 @@ namespace Baricade.View
                 {
                     AIPlayer();
                 }
-                }
+            }
+            show();
+            Console.WriteLine("Player " + controller.Game.FinishSquare.Piece.Player.Color+" has won the Game");
+            if(!controller.Game.FinishSquare.Piece.Player.Human)
+            {
+                Console.WriteLine("THE MACHINE ALWAYS WINS!!   MUHAHAHAHAHAAaa");
+            }
+            Console.ReadLine();
         }
 
         private void check(string[] options)
@@ -128,15 +135,18 @@ namespace Baricade.View
             if (controller.Game.CurrentDiceRoll != 0)
             {
                 List<String> codes = new List<string>();
-                for (int i = 0; i < controller.Game.CurrentPlayer.PlayerPawns.Count; i++)
+                if(!controller.Game.PlayerMovedPiece)
                 {
-                    Square square = controller.Game.CurrentPlayer.PlayerPawns[i].Square;
-
-                    Square[] squares = square.getNext(square, controller.Game.CurrentDiceRoll, controller.Game.CurrentPlayer.PlayerPawns[i]);
-
-                    for (int j = 0; j < squares.Length; j++)
+                    for (int i = 0; i < controller.Game.CurrentPlayer.PlayerPawns.Count; i++)
                     {
-                        codes.Add("P" + (i + 1) + ":" + (squares[j].X + 1) + ", " + (squares[j].Y + 1));
+                        Square square = controller.Game.CurrentPlayer.PlayerPawns[i].Square;
+
+                        Square[] squares = square.getNext(square, controller.Game.CurrentDiceRoll, controller.Game.CurrentPlayer.PlayerPawns[i]);
+
+                        for (int j = 0; j < squares.Length; j++)
+                        {
+                            codes.Add("P" + (i + 1) + ":" + (squares[j].X + 1) + ", " + (squares[j].Y + 1));
+                        }
                     }
                     if (codes.Count == 0)
                     {
@@ -154,11 +164,11 @@ namespace Baricade.View
                     }
                     else
                     {
-                        char[] splitOn = { ':', ',', ' ' };
+                        char[] splitOn = { ':', ',', ' ', ';' };
                         string[] split = options[1].Split(splitOn);
                         if (split.Length == 3)
                         {
-                            if (split[0] == "B")
+                            if (split[0] == "b")
                             {
                                 if (controller.Game.CurrentPlayer.Baricade != null)
                                 {
@@ -169,8 +179,10 @@ namespace Baricade.View
                                         y--;
                                         if (x >= 0 && y >= 0 && y <= controller.Game.Board.TwoDBoard.GetUpperBound(0) && x <= controller.Game.Board.TwoDBoard.GetUpperBound(1))
                                         {
-                                            if (controller.Game.movePiece(controller.Game.CurrentPlayer.Baricade, controller.Game.Board.TwoDBoard[y, x]))
+                                            if (controller.Game.CurrentPlayer.Baricade.moveTo(controller.Game.Board.TwoDBoard[y, x]))
                                             {
+                                                controller.Game.nextTurn();
+                                                show();
                                                 Console.WriteLine("Baricade moved to (" + split[1] + ", " + split[2] + ")");
                                             }
                                             else
@@ -183,7 +195,7 @@ namespace Baricade.View
                                 }
                                 else
                                 {
-                                    Console.WriteLine("You dont have a Baricade in your hand.");
+                                    Console.WriteLine("You dont have a Baricade.");
                                     return;
                                 }
                             }
@@ -212,7 +224,10 @@ namespace Baricade.View
 
                                                     show();
                                                     Console.WriteLine(split[0] + " moved to (" + split[1] + ", " + split[2] + ")");
-                                                    
+                                                    if (controller.Game.CurrentPlayer.Baricade != null)
+                                                    {
+                                                        Console.WriteLine("You picked up an baricade!\nMove it back on the board to end your turn.");
+                                                    }
                                                     if (!controller.Game.CurrentPlayer.Human)
                                                     {
                                                         AIPlayer();
@@ -229,13 +244,22 @@ namespace Baricade.View
                 }
                 Console.WriteLine("Move Pawn:");
                 Console.WriteLine("P#:X, Y");
+                Console.WriteLine();
                 Console.WriteLine("Place Baricade:");
                 Console.WriteLine("B:X, Y");
                 Console.WriteLine();
-                Console.WriteLine("possibilities:");
-                for (int i = 0; i < codes.Count; i++)
+                if (codes.Count >= 0)
                 {
-                    Console.WriteLine(codes[i]);
+                    Console.WriteLine("possibilities:");
+                    for (int i = 0; i < codes.Count; i++)
+                    {
+                        Console.WriteLine(codes[i]);
+                    }
+                }
+                if (controller.Game.CurrentPlayer.Baricade != null)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Place a baricade on the field.");
                 }
                 return;
             }
@@ -244,28 +268,27 @@ namespace Baricade.View
 
         private void AIPlayer()
         {
-            int count = 0, max = controller.Game.Players.Count;
-            while (!controller.Game.CurrentPlayer.Human)
+            commandline = "throwdice";
+            controller.Game.throwDice();
+            show();
+            //System.Threading.Thread.Sleep(1000);
+            Square s = controller.Game.CurrentPlayer.bestmove(controller.Game.CurrentDiceRoll);
+            if (s != null)
             {
-                
-                controller.Game.throwDice();
-                show();
-                //System.Threading.Thread.Sleep(2500);
-                //if (count >= max)
+                int index=1;
+                for (int i = 0; i < controller.Game.CurrentPlayer.PlayerPawns.Count; i++)
                 {
-                    String line = Console.ReadLine();
-                    int dice;
-                    if (int.TryParse(line, out dice))
+                    if (s.Piece.Equals(controller.Game.CurrentPlayer.PlayerPawns[i]))
                     {
-                        controller.Game.CurrentDiceRoll = dice;
+                        index = i + 1;
+                        break;
                     }
-                    count = 0;
                 }
-                controller.Game.CurrentPlayer.bestmove(controller.Game.CurrentDiceRoll);
+                commandline = "move P" + index + ":" + (s.X + 1) + ", " + (s.Y + 1);
                 controller.Game.nextTurn();
-                count++;
-                show();
             }
+            show();
+            //System.Threading.Thread.Sleep(1000);
         }
 
         private void save(string[] options)//TODO:make
@@ -546,6 +569,22 @@ namespace Baricade.View
             {
                 Player p = controller.Game.Players.List[i];
                 Console.WriteLine(p.PlayerPawns[0].View.getChar()+": "+p.PlayerSquare.Pieces.Count);
+            }
+            if (controller.Game.Board.ForestSquare != null)
+            {
+                Console.Write("Forrest: ");
+                if (controller.Game.Board.ForestSquare.Pieces.Count == 0)
+                {
+                    Console.WriteLine("0");
+                }
+                else
+                {
+                    for (int i = 0; i < controller.Game.Board.ForestSquare.Pieces.Count; i++)
+                    {
+                        Console.Write(controller.Game.Board.ForestSquare.Pieces[i].View.getChar() + " ");
+                    }
+                    Console.WriteLine();
+                }
             }
             Console.WriteLine();
             if (commandline == "")

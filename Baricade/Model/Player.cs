@@ -84,7 +84,7 @@ namespace Baricade.Model
             return PlayerSquare.Pieces.Count;
         }
 
-        public void bestmove(int dice)
+        public Square bestmove(int dice)
         {
             Random r = new Random();
             int tries = 0;
@@ -139,7 +139,7 @@ namespace Baricade.Model
                                     high = otherPawns[i];
                                 }
                             }
-                            Square baricadeTo = high.Square.getEmptyNext(null,new List<Square>());
+                            Square baricadeTo = high.Square.getEmptyNext(null,new List<int>());
                             if (baricadeTo != null)
                             {
                                 Baricade.moveTo(baricadeTo);
@@ -149,13 +149,14 @@ namespace Baricade.Model
                                 Console.WriteLine("GODDANGIT!!");
                             }
                         }
-                        return;
+                        return square;
                     }
                 }
             }
             while (++tries < order.Count);
 
             p.Square.Board.Game.nextPlayer();
+            return null;
         }
     }
 }

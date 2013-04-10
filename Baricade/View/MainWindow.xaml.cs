@@ -100,35 +100,15 @@ namespace Baricade.View
 
                     if (s.Piece != null)
                     {
-                        if (s is PlayerSquare)
-                        {
-                            Player p = s.Piece.Player;
+                        s.Piece.View.Image = new Image();
+                        s.Piece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
 
-                            foreach (Pawn pawn in p.PlayerPawns)
-                            {
-                                pawn.View.Image = new Image();
-                                pawn.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
-                                pawn.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
+                        s.Piece.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
 
-                                pawn.View.Image.SetValue(Grid.RowProperty, s.View.Y);
-                                pawn.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
+                        s.Piece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
+                        s.Piece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
 
-                                gridPanel.Children.Add(pawn.View.Image);
-                            }
-                        }
-
-                        if (s is BaricadeSquare)
-                        {
-                            s.Piece.View.Image = new Image();
-                            s.Piece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
-
-                            s.Piece.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
-
-                            s.Piece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
-                            s.Piece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
-
-                            gridPanel.Children.Add(s.Piece.View.Image);
-                        }
+                        gridPanel.Children.Add(s.Piece.View.Image);
                     }
                 }
             }
@@ -149,28 +129,14 @@ namespace Baricade.View
             {
                 if (SelectedPiece.Player == GameController.Game.CurrentPlayer)
                 {
-                    if(s.Piece != null && s.Piece is Pawn) {
-                        s.Piece.Player.addPawn((Pawn)s.Piece);
-                        s.Piece = null;
-                    }
-
-                    if (s.Piece != null && s.Piece is BaricadePiece)
-                    {
-                        s.Piece.Player.Baricade = (BaricadePiece)s.Piece;
-                        s.Piece.View.Image.Source = null;
-                        s.Piece = null;
-                    }
-
                     GameController.Game.movePiece(SelectedPiece, s);
 
-                    String path = "pack://application:,,,/Style/" + board.View.Style + "/";
                     SelectedPiece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
-                    SelectedPiece.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
                     SelectedPiece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
                     SelectedPiece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
 
                     SelectedPiece = null;
-                    Console.WriteLine("Move");
+                    //Console.WriteLine("Move");
                     return;
                 }
             }
@@ -178,17 +144,12 @@ namespace Baricade.View
             if (s.Piece != null)
             {
                 selectedPiece = s.Piece;
-                Console.WriteLine("Piece");
+                //Console.WriteLine("Piece");
             }
             else
             {
-                if (s is PlayerSquare)
-                {
-                    Console.WriteLine("quack");
-                }
-
                 selectedSquare = s;
-                Console.WriteLine("Square");
+                //Console.WriteLine("Square");
             }
         }
 

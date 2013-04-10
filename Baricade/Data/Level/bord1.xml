@@ -40,7 +40,7 @@
 	<square id="39" down="44" right="40"/>
 	<square id="40" left="39" right="41"/>
 	<baricadesquare id="41" left="40" right="42" up="38"/>
-	<square id="42" left="41" right="42"/>
+	<square id="42" left="41" right="43"/>
 	<square id="43" left="42" down="45"/>
 	<square id="44" up="39" down="48"/>
 	<square id="45" up="43" down="52"/>

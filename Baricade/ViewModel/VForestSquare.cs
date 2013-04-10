@@ -7,9 +7,9 @@ using Baricade.Model;
 
 namespace Baricade.ViewModel
 {
-    class VForestSquare:VRestSquare
+    class VForestSquare : VPlayerSquare
     {
-        public VForestSquare(ForestSquare square) : base(square) {}
+        public VForestSquare(ForestSquare square) : base(square) { }
 
         public override String getName()
         {
@@ -19,6 +19,15 @@ namespace Baricade.ViewModel
         public override String getText()
         {
             return TextView.ForestSquare_OpenTag + "" + getPieceString() + "" + TextView.ForestSquare_CloseTag;
+        }
+
+        public override char getPieceString()
+        {
+            if (Piece != null)
+            {
+                return '*';
+            }
+            return ' ';
         }
     }
 }

@@ -157,6 +157,7 @@
     </None>
     <None Include="Data\Level\bord3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

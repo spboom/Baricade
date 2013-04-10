@@ -15,6 +15,19 @@ namespace Baricade.Model
         private int currentDiceRoll;
         private FinishSquare _finishSquare;
         private bool playerMovedPiece;
+        private bool finished = false;
+
+        public bool Finished
+        {
+            get { return finished; }
+            set { finished = value; }
+        }
+        
+        public FinishSquare FinishSquare
+        {
+            get { return _finishSquare; }
+            private set { _finishSquare = value; }
+        }
 
         public bool PlayerMovedPiece
         {

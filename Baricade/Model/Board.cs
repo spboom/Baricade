@@ -95,7 +95,7 @@ namespace Baricade.Model
             get { return _numberOfPawns; }
             set
             {
-                if (value <= 0)
+                if (value >= 0)
                 {
                     _numberOfPawns = value;
                 }

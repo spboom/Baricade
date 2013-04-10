@@ -101,18 +101,18 @@ namespace Baricade.Model
             }
         }
 
-        public Square[] getNext(Square from, int stepsleft, Piece p)//TODO maymove trough
+        public Square[] getNext(Square from, int stepsleft, Pawn p)//TODO maymove trough
         {
             List<Square> next = new List<Square>();
             for (int i = 0; i < links.Length; i++)
             {
-                if (links[i] != null && !links[i].Equals(from))
+                if (links[i] != null && !links[i].Equals(from) && links[i].isWalkable())
                 {
                     if (stepsleft > 1)
                     {
                         if (links[i].isTransversable())
                         {
-                            next.AddRange(links[i].getNext(this, stepsleft - 1,p));
+                            next.AddRange(links[i].getNext(this, stepsleft - 1, p));
                         }
                     }
                     else if (stepsleft == 1)
@@ -215,24 +215,29 @@ namespace Baricade.Model
         }
 
 
-        public Square getEmptyNext(Square from, List<Square> done)
+        public Square getEmptyNext(Square from, List<int> idDone)
         {
-            done.Add(this);
+            idDone.Add(this.Id);
             for (int i = 0; i < links.Length; i++)
             {
-                if(links[i]!=null&& links[i]!=from && !done.Contains(links[i]))
+                if (links[i] != null && links[i] != from)
                 {
-                    if (!links[i].isOccupied()&&links[i].mayContainBarricade())
+                    if (!links[i].isOccupied() && links[i].mayContainBarricade())
                     {
                         return links[i];
                     }
                 }
             }
+            Square to = null;
             for (int i = 0; i < links.Length; i++)
             {
-                if (links[i] != null)
+                if (links[i] != null && !idDone.Contains(links[i].Id))
                 {
-                    return links[i].getEmptyNext(this ,done);
+                    to = links[i].getEmptyNext(this, idDone);
+                    if (to != null)
+                    {
+                        return to;
+                    }
                 }
             }
             return null;

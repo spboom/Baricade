@@ -29,5 +29,11 @@ namespace Baricade.Model
         {
             return true;
         }
+
+        public override void setPawn(Pawn p)
+        {
+            base.setPawn(p);
+            board.Game.Finished = true;
+        }
     }
 }

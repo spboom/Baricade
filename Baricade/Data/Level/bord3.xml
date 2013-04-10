@@ -1,4 +1,4 @@
-<board numberofpawns="3" height="5" width="7">
+<board numberofpawns="1" height="5" width="7">
   <finishsquare id="1" down="3" x="3" y="0"/>
 	<square id="2" down="6" right="3"/>
 	<baricadesquare id="3" left="2" up="1" right="4"/>
@@ -7,7 +7,7 @@
 	<baricadesquare id="6" left="5" up="2" right="7"/>
 	<square id="7" left="6" down="13" right="8"/>
 	<baricadesquare id="8" left="7" up="4" right="9"/>
-	<lowrowsquare id="9" right="8" down="15"/>
+	<square id="9" left="8" down="15"/>
 	<lowrowsquare id="10" down="17" right="11"/>
 	<lowrowsquare id="11" left="10" up="5" right="12"/>
 	<lowrowsquare id="12" left="11" down="18" right="13"/>

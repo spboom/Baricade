@@ -8,7 +8,7 @@ using Baricade.ViewModel;
 
 namespace Baricade.Model
 {
-    public class ForestSquare : RestSquare
+    public class ForestSquare : PlayerSquare
     {
         private ArrayList pawns;
 
@@ -17,16 +17,6 @@ namespace Baricade.Model
         {
             View = new VForestSquare(this);
             pawns = new ArrayList();
-        }
-
-        public void addPawn(Pawn p)
-        {
-            pawns.Add(p);
-        }
-
-        public override void removePawn(Pawn p)
-        {
-            pawns.Add(p);
         }
 
         public override bool isWalkable()
