@@ -262,6 +262,7 @@ namespace Baricade.Model
             setPosition(f, f.X, f.Y);
             conectors();
             board.Squares = linkList;
+            board.Baricades = baricades;
             if (forest != null)
             {
                 board.ForestSquare = forest;

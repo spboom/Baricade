@@ -97,42 +97,44 @@ namespace Baricade.View
                     s.View.Image.Margin = new Thickness(1);
 
                     gridPanel.Children.Add(s.View.Image);
+                }
+            }
 
-                    if (s.Piece != null)
-                    {
-                        if (s is PlayerSquare)
-                        {
-                            Player p = s.Piece.Player;
+            //baricades
+            for (int i = 0; i < controller.Game.Board.Baricades.Count; i++)
+            {
+                Piece p = controller.Game.Board.Baricades[i];
+                p.View.Image = new Image();
+                p.View.Image.Name = "y" + p.Square.View.Y + "x" + p.Square.View.X;
 
-                            foreach (Pawn pawn in p.PlayerPawns)
-                            {
-                                pawn.View.Image = new Image();
-                                pawn.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
-                                pawn.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
+                p.View.Image.Source = new BitmapImage(new Uri(path + p.View.getName() + ".png"));
 
-                                pawn.View.Image.SetValue(Grid.RowProperty, s.View.Y);
-                                pawn.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
+                p.View.Image.SetValue(Grid.RowProperty, p.Square.View.Y);
+                p.View.Image.SetValue(Grid.ColumnProperty, p.Square.View.X);
 
-                                gridPanel.Children.Add(pawn.View.Image);
-                            }
-                        }
+                gridPanel.Children.Add(p.View.Image);
+            }
 
-                        if (s is BaricadeSquare)
-                        {
-                            s.Piece.View.Image = new Image();
-                            s.Piece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
+            //pawns
+            for (int i = 0; i < controller.Game.Players.List.Count; i++)
+            {
+                for (int j = 0; j < controller.Game.Players.List[i].PlayerPawns.Count; j++)
+                {
+                    Piece p = controller.Game.Players.List[i].PlayerPawns[j];
+                    p.View.Image = new Image();
+                    p.View.Image.Name = "y" + p.Square.View.Y + "x" + p.Square.View.X;
 
-                            s.Piece.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
+                    p.View.Image.Source = new BitmapImage(new Uri(path + p.View.getName() + ".png"));
 
-                            s.Piece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
-                            s.Piece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
+                    p.View.Image.SetValue(Grid.RowProperty, p.Square.View.Y);
+                    p.View.Image.SetValue(Grid.ColumnProperty, p.Square.View.X);
 
-                            gridPanel.Children.Add(s.Piece.View.Image);
-                        }
-                    }
+                    gridPanel.Children.Add(p.View.Image);
                 }
             }
         }
+    
+
 
         private void Cell_Click(object sender, RoutedEventArgs e)
         {
@@ -150,7 +152,7 @@ namespace Baricade.View
                 if (SelectedPiece.Player == GameController.Game.CurrentPlayer)
                 {
                     if(s.Piece != null && s.Piece is Pawn) {
-                        s.Piece.Player.addPawn((Pawn)s.Piece);
+                        s.Piece.Player.addPawn((Pawn)s.Piece);//WHY?
                         s.Piece = null;
                     }
 

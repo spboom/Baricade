@@ -148,6 +148,10 @@ namespace Baricade.Model
                 playerMovedPiece = piece.moveTo(square);;
                 return playerMovedPiece;
             }
+            if (CurrentPlayer.Baricade != null && !piece.pawnMayMoveTrough())
+            {
+                return piece.moveTo(square);
+            }
             return false;
         }
     }
