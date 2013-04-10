@@ -29,7 +29,6 @@ namespace Baricade.Model
             playerPawns = new List<Pawn>();
         }
 
-
         public PlayerColor Color
         {
             get { return color; }
