@@ -23,6 +23,8 @@ namespace Baricade.View
         private Board board;
         private Piece selectedPiece;
         private Square selectedSquare;
+        private Square[] highlighted = new Square[0];
+        private String path;
 
         public MainWindow(GameController controller)
         {
@@ -30,8 +32,18 @@ namespace Baricade.View
             this.board = controller.Game.Board;
 
             InitializeComponent();
+
+            if (board.View.Style == null)
+            {
+                board.View.Style = "Minimalistic";
+            }
+            path = "pack://application:,,,/Style/" + board.View.Style + "/";
+
             setupGrid();
             fillGrid();
+            GameController.Game.throwDice();
+            lblThrow.Content = GameController.Game.CurrentDiceRoll;
+            changeColor(GameController.Game.CurrentPlayer.Color);
         }
 
         public GameController GameController
@@ -54,6 +66,9 @@ namespace Baricade.View
 
         private void setupGrid()
         {
+            gridPanel.RowDefinitions.Clear();
+            gridPanel.ColumnDefinitions.Clear();
+
             for (int i = 0; i < board.Width; i++)
             {
                 ColumnDefinition column = new ColumnDefinition();
@@ -66,16 +81,15 @@ namespace Baricade.View
                 gridPanel.RowDefinitions.Add(row);
             }
 
-            gridPanel.Width = board.Width * 40;
-            gridPanel.Height = board.Height * 40;
+            gridPanel.Width = board.Width * 30;
+            gridPanel.Height = board.Height * 30;
             this.Width = gridPanel.Width * 1.2;
             this.Height = gridPanel.Height * 1.4;
         }
 
         private void fillGrid()
         {
-            String path = "pack://application:,,,/Style/" + board.View.Style + "/";
-
+            gridPanel.Children.Clear();
             foreach (Square s in board.TwoDBoard)
             {
                 if (s != null)
@@ -101,39 +115,71 @@ namespace Baricade.View
             }
 
             //baricades
-            for (int i = 0; i < controller.Game.Board.Baricades.Count; i++)
-            {
-                Piece p = controller.Game.Board.Baricades[i];
-                p.View.Image = new Image();
-                p.View.Image.Name = "y" + p.Square.View.Y + "x" + p.Square.View.X;
-
-                p.View.Image.Source = new BitmapImage(new Uri(path + p.View.getName() + ".png"));
-
-                p.View.Image.SetValue(Grid.RowProperty, p.Square.View.Y);
-                p.View.Image.SetValue(Grid.ColumnProperty, p.Square.View.X);
-
-                gridPanel.Children.Add(p.View.Image);
-            }
+            placeBaricades(true);
 
             //pawns
+            placePawns(true);
+        }
+
+        private void placePawns(bool init = false)
+        {
             for (int i = 0; i < controller.Game.Players.List.Count; i++)
             {
                 for (int j = 0; j < controller.Game.Players.List[i].PlayerPawns.Count; j++)
                 {
                     Piece p = controller.Game.Players.List[i].PlayerPawns[j];
-                    p.View.Image = new Image();
-                    p.View.Image.Name = "y" + p.Square.View.Y + "x" + p.Square.View.X;
+                    if (init)
+                    {
+                        p.View.Image = new Image();
 
-                    p.View.Image.Source = new BitmapImage(new Uri(path + p.View.getName() + ".png"));
+                        p.View.Image.Source = new BitmapImage(new Uri(path + p.View.getName() + ".png"));
+
+                        gridPanel.Children.Add(p.View.Image);
+                    }
+                    p.View.Image.Name = "y" + p.Square.View.Y + "x" + p.Square.View.X;
 
                     p.View.Image.SetValue(Grid.RowProperty, p.Square.View.Y);
                     p.View.Image.SetValue(Grid.ColumnProperty, p.Square.View.X);
 
-                    gridPanel.Children.Add(p.View.Image);
                 }
             }
         }
-    
+
+        private void placeBaricades(bool init = false)
+        {
+            for (int i = 0; i < controller.Game.Board.Baricades.Count; i++)
+            {
+                Piece p = controller.Game.Board.Baricades[i];
+                if (init)
+                {
+                    p.View.Image = new Image();
+
+                    gridPanel.Children.Add(p.View.Image);
+                }
+                if (p.Square != null)
+                {
+                    p.View.Image.Name = "y" + p.Square.View.Y + "x" + p.Square.View.X;
+                    p.View.Image.SetValue(Grid.RowProperty, p.Square.View.Y);
+                    if (p.View.Image.Source == null)
+                    {
+                        p.View.Image.Source = new BitmapImage(new Uri(path + p.View.getName() + ".png"));
+                    }
+
+                    p.View.Image.SetValue(Grid.ColumnProperty, p.Square.View.X);
+                }
+                else
+                {
+                    p.View.Image.Name = "y0x0";
+                    p.View.Image.SetValue(Grid.RowProperty, 0);
+
+                    p.View.Image.SetValue(Grid.ColumnProperty, 0);
+
+                }
+
+
+            }
+        }
+
 
 
         private void Cell_Click(object sender, RoutedEventArgs e)
@@ -146,41 +192,70 @@ namespace Baricade.View
         {
             String[] coordinates = image.Name.Substring(1).Split('x');
             Square s = board.TwoDBoard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
+            bool movedPawn = false, movedBaricade = false;
 
-            if (SelectedPiece != null && GameController.Game.PlayerMovedPiece == false)
+            if (selectedPiece != null)
             {
-                if (SelectedPiece.Player == GameController.Game.CurrentPlayer)
+                bool mayMoveTo = false;
+                for (int i = 0; i < highlighted.Length; i++)
                 {
-                    if(s.Piece != null && s.Piece is Pawn) {
-                        s.Piece.Player.addPawn((Pawn)s.Piece);//WHY?
-                        s.Piece = null;
-                    }
-
-                    if (s.Piece != null && s.Piece is BaricadePiece)
+                    if (s == highlighted[i])
                     {
-                        s.Piece.Player.Baricade = (BaricadePiece)s.Piece;
-                        s.Piece.View.Image.Source = null;
-                        s.Piece = null;
+                        mayMoveTo = true;
+                        break;
                     }
+                }
+                if (selectedPiece is Pawn)
+                {
+                    highlight(new Square[0]);
+                }
+                if (!GameController.Game.PlayerMovedPiece || GameController.Game.CurrentPlayer.Baricade != null)
+                {
+                    Piece piece = null;
 
-                    GameController.Game.movePiece(SelectedPiece, s);
-
-                    String path = "pack://application:,,,/Style/" + board.View.Style + "/";
-                    SelectedPiece.View.Image.Name = "y" + s.View.Y + "x" + s.View.X;
-                    SelectedPiece.View.Image.Source = new BitmapImage(new Uri(path + s.Piece.View.getName() + ".png"));
-                    SelectedPiece.View.Image.SetValue(Grid.RowProperty, s.View.Y);
-                    SelectedPiece.View.Image.SetValue(Grid.ColumnProperty, s.View.X);
-
-                    SelectedPiece = null;
-                    Console.WriteLine("Move");
-                    return;
+                    if (selectedPiece == GameController.Game.CurrentPlayer.Baricade)
+                    {
+                        movedBaricade = GameController.Game.CurrentPlayer.Baricade.moveTo(s);
+                    }
+                    else if (SelectedPiece.Player == GameController.Game.CurrentPlayer && mayMoveTo)
+                    {
+                        if (s.Piece != null && s.Piece is BaricadePiece)
+                        {
+                            s.Piece.View.Image.Source = null;
+                            piece = s.Piece;
+                            movedBaricade = movedPawn = GameController.Game.movePiece(selectedPiece, s);
+                        }
+                        else
+                        {
+                            movedPawn = GameController.Game.movePiece(SelectedPiece, s);
+                        }
+                    }
+                    if (movedBaricade)
+                    {
+                        placeBaricades();
+                    }
+                    if (movedPawn)
+                    {
+                        placePawns();
+                    }
+                    if (movedBaricade || movedPawn)
+                    {
+                        SelectedPiece = piece;
+                        Console.WriteLine("Move");
+                        if (GameController.Game.CurrentPlayer.Baricade == null && GameController.Game.PlayerMovedPiece)
+                        {
+                            btnNextTurn.IsEnabled = true;
+                        }
+                        return;
+                    }
                 }
             }
 
-            if (s.Piece != null)
+            if (s.Piece != null && s.Piece is Pawn && (selectedPiece == null || GameController.Game.CurrentPlayer.Baricade == null) && s.Piece.Player.Equals(GameController.Game.CurrentPlayer))
             {
                 selectedPiece = s.Piece;
                 Console.WriteLine("Piece");
+                highlight(selectedPiece.Square.getNext(null, controller.Game.CurrentDiceRoll, (Pawn)selectedPiece));
             }
             else
             {
@@ -194,19 +269,47 @@ namespace Baricade.View
             }
         }
 
+
         private void btnThrow_Click(object sender, RoutedEventArgs e)
         {
             lblThrow.Content = GameController.Game.CurrentDiceRoll;
-
             btnThrowDice.IsEnabled = false;
+        }
+
+        private void highlight(Square[] squares)
+        {
+            for (int i = 0; i < highlighted.Length; i++)
+            {
+                highlighted[i].View.Image.Opacity = 1;
+            }
+            if (!GameController.Game.PlayerMovedPiece)
+            {
+
+                for (int i = 0; i < squares.Length; i++)
+                {
+                    squares[i].View.Image.Opacity = 0.5;
+                }
+                highlighted = squares;
+            }
+            else
+            {
+                highlighted = new Square[0];
+            }
         }
 
         private void btnEndTurn_Click(object sender, RoutedEventArgs e)
         {
             GameController.Game.nextTurn();
             changeColor(GameController.Game.CurrentPlayer.Color);
-
+            while (!GameController.Game.CurrentPlayer.Human)
+            {
+                GameController.Game.CurrentPlayer.bestmove(GameController.Game.CurrentDiceRoll);
+                placeBaricades();
+                placePawns();
+                GameController.Game.nextTurn();
+            }
             btnThrowDice.IsEnabled = true;
+            btnNextTurn.IsEnabled = false;
         }
 
         private void changeColor(PlayerColor color)
@@ -251,6 +354,18 @@ namespace Baricade.View
             {
                 filename = openFile.FileName;
                 GameController.Game = GameController.Loader.Load(filename);
+                board = GameController.Game.Board;
+                if (board.View.Style == null)
+                {
+                    board.View.Style = "Minimalistic";
+                }
+                path = "pack://application:,,,/Style/" + board.View.Style + "/";
+
+                setupGrid();
+                fillGrid();
+
+                GameController.Game.throwDice();
+                lblThrow.Content = GameController.Game.CurrentDiceRoll;
             }
         }
 
@@ -270,9 +385,6 @@ namespace Baricade.View
             }
         }
 
-        private void mSaveModel_Click(object sender, RoutedEventArgs e)
-        {
-        }
 
         // Style Menu
         private void mChooseStyle_Click(object sender, RoutedEventArgs e)

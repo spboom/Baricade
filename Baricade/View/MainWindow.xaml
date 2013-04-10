@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Baricade.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Barricade">
+        Title="Barricade" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" >
 
     <Window.Resources>
         <Style TargetType="{x:Type Image}">
@@ -18,8 +18,6 @@
                     x:Name="mLoadGame" Click="mLoadGame_Click"/>
                 <MenuItem Header="Save Game"
                     x:Name="mSaveGame" Click="mSaveGame_Click"/>
-                <MenuItem Header="Save Model"
-                    x:Name="mSaveModel" Click="mSaveModel_Click"/>
                 <MenuItem Header="Choose Style"
                     x:Name="mChooseStyle" Click="mChooseStyle_Click"/>
             </MenuItem>
@@ -37,7 +35,7 @@
 
             <DockPanel Name="Actions" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="100">
                 <Button Content="Throw Dice" Name="btnThrowDice" Height="20" Width="76" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,0,0" Click="btnThrow_Click"/>
-                <Button Content="End Turn" Name="btnNextTurn" Height="20" Width="76" Margin="20,0,0,0" Click="btnEndTurn_Click"/>
+                <Button Content="End Turn" Name="btnNextTurn" Height="20" Width="76" Margin="20,0,0,0" Click="btnEndTurn_Click" IsEnabled="False"/>
                 <Label Name="lblPlayerColor" Content="P" Height="100" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="72" BorderThickness="0"/>
                 <Label Name="lblThrow" Content="4" Height="100" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="72" BorderThickness="0"/>
             </DockPanel>

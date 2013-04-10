@@ -182,7 +182,10 @@ namespace Baricade.Model
 
         public virtual void removePawn(Pawn p)
         {
-            Piece.Square = null;
+            if (Piece != null)
+            {
+                Piece.Square = null;
+            }
             Piece = null;
         }
 

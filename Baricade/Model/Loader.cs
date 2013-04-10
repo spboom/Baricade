@@ -216,7 +216,7 @@ namespace Baricade.Model
                     {
                         _numberOfAIPlayers++;
                         _numberOfHumanPlayers++;
-                        p.PlayerSquare = (PlayerSquare)linkList[p.PlayerSquareId];
+                        p.PlayerSquare = (PlayerSquare)linkList[find(p.PlayerSquareId)];
                         p.PlayerId = playerList.Count + 1;
                         playerList.Add(p);
                     }

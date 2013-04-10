@@ -116,7 +116,6 @@
     <Compile Include="Model\PlayerSquare.cs" />
     <Compile Include="Model\RestSquare.cs" />
     <Compile Include="Model\Square.cs" />
-    <Compile Include="Model\Factory.cs" />
     <Compile Include="Model\VillageSquare.cs" />
     <Compile Include="Model\XMLData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

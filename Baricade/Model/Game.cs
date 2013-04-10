@@ -134,7 +134,7 @@ namespace Baricade.Model
             {
                 diceTrown = true;
                 Random random = new Random();
-                CurrentDiceRoll = random.Next(6) + 1;
+                CurrentDiceRoll = random.Next(1,7);
             }
         }
 
