@@ -10,6 +10,7 @@ namespace Baricade.Model
 {
     public class Loader
     {
+        private int _numberofPlayers = 0;
         private int _numberOfHumanPlayers = 0;
         private int _numberOfAIPlayers = 0;
         private int _numberOfPawns = -1;
@@ -17,26 +18,38 @@ namespace Baricade.Model
         private int _currentDiceThrow = -1;
         private int _height = -1;
         private int _width = -1;
-        private int _numberofPlayers = 0;
 
-        private List<PlayerSquare> playerSquares;
-        private List<Square> linkList = new List<Square>();
-        private Circuit<Player> playerList = new Circuit<Player>();
-        private List<BaricadePiece> baricades = new List<BaricadePiece>();
-        private List<Pawn> pawns = new List<Pawn>();
-        private List<Square> baricadeSquares = new List<Square>();
-        private List<Connector> connectors = new List<Connector>();
         private Board board;
+        private List<PlayerSquare> playerSquares;
+        private List<Square> linkList;
+        private Circuit<Player> playerList;
+        private List<BaricadePiece> baricades;
+        private List<Pawn> pawns;
+        private List<Square> baricadeSquares;
+        private List<Connector> connectors;
+
+        public Loader()
+        {
+            board = null;
+            playerSquares = new List<PlayerSquare>();
+            linkList = new List<Square>();
+            playerList = new Circuit<Player>();
+            baricades = new List<BaricadePiece>();
+            pawns = new List<Pawn>();
+            baricadeSquares = new List<Square>();
+            connectors = new List<Connector>();
+        }
+
+        public int NumberOfPlayers
+        {
+            get { return _numberofPlayers; }
+            set { _numberofPlayers = value; }
+        }
 
         public int NumberOfHumanPlayers
         {
             get { return _numberOfHumanPlayers; }
             set { _numberOfHumanPlayers = value; }
-        }
-
-        public Loader()
-        {
-
         }
 
         public int NumberOFAIPlayers
@@ -62,6 +75,7 @@ namespace Baricade.Model
             get { return _currentDiceThrow; }
             set { _currentDiceThrow = value; }
         }
+        
         public int Height
         {
             get { return _height; }
@@ -76,21 +90,23 @@ namespace Baricade.Model
 
         public Game Load(String uri)
         {
-            
             XmlReader r = XmlReader.Create(uri);
+
             board = null;
             FinishSquare f = null;
             ForestSquare forest = null;
-            playerSquares = new List<PlayerSquare>();
             Square previous = null;
-            
+
+            /*
+            I moved this to the default constructor!
+            playerSquares = new List<PlayerSquare>();
             linkList = new List<Square>();
             playerList = new Circuit<Player>();
             baricades = new List<BaricadePiece>();
             pawns = new List<Pawn>();
             baricadeSquares = new List<Square>();
             connectors = new List<Connector>();
-
+            */
 
             while (r.Read())
             {
@@ -157,7 +173,12 @@ namespace Baricade.Model
                     }
                 }
 
-                else if (r.Name.ToLower() == "pawn")
+                else if (r.Name.ToLower() == "pawn") 
+                    /*
+                     * Isn't this an element of a node instead of a node? If a pawn stands on a square and 
+                     * it's being saved, then node with the name of the type of square will be overridden as 'pawn'.
+                     * If you load a 'pawn' node, then you don't know what type of square is under it.
+                     */
                 {
                     Pawn p = new Pawn();
                     if (p.readElement(r))
@@ -168,6 +189,9 @@ namespace Baricade.Model
                 }
 
                 else if (r.Name.ToLower() == "baricade")
+                    /*
+                     * The same problem as the node 'pawn'.
+                     */ 
                 {
                     BaricadePiece b = new BaricadePiece();
                     if (b.readElement(r))
@@ -416,7 +440,6 @@ namespace Baricade.Model
             }
         }
             
-
         private void setPiecesToSquares()
         {
             for (int i = 0; i < pawns.Count; i++)

@@ -13,6 +13,7 @@ namespace Baricade.Model
         {
             StreamWriter file = new StreamWriter(filename);
             file.WriteLine("<board numberofpawns=\"" + game.Board.NumberOfPawns + "\" height=\"" + game.Board.Height + "\" width=\"" + game.Board.Width + "\">");
+            
             for (int i = 0; i < game.Board.Squares.Count; i++)
             {
                 Square s = game.Board.Squares[i];
@@ -39,16 +40,23 @@ namespace Baricade.Model
                 }
                 file.WriteLine("/>");
             }
+           
             for (int i = 0; i < game.Players.Count; i++)
             {
                 Player player = game.Players.pop();
+                
                 for (int j = 0; j < player.PlayerPawns.Count; j++)
                 {
                     Pawn p = player.PlayerPawns[j];
-                    file.WriteLine("\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" squareid=\"" + p.Square.Id + "\" />");
+
+                    // This node isn't read by the loader.
+                    file.WriteLine("\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" squareid=\"" + p.Square.Id + "\" />"); 
                 }
-                file.WriteLine("\t<" + player.GetType().Name + " playersquareid=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />");
+
+                // This line is inconsistent with the loader.
+                file.WriteLine("\t<" + player.GetType().Name + " playersquareid=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />"); 
             }
+
             file.WriteLine("</board>");
             file.Close();
         }
