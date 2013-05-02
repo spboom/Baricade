@@ -145,7 +145,7 @@ namespace Baricade.Model
         {
             if (!playerMovedPiece)
             {
-                playerMovedPiece = piece.moveTo(square);;
+                playerMovedPiece = piece.moveTo(square);
                 return playerMovedPiece;
             }
             if (CurrentPlayer.Baricade != null && !piece.pawnMayMoveTrough())

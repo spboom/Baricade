@@ -153,6 +153,7 @@
     </None>
     <None Include="Data\Level\bord2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Data\Level\bord3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

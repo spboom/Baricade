@@ -12,26 +12,26 @@ namespace Baricade.Controller
 {
     public class GameController
     {
-        private Game game;
-        private Loader loader;
+        private Game _game;
+        private Loader _loader;
 
         internal Game Game
         {
-            get { return game; }
-            set { game = value; }
+            get { return _game; }
+            set { _game = value; }
         }
 
         internal Loader Loader
         {
-            get { return loader; }
-            set { loader = value; }
+            get { return _loader; }
+            set { _loader = value; }
         }
 
         public GameController()
         {
-            loader = new Loader();
-            int board = 1;
-            Game = Loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord" + board + ".xml");
+            Loader = new Loader();
+            Game = Loader.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Data/Level/bord1.xml");
+
             Game.Board.View.Style = "Minimalistic";
             MainWindow MainWindow = new MainWindow(this);
             MainWindow.Show();
@@ -39,8 +39,7 @@ namespace Baricade.Controller
 
         public void loadGame(String URI)
         {
-            loader = new Loader();
-            game = loader.Load(URI);
+            Game = Loader.Load(URI);
         }
 
         internal void Text()
@@ -50,7 +49,7 @@ namespace Baricade.Controller
 
         internal void newGame(int humanPlayers, string p)
         {
-            game = loader.Load(p, humanPlayers);
+            Game = Loader.Load(p, humanPlayers);
         }
     }
 }

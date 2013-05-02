@@ -1,0 +1,130 @@
+<board numberofpawns="5" height="15" width="17">
+	<FinishSquare id="1" down="2" x="8" y="0"/>
+	<BaricadeSquare id="2" up="1" left="3" right="37"/>
+	<Square id="3" left="4" right="2"/>
+	<Square id="4" left="5" right="3"/>
+	<Square id="5" left="6" right="4"/>
+	<Square id="6" left="7" right="5"/>
+	<Square id="7" left="8" right="6"/>
+	<Square id="8" left="9" right="7"/>
+	<Square id="9" left="10" right="8"/>
+	<Square id="10" right="9" down="11"/>
+	<Square id="11" up="10" down="12"/>
+	<Square id="12" up="11" right="13"/>
+	<Square id="13" left="12" right="14"/>
+	<Square id="14" left="13" right="15"/>
+	<Square id="15" left="14" right="16"/>
+	<Square id="16" left="15" right="17"/>
+	<Square id="17" left="16" right="18"/>
+	<Square id="18" left="17" right="19"/>
+	<Square id="19" left="18" right="20"/>
+	<BaricadeSquare id="20" left="19" right="21" down="38"/>
+	<Square id="21" left="20" right="22"/>
+	<Square id="22" left="21" right="23"/>
+	<Square id="23" left="22" right="24"/>
+	<Square id="24" left="23" right="25"/>
+	<Square id="25" left="24" right="26"/>
+	<Square id="26" left="25" right="27"/>
+	<Square id="27" left="26" right="28"/>
+	<Square id="28" up="29" left="27"/>
+	<Square id="29" up="30" down="28"/>
+	<Square id="30" right="31" down="29"/>
+	<Square id="31" left="32" right="30"/>
+	<Square id="32" left="33" right="31"/>
+	<Square id="33" left="34" right="32"/>
+	<Square id="34" left="35" right="33"/>
+	<Square id="35" left="36" right="34"/>
+	<Square id="36" left="37" right="35"/>
+	<Square id="37" left="2" right="36"/>
+	<BaricadeSquare id="38" up="20" down="41"/>
+	<Square id="39" right="40" down="44"/>
+	<Square id="40" left="39" right="41"/>
+	<BaricadeSquare id="41" up="38" left="40" right="42"/>
+	<Square id="42" left="41" right="43"/>
+	<Square id="43" left="42" down="45"/>
+	<Square id="44" up="39" down="48"/>
+	<Square id="45" up="43" down="52"/>
+	<Square id="46" right="47" down="55"/>
+	<Square id="47" left="46" right="48"/>
+	<BaricadeSquare id="48" up="44" left="47" right="49"/>
+	<Square id="49" left="48" right="50"/>
+	<Square id="50" left="49" right="51"/>
+	<Square id="51" left="50" right="52"/>
+	<BaricadeSquare id="52" up="45" left="51" right="53"/>
+	<Square id="53" left="52" right="54"/>
+	<Square id="54" left="53" down="56"/>
+	<Square id="55" up="46" down="59"/>
+	<Square id="56" up="54" down="67"/>
+	<Square id="57" right="58" down="70"/>
+	<Square id="58" left="57" right="59"/>
+	<Square id="59" up="55" left="58" right="60"/>
+	<Square id="60" left="59" right="61"/>
+	<Square id="61" left="60" right="62" down="71"/>
+	<Square id="62" left="61" right="63"/>
+	<Square id="63" left="62" right="64"/>
+	<Square id="64" left="63" right="65"/>
+	<Square id="65" left="64" right="66" down="72"/>
+	<Square id="66" left="65" right="67"/>
+	<Square id="67" up="56" left="66" right="68"/>
+	<Square id="68" left="67" right="69"/>
+	<Square id="69" left="68" down="73"/>
+	<Square id="70" up="57" down="76"/>
+	<Square id="71" up="61" down="80"/>
+	<Square id="72" up="65" down="84"/>
+	<Square id="73" up="69" down="88"/>
+	<BaricadeSquare id="74" right="75" down="91"/>
+	<Square id="75" left="74" right="76"/>
+	<Square id="76" up="70" left="75" right="77"/>
+	<Square id="77" left="76" right="78"/>
+	<BaricadeSquare id="78" left="77" right="79" down="92"/>
+	<Square id="79" left="78" right="80"/>
+	<Square id="80" up="71" left="79" right="81"/>
+	<Square id="81" left="80" right="82"/>
+	<BaricadeSquare id="82" left="81" right="83" down="93"/>
+	<Square id="83" left="82" right="84"/>
+	<Square id="84" up="72" left="83" right="85"/>
+	<Square id="85" left="84" right="86"/>
+	<BaricadeSquare id="86" left="85" right="87" down="94"/>
+	<Square id="87" left="86" right="88"/>
+	<Square id="88" up="73" left="87" right="89"/>
+	<Square id="89" left="88" right="90"/>
+	<BaricadeSquare id="90" left="89" down="95"/>
+	<Square id="91" up="74" down="96"/>
+	<Square id="92" up="78" down="100"/>
+	<Square id="93" up="82" down="104"/>
+	<Square id="94" up="86" down="108"/>
+	<Square id="95" up="90" down="112"/>
+	<LowRowSquare id="96" up="91" right="97"/>
+	<LowRowSquare id="97" left="96" right="98"/>
+	<LowRowSquare id="98" left="97" right="99" down="113"/>
+	<LowRowSquare id="99" left="98" right="100"/>
+	<LowRowSquare id="100" up="92" left="99" right="101"/>
+	<LowRowSquare id="101" left="100" right="102"/>
+	<LowRowSquare id="102" left="101" right="103" down="114"/>
+	<LowRowSquare id="103" left="102" right="104"/>
+	<LowRowSquare id="104" up="93" left="103" right="105"/>
+	<LowRowSquare id="105" left="104" right="106"/>
+	<LowRowSquare id="106" left="105" right="107" down="115"/>
+	<LowRowSquare id="107" left="106" right="108"/>
+	<LowRowSquare id="108" up="94" left="107" right="109"/>
+	<LowRowSquare id="109" left="108" right="110"/>
+	<LowRowSquare id="110" left="109" right="111" down="116"/>
+	<LowRowSquare id="111" left="110" right="112"/>
+	<LowRowSquare id="112" up="95" left="111"/>
+	<PlayerSquare id="113" up="98"/>
+	<PlayerSquare id="114" up="102"/>
+	<PlayerSquare id="115" up="106"/>
+	<PlayerSquare id="116" up="110"/>
+	<Pawn playerid="2" squareid="104" />
+	<Pawn playerid="2" squareid="82" />
+	<Player playersquareid="114" color="Green" player="2" />
+	<Pawn playerid="3" squareid="84" />
+	<Player playersquareid="115" color="Red" player="3" />
+	<Pawn playerid="4" squareid="111" />
+	<Pawn playerid="4" squareid="105" />
+	<Player playersquareid="116" color="Yellow" player="4" />
+	<Pawn playerid="1" squareid="91" />
+	<Pawn playerid="1" squareid="92" />
+	<Pawn playerid="1" squareid="78" />
+	<Player playersquareid="113" color="Blue" player="1" />
+</board>

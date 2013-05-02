@@ -24,6 +24,7 @@ namespace Baricade.View
         private Piece selectedPiece;
         private Square selectedSquare;
         private Square[] highlighted = new Square[0];
+        private bool editMode;
         private String path;
 
         public MainWindow(GameController controller)
@@ -62,6 +63,12 @@ namespace Baricade.View
         {
             get { return selectedSquare; }
             set { selectedSquare = value; }
+        }
+
+        public bool EditMode
+        {
+            get { return editMode; }
+            set { editMode = value; }
         }
 
         private void setupGrid()
@@ -175,12 +182,8 @@ namespace Baricade.View
                     p.View.Image.SetValue(Grid.ColumnProperty, 0);
 
                 }
-
-
             }
         }
-
-
 
         private void Cell_Click(object sender, RoutedEventArgs e)
         {
@@ -194,7 +197,18 @@ namespace Baricade.View
             Square s = board.TwoDBoard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
             bool movedPawn = false, movedBaricade = false;
 
-            if (selectedPiece != null)
+            if(selectedPiece != null && EditMode == true) {
+                if(!(s is BaricadeSquare)) {
+                    selectedPiece.moveTo(s);
+                    placePawns();
+                    selectedPiece = null;
+                    btnNextTurn.IsEnabled = true;
+                }
+
+                return;
+            }
+
+            if (selectedPiece != null && EditMode == false)
             {
                 bool mayMoveTo = false;
                 for (int i = 0; i < highlighted.Length; i++)
@@ -205,10 +219,12 @@ namespace Baricade.View
                         break;
                     }
                 }
+
                 if (selectedPiece is Pawn)
                 {
                     highlight(new Square[0]);
                 }
+
                 if (!GameController.Game.PlayerMovedPiece || GameController.Game.CurrentPlayer.Baricade != null)
                 {
                     Piece piece = null;
@@ -217,6 +233,7 @@ namespace Baricade.View
                     {
                         movedBaricade = GameController.Game.CurrentPlayer.Baricade.moveTo(s);
                     }
+                    
                     else if (SelectedPiece.Player == GameController.Game.CurrentPlayer && mayMoveTo)
                     {
                         if (s.Piece != null && s.Piece is BaricadePiece)
@@ -230,33 +247,41 @@ namespace Baricade.View
                             movedPawn = GameController.Game.movePiece(SelectedPiece, s);
                         }
                     }
+
                     if (movedBaricade)
                     {
                         placeBaricades();
                     }
+
                     if (movedPawn)
                     {
                         placePawns();
                     }
+
                     if (movedBaricade || movedPawn)
                     {
                         SelectedPiece = piece;
                         Console.WriteLine("Move");
+
                         if (GameController.Game.CurrentPlayer.Baricade == null && GameController.Game.PlayerMovedPiece)
                         {
                             btnNextTurn.IsEnabled = true;
                         }
+
                         return;
                     }
                 }
             }
 
-            if (s.Piece != null && s.Piece is Pawn && (selectedPiece == null || GameController.Game.CurrentPlayer.Baricade == null) && s.Piece.Player.Equals(GameController.Game.CurrentPlayer))
+            if (s.Piece != null && s.Piece is Pawn && (selectedPiece == null || GameController.Game.CurrentPlayer.Baricade == null))
             {
-                selectedPiece = s.Piece;
-                Console.WriteLine("Piece");
-                highlight(selectedPiece.Square.getNext(null, controller.Game.CurrentDiceRoll, (Pawn)selectedPiece));
+                if(s.Piece.Player.Equals(GameController.Game.CurrentPlayer) || EditMode == true) {
+                    selectedPiece = s.Piece;
+                    Console.WriteLine("Piece");
+                    highlight(selectedPiece.Square.getNext(null, controller.Game.CurrentDiceRoll, (Pawn)selectedPiece));
+                }
             }
+
             else
             {
                 if (s is PlayerSquare)
@@ -268,7 +293,6 @@ namespace Baricade.View
                 Console.WriteLine("Square");
             }
         }
-
 
         private void btnThrow_Click(object sender, RoutedEventArgs e)
         {
@@ -308,6 +332,8 @@ namespace Baricade.View
                 placePawns();
                 GameController.Game.nextTurn();
             }
+
+            EditMode = false;
             btnThrowDice.IsEnabled = true;
             btnNextTurn.IsEnabled = false;
         }
@@ -353,12 +379,14 @@ namespace Baricade.View
             if (openFile.ShowDialog() == true)
             {
                 filename = openFile.FileName;
-                GameController.Game = GameController.Loader.Load(filename);
+                GameController.loadGame(filename);
                 board = GameController.Game.Board;
+               
                 if (board.View.Style == null)
                 {
                     board.View.Style = "Minimalistic";
                 }
+                
                 path = "pack://application:,,,/Style/" + board.View.Style + "/";
 
                 setupGrid();
@@ -404,6 +432,12 @@ namespace Baricade.View
         {
             ChooseDiceRoll roll = new ChooseDiceRoll(this);
             roll.Show();
+        }
+
+        private void mEditMode_Click(object sender, RoutedEventArgs e)
+        {
+            EditMode = true;
+            Console.WriteLine("ACTIVE EDIT MODE BEEP BEEP");
         }
 
         public void toTextMode()

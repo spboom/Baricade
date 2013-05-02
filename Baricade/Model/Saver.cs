@@ -44,17 +44,18 @@ namespace Baricade.Model
             for (int i = 0; i < game.Players.Count; i++)
             {
                 Player player = game.Players.pop();
-                
+
+                file.WriteLine();
+                file.WriteLine("\t<" + player.GetType().Name + " playersquareid=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />"); 
+
                 for (int j = 0; j < player.PlayerPawns.Count; j++)
                 {
                     Pawn p = player.PlayerPawns[j];
 
-                    // This node isn't read by the loader.
-                    file.WriteLine("\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" squareid=\"" + p.Square.Id + "\" />"); 
+                    if(!(p.Square is PlayerSquare)) {
+                        file.WriteLine("\t<" + p.GetType().Name + " playerid=\"" + p.PlayerId + "\" squareid=\"" + p.Square.Id + "\" />"); 
+                    }
                 }
-
-                // This line is inconsistent with the loader.
-                file.WriteLine("\t<" + player.GetType().Name + " playersquareid=\"" + player.PlayerSquare.Id + "\" color=\"" + player.Color + "\" player=\"" + player.PlayerId + "\" />"); 
             }
 
             file.WriteLine("</board>");

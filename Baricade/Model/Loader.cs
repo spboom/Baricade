@@ -30,14 +30,6 @@ namespace Baricade.Model
 
         public Loader()
         {
-            board = null;
-            playerSquares = new List<PlayerSquare>();
-            linkList = new List<Square>();
-            playerList = new Circuit<Player>();
-            baricades = new List<BaricadePiece>();
-            pawns = new List<Pawn>();
-            baricadeSquares = new List<Square>();
-            connectors = new List<Connector>();
         }
 
         public int NumberOfPlayers
@@ -97,8 +89,6 @@ namespace Baricade.Model
             ForestSquare forest = null;
             Square previous = null;
 
-            /*
-            I moved this to the default constructor!
             playerSquares = new List<PlayerSquare>();
             linkList = new List<Square>();
             playerList = new Circuit<Player>();
@@ -106,7 +96,6 @@ namespace Baricade.Model
             pawns = new List<Pawn>();
             baricadeSquares = new List<Square>();
             connectors = new List<Connector>();
-            */
 
             while (r.Read())
             {
@@ -174,11 +163,6 @@ namespace Baricade.Model
                 }
 
                 else if (r.Name.ToLower() == "pawn") 
-                    /*
-                     * Isn't this an element of a node instead of a node? If a pawn stands on a square and 
-                     * it's being saved, then node with the name of the type of square will be overridden as 'pawn'.
-                     * If you load a 'pawn' node, then you don't know what type of square is under it.
-                     */
                 {
                     Pawn p = new Pawn();
                     if (p.readElement(r))
@@ -189,9 +173,6 @@ namespace Baricade.Model
                 }
 
                 else if (r.Name.ToLower() == "baricade")
-                    /*
-                     * The same problem as the node 'pawn'.
-                     */ 
                 {
                     BaricadePiece b = new BaricadePiece();
                     if (b.readElement(r))
