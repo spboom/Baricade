@@ -52,6 +52,11 @@ namespace Baricade.ViewModel
 
         public virtual String getName()
         {
+            if (Square.Up != 0 && Square.links[0].Down == 0)
+            {
+                return "pointSquare";
+            }
+
             return "square";
         }
 

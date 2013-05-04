@@ -13,6 +13,11 @@ namespace Baricade.ViewModel
 
         public override String getName()
         {
+            if (Square.Up != 0 && Square.links[0].Up == 0)
+            {
+                return "pointSquare";
+            }
+
             return "restSquare";
         }
 

@@ -161,41 +161,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Style\Minimalistic\barricade.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\barricadequare.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\bluePawn.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\greenPawn.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\redPawn.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\restsquare.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\playersquare.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\yellowPawn.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\lowrowsquare.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\finishsquare.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Style\Minimalistic\square.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="View\ChooseDiceRoll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +186,30 @@
     <None Include="Data\Saves\Makefile.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Minimalistic\barricade.png" />
+    <Resource Include="Style\Minimalistic\barricadeSquare.jpg" />
+    <Resource Include="Style\Minimalistic\barricadeVillageSquare.jpg" />
+    <Resource Include="Style\Minimalistic\bluePawn.png" />
+    <Resource Include="Style\Minimalistic\finishSquare.jpg" />
+    <Resource Include="Style\Minimalistic\greenPawn.png" />
+    <Resource Include="Style\Minimalistic\lowrowSquare.jpg" />
+    <Resource Include="Style\Minimalistic\playerSquare.jpg" />
+    <Resource Include="Style\Minimalistic\redPawn.png" />
+    <Resource Include="Style\Minimalistic\restSquare.jpg" />
+    <Resource Include="Style\Minimalistic\square.jpg" />
+    <Resource Include="Style\Minimalistic\villageSquare.jpg" />
+    <Resource Include="Style\Minimalistic\yellowPawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Minimalistic\connector.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Minimalistic\forestSquare.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Minimalistic\pointSquare.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

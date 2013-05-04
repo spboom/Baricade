@@ -89,9 +89,9 @@ namespace Baricade.View
             }
 
             gridPanel.Width = board.Width * 30;
-            gridPanel.Height = board.Height * 30;
+            gridPanel.Height = board.Height * 32;
             this.Width = gridPanel.Width * 1.2;
-            this.Height = gridPanel.Height * 1.4;
+            this.Height = gridPanel.Height * 1.5;
         }
 
         private void fillGrid()

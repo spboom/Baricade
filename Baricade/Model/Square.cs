@@ -217,7 +217,6 @@ namespace Baricade.Model
             return true;
         }
 
-
         public Square getEmptyNext(Square from, List<int> idDone)
         {
             idDone.Add(this.Id);
