@@ -172,7 +172,7 @@ namespace Baricade.Model
 
                 }
 
-                else if (r.Name.ToLower() == "baricade")
+                else if (r.Name.ToLower() == "baricadepiece")
                 {
                     BaricadePiece b = new BaricadePiece();
                     if (b.readElement(r))
@@ -272,7 +272,7 @@ namespace Baricade.Model
             {
                 board.ForestSquare = forest;
             }
-            Game game = new Game(board, playerList,f);
+            Game game = new Game(board, playerList, f);
             board.Game = game;
             return game;
         }
@@ -432,8 +432,23 @@ namespace Baricade.Model
             for (int i = 0; i < baricades.Count; i++)
             {
                 BaricadePiece b = baricades[i];
-                b.Square = linkList[find(b.SquareId)];
-                b.Square.Piece = b;
+                if (b.SquareId > 0)
+                {
+                    b.Square = linkList[find(b.SquareId)];
+                    b.Square.Piece = b;
+                }
+                if (b.PlayerId > 0)
+                {
+                    for (int j = 0; j<playerList.List.Count; j++)
+                    {
+                        if (b.PlayerId == playerList.List[j].PlayerId)
+                        {
+                            b.Player = playerList.List[j];
+                            CurrentPlayer = j;
+                            break;
+                        }
+                    }
+                }
             }
         }
 

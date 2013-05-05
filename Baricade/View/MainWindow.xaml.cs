@@ -43,6 +43,10 @@ namespace Baricade.View
             setupGrid();
             fillGrid();
             GameController.Game.throwDice();
+            if(controller.Game.CurrentPlayer.Baricade!=null)
+            {
+                selectedPiece = controller.Game.CurrentPlayer.Baricade;
+            }
             lblThrow.Content = GameController.Game.CurrentDiceRoll;
             changeColor(GameController.Game.CurrentPlayer.Color);
         }

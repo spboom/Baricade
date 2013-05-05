@@ -57,6 +57,18 @@ namespace Baricade.Model
                     }
                 }
             }
+            for (int i = 0; i < game.Board.Baricades.Count; i++)
+            {
+                BaricadePiece b = game.Board.Baricades[i];
+                if (b.Square == null)
+                {
+                    file.WriteLine("<" + b.GetType().Name + " playerid=\"" + b.Player.PlayerId + "\"/>");
+                }
+                else
+                {
+                    file.WriteLine("<" + b.GetType().Name + " squareid=\"" + b.Square.Id + "\"/>");
+                }
+            }
 
             file.WriteLine("</board>");
             file.Close();
