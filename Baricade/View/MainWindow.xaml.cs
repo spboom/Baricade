@@ -436,8 +436,19 @@ namespace Baricade.View
 
         private void mEditMode_Click(object sender, RoutedEventArgs e)
         {
-            EditMode = true;
-            Console.WriteLine("ACTIVE EDIT MODE BEEP BEEP");
+            EditMode = !EditMode;
+            if (EditMode)
+            {
+                Title = "Barricade - EditMode";
+                Console.WriteLine("ACTIVE EDIT MODE BEEP BEEP");
+            }
+            else
+            {
+                Title = "Barricade";
+                Console.WriteLine("Deactivated");
+            }
+            ((MenuItem)sender).IsChecked = EditMode;
+
         }
 
         public void toTextMode()

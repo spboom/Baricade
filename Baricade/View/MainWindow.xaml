@@ -28,7 +28,8 @@
                 <MenuItem Header="Current Dice thow"
                     x:Name="mCurrentDiceThrow" Click="mCurrentDiceThrow_Click"/>
                 <MenuItem Header="Edit Mode"
-                    x:Name="mEditMenu" Click="mEditMode_Click"/>
+                    x:Name="mEditMenu" Click="mEditMode_Click"
+                          IsCheckable="True"/>
             </MenuItem>
         </Menu>
 
