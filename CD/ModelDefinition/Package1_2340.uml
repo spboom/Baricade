@@ -107,6 +107,84 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="f7df75f2-c638-4d36-81f5-7957c020ef51"
+            isDerived="false"
+            sourceEndRoleName="GameController"
+            targetEndRoleName="Saver"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="aba1d98d-a0ba-4add-a2b4-a26ee301679b"
+              LastKnownName="Saver"
+              LastKnownLocation="Package2_2340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="31d12005-490a-420f-a682-690ce916e602"
+                  name="GameController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8e8bf324-7eb4-4f16-af26-0709afdb1b9b"
+                  name="Saver"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="dbeec47e-fbab-4700-a7ed-bcaf3221f7b4"
+            isDerived="false"
+            sourceEndRoleName="GameController"
+            targetEndRoleName="Loader"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="af1d698c-42ad-44b2-828e-723e291afbeb"
+              LastKnownName="Loader"
+              LastKnownLocation="Package2_2340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b712ade2-f6ef-40ec-840a-307972fa1953"
+                  name="GameController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8b37d78c-2ecd-4e3e-961e-d6fa94d7b396"
+                  name="Loader"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
