@@ -201,6 +201,11 @@ namespace Baricade.View
             Square s = board.TwoDBoard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
             bool movedPawn = false, movedBaricade = false;
 
+            if (GameController.Game.Finished)
+            {
+                return;
+            }
+
             if(selectedPiece != null && EditMode == true) {
                 if(!(s is BaricadeSquare)) {
                     selectedPiece.moveTo(s);
@@ -270,6 +275,10 @@ namespace Baricade.View
                         if (GameController.Game.CurrentPlayer.Baricade == null && GameController.Game.PlayerMovedPiece)
                         {
                             btnNextTurn.IsEnabled = true;
+                        }
+
+                        if(GameController.Game.Finished) {
+                            MessageBox.Show("The " + GameController.Game.CurrentPlayer.Color + " player has won!");
                         }
 
                         return;
