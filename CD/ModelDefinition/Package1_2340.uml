@@ -1,0 +1,737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="f675f727-8f4b-4151-8b8a-be7778ac931e"
+  name="Controller"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="a68af5fd-f16e-4570-9d7e-de461b79f678"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DBaricade.Controller"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="8918a290-7d90-4db1-96a6-5282920c1b56"
+        name="GameController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="989c465b-f873-40cf-889e-82f0668ef364"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="81741c57-4b5f-45a7-955d-453e2f3ce9e3"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c6ed5e69-2b99-4db8-9fe4-e041693df2b7">
+                <propertyInstance
+                  Id="41a72c3c-5611-4a8d-9171-92f434137295"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5c11d8aa-13bf-48fa-ae64-4f93959bdbdb">
+                <propertyInstance
+                  Id="431e8976-46ea-4528-abf8-39c5ab0824d1"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="18a58cb6-dc79-46b8-b883-c5dd662e407d">
+                <propertyInstance
+                  Id="b515f5d8-52fe-4201-bdf8-0b8feb78f261"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d156d910-d138-4cfd-8d1c-2912c5ec355f">
+                <propertyInstance
+                  Id="b3b2769c-038a-45e6-96a5-229a6ccb8829"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="910e00f7-cd58-482d-9c2b-4d2834ea2ecb">
+                <propertyInstance
+                  Id="67e25d61-eec9-4622-be47-cc541458af3a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="8cb5f7a9-d576-4d48-b55f-944a5a8f6984"
+            isDerived="false"
+            sourceEndRoleName="GameController"
+            targetEndRoleName="Game"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="baafccc6-b1f0-4402-ac32-bae00ae002bd"
+              LastKnownName="Game"
+              LastKnownLocation="Package2_2340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="52413966-9405-40c7-ac03-65b1514c7346"
+                  name="GameController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1c872bce-1671-4e6e-8e89-b6fcb8cb3211"
+                  name="Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="9a0386f7-dbdf-4e42-84ff-8658c3ef85bc"
+            name="Game"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b95a23ba-8afb-43f6-91a9-72183c424909"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3DGame"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8d41e7b7-c247-496d-864e-1db3a4ada537"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bca03491-18c6-4c34-aaf3-5cc52c20b910">
+                    <propertyInstance
+                      Id="699a0e17-6fc7-4092-9dd5-46e2f091b0c3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="73044502-3dad-4c4c-9948-8ec6133a83ae">
+                    <propertyInstance
+                      Id="a9fe2780-2ef6-42b8-a487-9e051de22e71"
+                      name="Get"
+                      value="package" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e4a3237-1f80-4aae-87a3-91122e6d573d">
+                    <propertyInstance
+                      Id="b9bf3cc1-8696-44e3-8b19-a2899659599c"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2e7ea79-b8c2-43dd-93d6-594e12ffa88f">
+                    <propertyInstance
+                      Id="3a9969b8-afa8-4873-97bd-4e0d6d0ccbf7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c79c19dc-c874-45ba-9ccd-876ef165037e">
+                    <propertyInstance
+                      Id="2be7463d-c1b1-4fd9-966d-1e00335acf0b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="caf8d6b3-423d-4691-aee5-afa078876067">
+                    <propertyInstance
+                      Id="48d9921a-11ac-40a7-8b5a-fffeb4041dae"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5737e9d-e450-4ae9-aa13-38b55673941a">
+                    <propertyInstance
+                      Id="dc20406d-1187-4454-a10c-466c55a29a7f"
+                      name="Set"
+                      value="package" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="baafccc6-b1f0-4402-ac32-bae00ae002bd"
+                LastKnownName="Game"
+                LastKnownLocation="Package2_2340.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6d66528a-0c47-4672-9657-bf8fff76c394"
+            name="Loader"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e4302e08-e443-4a6b-a2e3-95552215cb5f"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3DLoader"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2ac5c8ab-1a10-4fb2-b4f8-f39d86477b2f"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b5c76a7e-6c23-4b44-91af-5f95859ce71e">
+                    <propertyInstance
+                      Id="2fe05103-eb76-41d2-9965-946a2565fb9b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="602be384-9176-4f98-83c5-d9edb7c08b02">
+                    <propertyInstance
+                      Id="e145f34d-ab6f-4b9e-b6de-71ee1fa7d8b9"
+                      name="Get"
+                      value="package" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ccdf0909-ae3a-4c3b-82c8-5125be928e0e">
+                    <propertyInstance
+                      Id="06ec4eb3-d177-4358-9321-08ea20035fd8"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f9944008-1609-48c5-bd17-e476ac6f2f62">
+                    <propertyInstance
+                      Id="70ef73c8-26d2-4a4a-bdb2-515990e587e4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85e78072-1eb3-44cd-9ea1-3e43afc52751">
+                    <propertyInstance
+                      Id="9bd724d1-06d7-4ba5-92e2-b9fe71211e7a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b9f5f1f1-b9d5-4061-bea1-18310d6a808d">
+                    <propertyInstance
+                      Id="1e3aec1c-ec2b-41cc-b2ae-487706200368"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23360697-188f-4031-a531-89fd407c7781">
+                    <propertyInstance
+                      Id="c7ca7fc8-1b66-4a45-972f-1202e35e5079"
+                      name="Set"
+                      value="package" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="af1d698c-42ad-44b2-828e-723e291afbeb"
+                LastKnownName="Loader"
+                LastKnownLocation="Package2_2340.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e29f1858-be1c-465c-b3e6-b5b4551e8419"
+            name="_game"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="c33afa01-9f71-48a0-82b6-c9c3ddf42f8f"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D_game"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3f686f0d-e132-48b8-9295-f47c5c344751"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="552d1c45-4b69-469f-8b44-a15d73e7b559">
+                    <propertyInstance
+                      Id="b940ea1c-ccef-4a60-a066-72701ebb53d2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c2899c21-76cb-4b34-bca5-3811927caf58">
+                    <propertyInstance
+                      Id="238f3e81-ba88-42f1-9e8a-4534f393c4a6"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c7b501b-c755-472b-99c4-462a5024e96f">
+                    <propertyInstance
+                      Id="a8cdd3d3-9cb3-4d4d-bc96-5c61baeb7ac1"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a298bb9-1551-49f7-81c4-dc55cac41419">
+                    <propertyInstance
+                      Id="c37f9738-1b6d-42f0-b4f7-3f6a4445c2ae"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8092014c-153e-4538-9804-56150c8d3f57">
+                    <propertyInstance
+                      Id="851e386e-ddd9-4dff-816d-bdcc98382c3e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="baafccc6-b1f0-4402-ac32-bae00ae002bd"
+                LastKnownName="Game"
+                LastKnownLocation="Package2_2340.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="56fbd74d-beda-413b-9855-5bf21531a987"
+            name="_loader"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6d0b659d-6287-41e3-a2d9-01c3ac310861"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D_loader"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="147bbda6-992a-48cf-bb40-86e84be9ce83"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28f5dbdb-c351-4d40-8d51-c4610d8a92df">
+                    <propertyInstance
+                      Id="5d36d6ab-2d9a-4761-b382-e490a705f678"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="45f830cf-b390-447b-9054-7de2950eb1c9">
+                    <propertyInstance
+                      Id="19e0143c-ffe8-4cb5-958a-711eb31f5c45"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="452682ac-eeb3-4062-b2df-88aaa338b643">
+                    <propertyInstance
+                      Id="271e2fa2-e332-4856-8082-e551ae825125"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9aa169fc-ce57-487a-a469-f345e067e8ce">
+                    <propertyInstance
+                      Id="0eca2daa-a42c-4024-8482-fef11b8efe94"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="df042476-a965-4803-86b0-c70a06d0706a">
+                    <propertyInstance
+                      Id="ff63138c-498c-43a4-b4e8-56576c5e9cbc"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="af1d698c-42ad-44b2-828e-723e291afbeb"
+                LastKnownName="Loader"
+                LastKnownLocation="Package2_2340.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a685fa99-ba89-4b3c-b360-ff39ce53afef"
+            name="loadGame"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="ba9e335f-1a0e-40f0-9059-50d8cdb0de06"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D(Name%3DloadGame OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="51fab383-0284-40f6-b77f-0bec849059a7"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4fcfe2f7-5abd-4896-b127-e5dde277e25b">
+                    <propertyInstance
+                      Id="e2f4b893-f626-4d13-a2a7-541370f44659"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75f29ce7-e95f-45ff-b09b-b545fdf772b3">
+                    <propertyInstance
+                      Id="392735e3-b992-40e0-90ee-847a6746d462"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb6da33b-e53c-4350-8c1d-49bbe0ae5bb3">
+                    <propertyInstance
+                      Id="9b55611a-9f02-417a-a85b-bfb08d1d6139"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9e520dcb-9ff3-4cd3-9877-2e0f78ef7fbf">
+                    <propertyInstance
+                      Id="c8366c64-06f9-4b80-8569-46434aee27e6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="44504bbd-be6e-4ef1-b9f8-d7781c7cf2c0">
+                    <propertyInstance
+                      Id="e048f966-8593-449d-9502-c811a41fd70e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b476e075-a7cb-43b7-9671-899cd1bfce67">
+                    <propertyInstance
+                      Id="75cf7f71-26b0-40f1-a407-502c22c1ea74"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="36a10472-6ba2-4a51-9a10-8a762d260e18"
+                  name="URI"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="b0ae53f2-c5aa-4f62-b8ce-bc93812da3f1"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D(Name%3DloadGame OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DURI"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="CD.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fd98e4e3-9d21-49a5-be2f-27f638785d9f"
+            name="Text"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="80cfc0e5-9674-400f-8b04-4c9581500405"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3DText"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e6ad300f-854a-450c-9659-08665afa1e46"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b276e7fe-6118-4e65-96a7-1a1554a60fe8">
+                    <propertyInstance
+                      Id="cb13100a-2ea1-4e9e-9557-49a1a79612c5"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="70f65104-43f9-4c74-b675-2abdded4fb1d">
+                    <propertyInstance
+                      Id="68e1191d-f2c3-42bd-a070-bb8e66218150"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ff886ef-e60c-4d4f-b5d2-90d8bfd583ef">
+                    <propertyInstance
+                      Id="770a5e78-88af-4865-b497-b71631418a2c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="479cecbb-c9ff-497a-8aec-792f1e0ab73c">
+                    <propertyInstance
+                      Id="1cbbcc3d-825c-4c11-8452-ec3b76f594b7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="990eabfb-102c-43b0-82b8-5da10fa005a2">
+                    <propertyInstance
+                      Id="55f76b3d-dd6b-4037-803f-e009a96eeb15"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1146c2ba-82e0-4d11-ad96-30f655d88b9b">
+                    <propertyInstance
+                      Id="8cba4c51-ae4e-4d56-a52b-f5ba9fd20faf"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="6abcc892-3d92-454d-8ea4-33a8a0671224"
+            name="newGame"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f7f9738c-89f8-42c0-9da2-024e71b519c1"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D(Name%3DnewGame OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="eba42be1-d648-4634-a3ed-cbeb30a6d532"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fe803652-cc27-450e-b445-7e53a0e291f3">
+                    <propertyInstance
+                      Id="04ecc833-417d-446e-8c45-da7a1a9eab74"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6268ef4e-7aae-44a5-a605-cb54d29a5961">
+                    <propertyInstance
+                      Id="d3a6d7b7-1515-47f0-9f92-da0a16c7c999"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08df708d-37ef-4dd7-80aa-4aec291d2101">
+                    <propertyInstance
+                      Id="2cafa9b7-3059-483a-b9d9-23d4d7c5c8c4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3b4b1d58-19f5-42c9-9b7c-a0835471a58d">
+                    <propertyInstance
+                      Id="53c6690f-8ac3-43c1-81ad-1e29148093ed"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36e5f4b5-2019-4ae2-b32f-2d179a8c85b4">
+                    <propertyInstance
+                      Id="472517bd-f523-4d56-9120-337f63400300"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fe34b95-92db-4cd7-a65a-c528c85a7b7b">
+                    <propertyInstance
+                      Id="0f4ea08f-bc88-4c57-af2a-338e96e10d2c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="58d8b2b1-14c8-4cf5-abd5-3b2d53ed98c4"
+                  name="humanPlayers"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d74b0204-8bbd-40f8-94cb-737967e0bc38"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D(Name%3DnewGame OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DhumanPlayers"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="CD.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="20ec0683-e4a4-40c4-bb1a-8638e88f1791"
+                  name="p"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="3017a816-c9d4-4117-bc39-8d1da877b2f9"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D(Name%3DnewGame OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dp"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="CD.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="af32bcd5-0355-4f42-b167-a3b8dcf40f24"
+            name="GameController"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f16a01f6-083e-4c4d-8600-1c3877301953"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSjors Boom%2FDocuments%2FGitHub%2FBaricade%2FBaricade%2Fbin%2FDebug%2FBaricade.exe&quot; Namespace%3DBaricade.Controller Type%3DGameController Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8430a716-17e3-425e-b537-1c6509c8ca74"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="07eab22d-b3e2-4036-b44a-a9bbabba346b">
+                    <propertyInstance
+                      Id="e0d86939-f467-4923-a9e2-77e99dc3694c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0c38fe4c-c45a-4a9c-ac56-6c5552af04f9">
+                    <propertyInstance
+                      Id="e5f1e7f2-f5c4-498f-a3d4-8c26bf9db6b6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="214d160e-d277-4be2-bb90-89ea7e331484">
+                    <propertyInstance
+                      Id="eda98567-0181-404f-a584-ec7a2cb3f568"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="07e58859-3114-4d6a-b7c6-c001fdc60120">
+                    <propertyInstance
+                      Id="1d9207c6-bf5c-41ff-93d2-202dd55d2392"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebdd59a2-4e74-45ac-9f11-8d2eb0aefa6c">
+                    <propertyInstance
+                      Id="86395e7a-c7f7-4c7f-847b-82477518766e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="46b7a0ff-546c-42c3-b016-ceb3b254ab62">
+                    <propertyInstance
+                      Id="e4d23858-be0e-4506-8b9a-02f5e8266d78"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

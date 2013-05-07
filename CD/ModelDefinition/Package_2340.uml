@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="5c673156-7f6c-411b-b323-7f01bc19b725"
+  name="Baricade"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="87f0aa7f-1c99-40d5-9fca-7b651984885a"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DBaricade"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="f675f727-8f4b-4151-8b8a-be7778ac931e"
+        LastKnownName="Controller"
+        LastKnownLocation="Package1_2340.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="3af44b80-d55e-4580-822f-877619ae179b"
+        LastKnownName="Model"
+        LastKnownLocation="Package2_2340.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="575f471f-bf2d-4462-8f9e-7f053e651e65"
+        LastKnownName="ViewModel"
+        LastKnownLocation="Package3_2341.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="0c6b9e02-4eda-4f89-b5bb-e87db2d235f2"
+        LastKnownName="View"
+        LastKnownLocation="Package6_2341.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

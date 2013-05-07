@@ -150,6 +150,7 @@
   <ItemGroup>
     <None Include="Data\Level\bord1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Data\Level\bord2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

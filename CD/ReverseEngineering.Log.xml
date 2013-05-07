@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2013-05-08T00:26:41" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Boolean' -  (PrimitiveType)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::Controller' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::Controller::GameController' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::Model' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::Model::Board' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::Model::Piece' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::Model::PlayerColor' -  (Enumeration)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::Model::Square' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Medium" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow' -  (Class)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::_contentLoaded' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::Actions' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::board' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnEndTurn_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnEndTurn_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnEndTurn_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnNextTurn' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnThrow_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnThrow_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnThrow_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::btnThrowDice' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::Cell_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::Cell_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::Cell_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::changeColor' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::changeColor::color' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::Container' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::controller' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::editMode' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::EditMode' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::fillGrid' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::GameController' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::gridPanel' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::highlight' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::highlight::squares' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::highlighted' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::InitializeComponent' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::Layout' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::lblPlayerColor' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::lblThrow' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::MainWindow' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::MainWindow::controller' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mChooseStyle' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mChooseStyle_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mChooseStyle_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mChooseStyle_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentDiceThrow' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentDiceThrow_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentDiceThrow_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentDiceThrow_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentPlayer' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentPlayer_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentPlayer_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mCurrentPlayer_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mEditMenu' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mEditMode_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mEditMode_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mEditMode_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::Menu' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mLoadGame' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mLoadGame_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mLoadGame_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mLoadGame_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mNewGame' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mNewGame_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mNewGame_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mNewGame_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mSaveGame' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mSaveGame_Click' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mSaveGame_Click::e' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::mSaveGame_Click::sender' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::path' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::placeBaricades' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::placeBaricades::init' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::placePawns' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::placePawns::init' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::selectCell' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::selectCell::image' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::selectedPiece' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::SelectedPiece' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::selectedSquare' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::SelectedSquare' -  (Property)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::setupGrid' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::System‎.Windows‎.Markup‎.IComponentConnector‎.Connect' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::System‎.Windows‎.Markup‎.IComponentConnector‎.Connect::connectionId' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::System‎.Windows‎.Markup‎.IComponentConnector‎.Connect::target' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::System‎.Windows‎.Markup‎.IStyleConnector‎.Connect' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::System‎.Windows‎.Markup‎.IStyleConnector‎.Connect::connectionId' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::System‎.Windows‎.Markup‎.IStyleConnector‎.Connect::target' -  (Parameter)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::Baricade::View::MainWindow::toTextMode' -  (Operation)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Object' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls::Button' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls::DockPanel' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls::Grid' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls::Image' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls::Label' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls::Menu' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Controls::MenuItem' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Markup' -  (Package)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Markup::IComponentConnector' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Markup::IStyleConnector' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::RoutedEventArgs' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'CD::System::Windows::Window' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::MainWindow to CD::Baricade::Controller::GameController (Association)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::MainWindow to CD::System::Windows::Markup::IComponentConnector (InterfaceRealization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::MainWindow to CD::System::Windows::Markup::IStyleConnector (InterfaceRealization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::MainWindow to CD::System::Windows::Window (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::Piece to CD::Baricade::Model::XmlData (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::Piece to CD::Baricade::Model::XmlData&lt;Piece‎&gt; (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::Square to CD::Baricade::Model::XmlData (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::Square to CD::Baricade::Model::XmlData&lt;Square‎&gt; (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::RestSquare to CD::Baricade::Model::Square (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::LowRowSquare to CD::Baricade::Model::Square (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::VillageSquare to CD::Baricade::Model::Square (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::Connector to CD::Baricade::Model::Square (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::BaricadeSquare to CD::Baricade::Model::Square (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::Board to CD::Baricade::Model::XmlData (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::Model::Board to CD::Baricade::Model::XmlData&lt;Board‎&gt; (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::NewGame to CD::System::Windows::Window (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::ChoosePlayer to CD::System::Windows::Window (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::StyleChooser to CD::System::Windows::Window (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: CD::Baricade::View::ChooseDiceRoll to CD::System::Windows::Window (Generalization)" />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="High" Text="(1) type(s) fully reverse engineered." />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="High" Text="(17) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2013-05-08T00:26:46" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+</Log>
